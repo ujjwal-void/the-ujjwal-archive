@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
-import { Bot, X, Send } from 'lucide-react';
+import { Bot, Send, X, User } from 'lucide-react';
+import { PROFILE_DATA, WORK_EXPERIENCE, ACHIEVEMENTS, PROJECTS_DATA } from '../data/portfolioData';
 
 export default function AIDigitalTwinModal({ isOpen, onClose }) {
   const [messages, setMessages] = useState([
     {
       sender: 'bot',
-      text: "👋 Welcome to Ujjwal's Digital Sanctuary! I'm his AI companion. Ask me anything about his Adaptive RAG project, his favorite Steins;Gate anime episodes, how he teaches tech, or his F1/Football takes!"
+      text: `Hi! I'm Ujjwal's AI Assistant. You can ask me about his work experience at ZFunds & Advor.ai, tech stack (FastAPI, Python, Node.js, Redis, LangChain, FAISS), hackathon wins, or education at VIT Chennai!`
     }
   ]);
   const [input, setInput] = useState('');
-  const [isThinking, setIsThinking] = useState(false);
 
   if (!isOpen) return null;
 
@@ -17,48 +17,54 @@ export default function AIDigitalTwinModal({ isOpen, onClose }) {
     if (!input.trim()) return;
 
     const userText = input.trim();
-    setMessages(prev => [...prev, { sender: 'user', text: userText }]);
+    const newMessages = [...messages, { sender: 'user', text: userText }];
     setInput('');
-    setIsThinking(true);
+    setMessages(newMessages);
 
+    // AI Response generation grounded in Ujjwal's real resume
     setTimeout(() => {
-      const reply = generateReply(userText);
+      let reply = "";
+      const lower = userText.toLowerCase();
+
+      if (lower.includes('experience') || lower.includes('job') || lower.includes('zfunds') || lower.includes('advor') || lower.includes('work')) {
+        reply = `Ujjwal is a Software Development Engineer at ZFunds (April 2026-Present) building the ZIVA V2 WealthTech AI platform. Previously, he was Founding Engineer at Advor.ai / CyberPoint (Jan 2025-April 2026) where he scaled event-driven microservices to <150ms P99 latency using RabbitMQ/Redis and built hybrid RAG search engines (+40% accuracy). He also interned at DRDO and Iamneo.`;
+      } else if (lower.includes('skill') || lower.includes('stack') || lower.includes('tech') || lower.includes('python')) {
+        reply = `Ujjwal's core stack includes Python, TypeScript, JavaScript, Java, FastAPI, Node.js, Express, Nest.js, Redis, RabbitMQ, LangChain, FAISS, LlamaIndex, Qdrant, MongoDB, PostgreSQL, AWS (EC2/S3/Lambda), Docker, Kubernetes, and React.js.`;
+      } else if (lower.includes('project') || lower.includes('nexus') || lower.includes('write medium') || lower.includes('adcraft') || lower.includes('rag')) {
+        reply = `Ujjwal's verified projects include:
+1. ZIVA V2 WealthTech AI (Portfolio Analysis & Proposal engines)
+2. Advor.ai Hybrid RAG Engine (FAISS + Redis + RabbitMQ)
+3. Nexus PM (Project Management REST API with 30+ endpoints & 3-tier RBAC)
+4. Write Medium (Full-stack blogging platform)
+5. AdCraft (AI Ad generator - Osmos Hackathon 1st Runner Up out of 131 teams)
+6. DRDO Real-Time LAN & Packet Inspection Tool`;
+      } else if (lower.includes('education') || lower.includes('college') || lower.includes('vit')) {
+        reply = `Ujjwal graduated with a B.Tech in Computer Science Engineering (AI & ML Specialization) from Vellore Institute of Technology (VIT Chennai), class of 2021-2025 (CGPA: 7.23/10.0).`;
+      } else if (lower.includes('contact') || lower.includes('email') || lower.includes('phone') || lower.includes('linkedin')) {
+        reply = `You can reach Ujjwal directly at:
+• Email: ujjwal.02023@gmail.com
+• Phone: +91 7380679251
+• LinkedIn: linkedin.com/in/ujjwal-ujjwal-dev
+• GitHub: github.com/ujjwal-void`;
+      } else if (lower.includes('hackathon') || lower.includes('award') || lower.includes('achievement')) {
+        reply = `Ujjwal won 1st Runner-Up at the Osmos Hackathon by OnlineSales.ai (out of 131 teams, INR 30,000 prize) by building AdCraft, and was a Finalist at the CryptoGuard Hackathon at VIT Chennai!`;
+      } else {
+        reply = `Ujjwal is a Software Development Engineer with deep expertise in Python, Node.js, FastAPI, event-driven RabbitMQ microservices, Redis caching, and hybrid RAG pipelines. Feel free to ask about his ZFunds/Advor.ai experience or email him at ujjwal.02023@gmail.com!`;
+      }
+
       setMessages(prev => [...prev, { sender: 'bot', text: reply }]);
-      setIsThinking(false);
-    }, 500);
-  };
-
-  const generateReply = (query) => {
-    const q = query.toLowerCase();
-
-    if (q.includes('rag') || q.includes('project') || q.includes('code') || q.includes('python')) {
-      return `🧠 Regarding projects: Ujjwal built an Adaptive RAG Search System combining Qdrant vector database, LangGraph routing, and self-correction fallbacks. It achieves 94% retrieval precision!`;
-    }
-    if (q.includes('anime') || q.includes('steins') || q.includes('attack on titan') || q.includes('movie')) {
-      return `🍿 Narrative Taste: Ujjwal considers Steins;Gate a 10/10 masterpiece in timeline cohesion. Interstellar is his top sci-fi movie recommendation! Check out the Media Vault tab to see his spoiler-shielded reviews.`;
-    }
-    if (q.includes('teach') || q.includes('blog') || q.includes('learn') || q.includes('explain')) {
-      return `📚 Teaching Philosophy: Ujjwal teaches 'Intuition First, Syntax Second'. He breaks down black-box abstractions with real-world analogies before touching code.`;
-    }
-    if (q.includes('sport') || q.includes('football') || q.includes('f1') || q.includes('nba')) {
-      return `⚽ Sports Takes: Ujjwal loves analyzing fluid positional tactics in football and active aero telemetry in Formula 1. He views sports strategy as distributed systems in real life!`;
-    }
-    if (q.includes('hi') || q.includes('hello') || q.includes('who are you')) {
-      return `👋 Hey there! I'm Ujjwal's AI Digital Companion. Ask me anything about his AI projects, anime/movie recommendations, sports takes, or teaching articles!`;
-    }
-
-    return `✨ Thanks for asking! Ujjwal builds software and writes content purely "for the love of the game"—striving for technical depth and visual craftsmanship. Feel free to explore the tabs or checkout the standalone /links page!`;
+    }, 400);
   };
 
   return (
     <div className="ai-modal-overlay" onClick={onClose}>
       <div className="ai-modal-content" onClick={(e) => e.stopPropagation()}>
         <div className="ai-chat-header">
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.7rem' }}>
-            <Bot size={24} style={{ color: 'var(--accent-cyan)' }} />
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+            <Bot size={22} style={{ color: 'var(--accent-indigo)' }} />
             <div>
-              <h3 style={{ fontSize: '1.1rem', margin: 0, fontFamily: 'var(--font-display)' }}>Ujjwal's AI Companion</h3>
-              <span style={{ fontSize: '0.75rem', color: '#34d399' }}>🟢 Online • Trained on Ujjwal's digital brain</span>
+              <h3 style={{ fontSize: '1.05rem', color: 'var(--text-main)' }}>Ujjwal's AI Assistant</h3>
+              <p style={{ fontSize: '0.75rem', color: 'var(--text-dim)' }}>Grounded in Ujjwal's Real Resume & Verified Experience</p>
             </div>
           </div>
           <button className="close-btn" onClick={onClose}>
@@ -67,29 +73,24 @@ export default function AIDigitalTwinModal({ isOpen, onClose }) {
         </div>
 
         <div className="ai-chat-body">
-          {messages.map((m, idx) => (
-            <div key={idx} className={`chat-bubble ${m.sender}`}>
-              {m.text}
+          {messages.map((msg, idx) => (
+            <div key={idx} className={`chat-bubble ${msg.sender}`}>
+              <p style={{ whiteSpace: 'pre-line' }}>{msg.text}</p>
             </div>
           ))}
-          {isThinking && (
-            <div className="chat-bubble bot" style={{ fontStyle: 'italic', opacity: 0.8 }}>
-              🤖 Thinking...
-            </div>
-          )}
         </div>
 
         <div className="ai-chat-input-area">
           <input
             type="text"
             className="ai-input"
-            placeholder="Ask e.g. 'What is Ujjwal's favorite anime?'..."
+            placeholder="Ask about Ujjwal's experience, skills, projects..."
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            onKeyPress={(e) => e.key === 'Enter' && handleSend()}
+            onKeyDown={(e) => e.key === 'Enter' && handleSend()}
           />
-          <button className="btn-primary" onClick={handleSend} style={{ padding: '0.6rem 1.2rem', fontSize: '0.88rem', gap: '0.3rem' }}>
-            <Send size={16} /> Send
+          <button className="btn-primary" onClick={handleSend} style={{ padding: '0.6rem 0.9rem' }}>
+            <Send size={16} />
           </button>
         </div>
       </div>

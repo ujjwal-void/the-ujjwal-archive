@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import GlobalSearch from './components/GlobalSearch';
 import Hero from './components/Hero';
+import ExperienceSection from './components/ExperienceSection';
 import ProjectsSection from './components/ProjectsSection';
 import TechEssaysSection from './components/TechEssaysSection';
 import CultureSportsSection from './components/CultureSportsSection';
@@ -35,6 +36,8 @@ export default function App() {
     switch (activeRoute) {
       case 'home':
         return <Hero onNavigate={navigateTo} />;
+      case 'experience':
+        return <ExperienceSection />;
       case 'projects':
         return <ProjectsSection />;
       case 'essays':

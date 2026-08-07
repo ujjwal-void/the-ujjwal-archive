@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Menu, X, Zap, Cpu, Film, FileText, Link as LinkIcon } from 'lucide-react';
+import { Menu, X, Zap, Briefcase, Cpu, Film, FileText, Link as LinkIcon } from 'lucide-react';
 
 export default function Navbar({ activeRoute, onNavigate }) {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -23,6 +23,11 @@ export default function Navbar({ activeRoute, onNavigate }) {
           <li>
             <button className={`nav-btn ${activeRoute === 'home' ? 'active' : ''}`} onClick={() => handleNav('home')}>
               <Zap size={15} /> Archive
+            </button>
+          </li>
+          <li>
+            <button className={`nav-btn ${activeRoute === 'experience' ? 'active' : ''}`} onClick={() => handleNav('experience')}>
+              <Briefcase size={15} /> Experience
             </button>
           </li>
           <li>
@@ -58,6 +63,9 @@ export default function Navbar({ activeRoute, onNavigate }) {
         <div className="mobile-dropdown">
           <button className={`mobile-nav-btn ${activeRoute === 'home' ? 'active' : ''}`} onClick={() => handleNav('home')}>
             ⚡ Archive Home
+          </button>
+          <button className={`mobile-nav-btn ${activeRoute === 'experience' ? 'active' : ''}`} onClick={() => handleNav('experience')}>
+            💼 Work Experience & Resume
           </button>
           <button className={`mobile-nav-btn ${activeRoute === 'projects' ? 'active' : ''}`} onClick={() => handleNav('projects')}>
             🧠 Projects

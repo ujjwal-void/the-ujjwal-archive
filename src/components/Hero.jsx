@@ -1,5 +1,5 @@
 import React from 'react';
-import { Zap, Film, Cpu, FileText } from 'lucide-react';
+import { Zap, Briefcase, Cpu, FileText, Award } from 'lucide-react';
 import { PROFILE_DATA } from '../data/portfolioData';
 import TerminalConsole from './TerminalConsole';
 
@@ -23,18 +23,18 @@ export default function Hero({ onNavigate }) {
           </p>
 
           <div className="manifesto-callout">
-            "I'm fascinated by how complex systems work under the hood—whether that's an adaptive RAG pipeline, narrative time-loops in anime, or tactical rotations in football."
+            "I build high-concurrency microservices, event-driven backend architectures, and self-correcting RAG systems—driven by understanding core mechanisms under the hood."
           </div>
 
           <div className="hero-actions">
-            <button onClick={() => onNavigate('projects')} className="btn-primary">
-              <Zap size={16} /> View Projects
+            <button onClick={() => onNavigate('experience')} className="btn-primary">
+              <Briefcase size={16} /> Work Experience
+            </button>
+            <button onClick={() => onNavigate('projects')} className="btn-glass">
+              <Cpu size={16} /> View Projects
             </button>
             <button onClick={() => onNavigate('essays')} className="btn-glass">
               <FileText size={16} /> Tech Essays
-            </button>
-            <button onClick={() => onNavigate('culture')} className="btn-glass">
-              <Film size={16} /> Culture & Sports
             </button>
           </div>
         </div>
@@ -48,40 +48,40 @@ export default function Hero({ onNavigate }) {
               <span className="dot"></span>
             </div>
             <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', color: 'var(--text-dim)' }}>
-              ujjwal/workspace
+              ujjwal/career_stream
             </span>
           </div>
 
           <div className="workbench-stream-list">
             <div className="stream-item">
-              <span className="meta-tag">Building</span>
+              <span className="meta-tag meta-emerald">ZFunds</span>
               <div>
-                <div style={{ fontSize: '0.88rem', fontWeight: 600, color: 'var(--text-main)' }}>Adaptive Graph RAG Engine</div>
-                <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>Self-correcting retrieval & Qdrant vector index</div>
+                <div style={{ fontSize: '0.88rem', fontWeight: 600, color: 'var(--text-main)' }}>SDE — ZIVA V2 WealthTech AI</div>
+                <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>Architected Portfolio Analysis, Goal & Fund Proposal Engines</div>
               </div>
             </div>
 
             <div className="stream-item">
-              <span className="meta-tag">Writing</span>
+              <span className="meta-tag meta-cyan">Advor.ai</span>
               <div>
-                <div style={{ fontSize: '0.88rem', fontWeight: 600, color: 'var(--text-main)' }}>RAG Spatial Geometry Notes</div>
-                <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>Explaining high-dimensional vector embeddings in my own words</div>
+                <div style={{ fontSize: '0.88rem', fontWeight: 600, color: 'var(--text-main)' }}>Founding Engineer — Hybrid RAG</div>
+                <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>RabbitMQ microservices (under 150ms P99) & FAISS search (+40% accuracy)</div>
               </div>
             </div>
 
             <div className="stream-item">
-              <span className="meta-tag">Notes</span>
+              <span className="meta-tag meta-amber">Award</span>
               <div>
-                <div style={{ fontSize: '0.88rem', fontWeight: 600, color: 'var(--text-main)' }}>Steins;Gate Narrative Logic</div>
-                <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>World Line Beta divergence & timeline convergence</div>
+                <div style={{ fontSize: '0.88rem', fontWeight: 600, color: 'var(--text-main)' }}>Osmos Hackathon 1st Runner-Up</div>
+                <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>AdCraft AI platform (out of 131 teams, INR 30k prize)</div>
               </div>
             </div>
 
             <div className="stream-item">
-              <span className="meta-tag">Tactics</span>
+              <span className="meta-tag meta-purple">DRDO</span>
               <div>
-                <div style={{ fontSize: '0.88rem', fontWeight: 600, color: 'var(--text-main)' }}>Fluid Inversion in Football</div>
-                <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>Central pivot overloads under high pressing</div>
+                <div style={{ fontSize: '0.88rem', fontWeight: 600, color: 'var(--text-main)' }}>DevOps & LAN Packet Inspection</div>
+                <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>Flask LAN bandwidth monitor & Docker/Kubernetes CI/CD</div>
               </div>
             </div>
           </div>
@@ -90,13 +90,22 @@ export default function Hero({ onNavigate }) {
 
       {/* Feature Pillar Grid */}
       <div className="grid-3" style={{ marginTop: '1.5rem' }}>
+        <div className="card" style={{ cursor: 'pointer' }} onClick={() => onNavigate('experience')}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.8rem' }}>
+            <Briefcase size={26} style={{ color: 'var(--accent-indigo)' }} />
+            <span className="meta-tag meta-cyan">Experience</span>
+          </div>
+          <h3 style={{ fontSize: '1.2rem', marginBottom: '0.4rem' }}>Work & Career</h3>
+          <p style={{ fontSize: '0.88rem', color: 'var(--text-muted)' }}>ZFunds SDE, Advor.ai Founding Engineer, DRDO Intern & Skills Matrix.</p>
+        </div>
+
         <div className="card" style={{ cursor: 'pointer' }} onClick={() => onNavigate('projects')}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.8rem' }}>
             <Cpu size={26} style={{ color: 'var(--text-main)' }} />
             <span className="meta-tag">Projects</span>
           </div>
-          <h3 style={{ fontSize: '1.2rem', marginBottom: '0.4rem' }}>Software & AI</h3>
-          <p style={{ fontSize: '0.88rem', color: 'var(--text-muted)' }}>Self-correcting RAG search, vector databases, and NLP spoiler masking.</p>
+          <h3 style={{ fontSize: '1.2rem', marginBottom: '0.4rem' }}>Production Projects</h3>
+          <p style={{ fontSize: '0.88rem', color: 'var(--text-muted)' }}>ZIVA V2, Hybrid RAG, Nexus PM, Write Medium & AdCraft platform.</p>
         </div>
 
         <div className="card" style={{ cursor: 'pointer' }} onClick={() => onNavigate('essays')}>
@@ -105,16 +114,7 @@ export default function Hero({ onNavigate }) {
             <span className="meta-tag">Essays</span>
           </div>
           <h3 style={{ fontSize: '1.2rem', marginBottom: '0.4rem' }}>Tech Essays</h3>
-          <p style={{ fontSize: '0.88rem', color: 'var(--text-muted)' }}>Explaining technical topics in my own words — notes, architectures & personal perspectives.</p>
-        </div>
-
-        <div className="card" style={{ cursor: 'pointer' }} onClick={() => onNavigate('culture')}>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.8rem' }}>
-            <Film size={26} style={{ color: 'var(--text-main)' }} />
-            <span className="meta-tag">Culture & Sports</span>
-          </div>
-          <h3 style={{ fontSize: '1.2rem', marginBottom: '0.4rem' }}>Culture & Sports</h3>
-          <p style={{ fontSize: '0.88rem', color: 'var(--text-muted)' }}>Media reviews (anime, movies, books with spoiler toggles) & sports tactical commentary.</p>
+          <p style={{ fontSize: '0.88rem', color: 'var(--text-muted)' }}>Personal articles explaining hybrid RAG, RabbitMQ queues & system design.</p>
         </div>
       </div>
     </div>
