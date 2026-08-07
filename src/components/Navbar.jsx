@@ -13,9 +13,11 @@ export default function Navbar({ activeRoute, onNavigate }) {
     <header className="header-nav" id="nav-container">
       <nav className="nav-bar">
         <a href="#home" className="brand-logo" onClick={(e) => { e.preventDefault(); handleNav('home'); }}>
-          <div className="avatar-badge-wrap">
-            <span style={{ fontSize: '0.9rem' }}>⚡</span>
-          </div>
+          <img
+            src="./ujjwal_avatar.png"
+            alt="Ujjwal"
+            style={{ width: '28px', height: '28px', borderRadius: '6px', objectFit: 'cover', border: '1px solid var(--border-muted)' }}
+          />
           <span>Ujjwal<span style={{ color: 'var(--text-muted)' }}>.dev</span></span>
         </a>
 

@@ -7,11 +7,18 @@ export default function Hero({ onNavigate }) {
   return (
     <div>
       <section className="hero-wrapper" style={{ paddingTop: '1rem' }}>
-        {/* Left Column: Intro Bio, Status, Manifesto & CTAs */}
+        {/* Left Column: Intro Bio, Avatar Badge, Status, Manifesto & CTAs */}
         <div className="hero-text">
-          <div className="badge-status">
-            <span className="pulse-dot"></span>
-            {PROFILE_DATA.status}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', marginBottom: '1.2rem' }}>
+            <img
+              src="./ujjwal_avatar.png"
+              alt={PROFILE_DATA.name}
+              style={{ width: '42px', height: '42px', borderRadius: 'var(--radius-sm)', objectFit: 'cover', border: '1.5px solid var(--border-accent)', boxShadow: '0 2px 8px rgba(15,23,42,0.1)' }}
+            />
+            <div className="badge-status" style={{ marginBottom: 0 }}>
+              <span className="pulse-dot"></span>
+              {PROFILE_DATA.status}
+            </div>
           </div>
           
           <h1>Hi, I'm <span className="gradient-text">{PROFILE_DATA.name}</span></h1>
@@ -40,7 +47,7 @@ export default function Hero({ onNavigate }) {
           </div>
         </div>
 
-        {/* Right Column: Interactive CLI Shell Terminal (Side-by-Side, Zero Page Push) */}
+        {/* Right Column: Interactive CLI Shell Terminal */}
         <div>
           <TerminalConsole onNavigate={onNavigate} />
 
