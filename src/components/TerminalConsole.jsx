@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Terminal as TerminalIcon, CornerDownLeft } from 'lucide-react';
-import { PROJECTS_DATA, MEDIA_DATA, TEACHING_BLOGS, SPORTS_TAKES } from '../data/portfolioData';
+import { PROJECTS_DATA, MEDIA_DATA, TECH_ESSAYS, SPORTS_TAKES } from '../data/portfolioData';
 
 export default function TerminalConsole({ onNavigate }) {
   const [history, setHistory] = useState([
@@ -63,7 +63,7 @@ export default function TerminalConsole({ onNavigate }) {
         const results = [];
         PROJECTS_DATA.forEach(p => p.title.toLowerCase().includes(query) && results.push(`[PROJECT] ${p.title} -> ${p.tagline}`));
         MEDIA_DATA.forEach(m => m.title.toLowerCase().includes(query) && results.push(`[MEDIA] ${m.title} (${m.type}) -> ${m.summary.substring(0, 50)}...`));
-        TEACHING_BLOGS.forEach(b => b.title.toLowerCase().includes(query) && results.push(`[BLOG] ${b.title}`));
+        TECH_ESSAYS.forEach(b => b.title.toLowerCase().includes(query) && results.push(`[ESSAY] ${b.title}`));
         SPORTS_TAKES.forEach(s => s.title.toLowerCase().includes(query) && results.push(`[SPORTS] ${s.title}`));
 
         if (results.length > 0) {

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Menu, X, Zap, Cpu, Film, BookOpen, Trophy, Link as LinkIcon } from 'lucide-react';
+import { Menu, X, Zap, Cpu, Film, FileText, Trophy, Link as LinkIcon } from 'lucide-react';
 
 export default function Navbar({ activeRoute, onNavigate }) {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -14,47 +14,47 @@ export default function Navbar({ activeRoute, onNavigate }) {
       <nav className="nav-bar">
         <a href="#home" className="brand-logo" onClick={(e) => { e.preventDefault(); handleNav('home'); }}>
           <div className="avatar-badge-wrap">
-            <span className="avatar-fallback">⚡</span>
+            <span style={{ fontSize: '0.9rem' }}>⚡</span>
           </div>
-          <span>Ujjwal<span style={{ color: 'var(--accent-cyan)' }}>.dev</span></span>
+          <span>Ujjwal<span style={{ color: 'var(--text-muted)' }}>.dev</span></span>
         </a>
 
         <ul className="nav-links">
           <li>
             <button className={`nav-btn ${activeRoute === 'home' ? 'active' : ''}`} onClick={() => handleNav('home')}>
-              <Zap size={16} /> Sanctuary
+              <Zap size={15} /> Archive
             </button>
           </li>
           <li>
             <button className={`nav-btn ${activeRoute === 'projects' ? 'active' : ''}`} onClick={() => handleNav('projects')}>
-              <Cpu size={16} /> Projects
+              <Cpu size={15} /> Projects
             </button>
           </li>
           <li>
             <button className={`nav-btn ${activeRoute === 'media' ? 'active' : ''}`} onClick={() => handleNav('media')}>
-              <Film size={16} /> Media Vault
+              <Film size={15} /> Media Notes
             </button>
           </li>
           <li>
-            <button className={`nav-btn ${activeRoute === 'teaching' ? 'active' : ''}`} onClick={() => handleNav('teaching')}>
-              <BookOpen size={16} /> Teaching Hub
+            <button className={`nav-btn ${activeRoute === 'essays' || activeRoute === 'teaching' ? 'active' : ''}`} onClick={() => handleNav('essays')}>
+              <FileText size={15} /> Tech Essays
             </button>
           </li>
           <li>
             <button className={`nav-btn ${activeRoute === 'sports' ? 'active' : ''}`} onClick={() => handleNav('sports')}>
-              <Trophy size={16} /> Sports Takes
+              <Trophy size={15} /> Sports Notes
             </button>
           </li>
           <li>
             <button className={`nav-btn linktree-highlight ${activeRoute === 'links' ? 'active' : ''}`} onClick={() => handleNav('links')}>
-              <LinkIcon size={16} /> Bio Linktree
+              <LinkIcon size={15} /> Links
             </button>
           </li>
         </ul>
 
         {/* Mobile menu icon */}
         <button className="mobile-toggle" onClick={() => setMobileOpen(!mobileOpen)} aria-label="Toggle menu">
-          {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+          {mobileOpen ? <X size={22} /> : <Menu size={22} />}
         </button>
       </nav>
 
@@ -62,19 +62,19 @@ export default function Navbar({ activeRoute, onNavigate }) {
       {mobileOpen && (
         <div className="mobile-dropdown">
           <button className={`mobile-nav-btn ${activeRoute === 'home' ? 'active' : ''}`} onClick={() => handleNav('home')}>
-            ⚡ Sanctuary Home
+            ⚡ Archive Home
           </button>
           <button className={`mobile-nav-btn ${activeRoute === 'projects' ? 'active' : ''}`} onClick={() => handleNav('projects')}>
-            🧠 Craftsman Projects
+            🧠 Projects
           </button>
           <button className={`mobile-nav-btn ${activeRoute === 'media' ? 'active' : ''}`} onClick={() => handleNav('media')}>
-            🍿 Media Vault
+            🍿 Media Notes
           </button>
-          <button className={`mobile-nav-btn ${activeRoute === 'teaching' ? 'active' : ''}`} onClick={() => handleNav('teaching')}>
-            📚 Teaching Hub
+          <button className={`mobile-nav-btn ${activeRoute === 'essays' || activeRoute === 'teaching' ? 'active' : ''}`} onClick={() => handleNav('essays')}>
+            📝 Tech Essays & Explanations
           </button>
           <button className={`mobile-nav-btn ${activeRoute === 'sports' ? 'active' : ''}`} onClick={() => handleNav('sports')}>
-            ⚽ Sports Takes
+            ⚽ Sports Notes
           </button>
           <button className="mobile-nav-btn linktree-highlight" onClick={() => handleNav('links')}>
             🔗 Standalone Linktree

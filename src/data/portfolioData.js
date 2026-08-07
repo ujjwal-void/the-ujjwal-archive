@@ -1,25 +1,25 @@
-// Core Dataset for Ujjwal's Personal Digital Garden & Notes
+// Core Dataset for Ujjwal's Personal Digital Archive & Notes
 
 export const PROFILE_DATA = {
   name: "Ujjwal",
-  title: "Software Engineer & Educator",
-  tagline: "Building software, breaking down AI concepts, and sharing thoughts on cinema, literature, and sports.",
+  title: "Software Engineer",
+  tagline: "Building software, writing technical essays, and sharing notes on media and sports.",
   location: "Global / Remote",
   status: "Working on Adaptive RAG & AI Systems",
-  bio: "Software engineer and teacher driven by curiosity. I spend my time building retrieval systems, dissecting story structures in anime and films, writing visual tutorials for students, and following tactical strategy in sports.",
+  bio: "Software engineer writing about complex technical topics in my own words, reviewing stories that shaped my thinking, and following sports strategy.",
   socials: [
     { name: "GitHub", url: "https://github.com/ujjwal-void", icon: "Github", label: "Repositories" },
     { name: "Twitter / X", url: "https://twitter.com", icon: "Twitter", label: "Thoughts" },
     { name: "LinkedIn", url: "https://linkedin.com", icon: "Linkedin", label: "Professional" },
-    { name: "YouTube", url: "https://youtube.com", icon: "Youtube", label: "Tutorials" }
+    { name: "YouTube", url: "https://youtube.com", icon: "Youtube", label: "Walkthroughs" }
   ]
 };
 
 export const LINKTREE_LINKS = [
   {
     id: "portfolio-main",
-    title: "⚡ Digital Garden & Notes",
-    description: "Projects, media reviews, teaching articles & sports notes",
+    title: "⚡ Ujjwal's Digital Archive",
+    description: "Projects, tech essays, media notes & sports commentary",
     url: "#home",
     icon: "Sparkles",
     badge: "Main",
@@ -34,25 +34,25 @@ export const LINKTREE_LINKS = [
     badge: "Project"
   },
   {
-    id: "teaching-blog",
-    title: "📚 Teaching & Tech Articles",
-    description: "Breaking down complex CS & AI concepts step-by-step",
-    url: "#teaching",
+    id: "tech-essays",
+    title: "📝 Tech Essays & Explanations",
+    description: "Technical topics explained in my own words & personal perspectives",
+    url: "#essays",
     icon: "BookOpen",
     badge: "Writing"
   },
   {
-    id: "media-vault",
+    id: "media-notes",
     title: "🍿 Media Notes: Anime, Movies & Books",
     description: "Personal reflections with spoiler toggles",
     url: "#media",
     icon: "Film",
-    badge: "Curated"
+    badge: "Notes"
   },
   {
     id: "sports-feed",
-    title: "⚽ Sports Commentary & Tactics",
-    description: "Tactical analysis on football, F1 & basketball",
+    title: "⚽ Sports Commentary & Strategy",
+    description: "Observations on football, F1 & basketball",
     url: "#sports",
     icon: "Trophy",
     badge: "Notes"
@@ -194,54 +194,53 @@ export const MEDIA_DATA = [
   }
 ];
 
-export const TEACHING_BLOGS = [
+export const TECH_ESSAYS = [
   {
     id: "intuitive-rag-architecture",
-    title: "How I Teach RAG: Building Intuition Before Writing Code",
+    title: "Understanding RAG Architectures: Spatial Embeddings & Self-Correction",
     category: "AI Engineering",
     readTime: "8 min read",
     date: "Aug 2026",
     videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-    excerpt: "Explaining vector embeddings using physical room spatial maps helps students grasp semantic search instantly, without drowning in matrix formulas.",
-    codeSnippet: `// Intuitive RAG Retrieval & Evaluation Flow
+    excerpt: "My personal perspective on why treating vector embeddings as multi-dimensional spatial coordinates makes semantic search intuitive, and how dynamic self-correction prevents RAG hallucinations.",
+    codeSnippet: `// RAG Retrieval & Evaluation Logic
 async function queryAdaptiveRAG(userQuery) {
   const embedding = await generateVector(userQuery);
   const documents = await vectorDb.similaritySearch(embedding, { topK: 5 });
   
   const relevance = await evaluateRelevance(userQuery, documents);
   if (relevance.score < 0.7) {
-    // Dynamic Fallback
+    // Dynamic Web Search Fallback
     const webResults = await webSearchFallback(userQuery);
     return synthesizeAnswer(userQuery, [...documents, ...webResults]);
   }
   
   return synthesizeAnswer(userQuery, documents);
 }`,
-    teachingMethodology: [
-      "Start with physical analogies before code",
-      "Demystify framework black-boxes step-by-step",
-      "Analyze why systems fail before writing solutions",
-      "Build a minimalist 20-line baseline first"
+    keyTakeaways: [
+      "Vector embeddings represent conceptual distance in spatial dimensions",
+      "Static vector search fails when queries are ambiguous or outside corpus bounds",
+      "Dynamic routing & hallucination grading provide a self-correcting safety net"
     ]
   },
   {
-    id: "for-the-love-of-the-game",
-    title: "Craftsmanship in Software: Understanding Fundamentals",
-    category: "Engineering Philosophy",
+    id: "software-craftsmanship",
+    title: "Notes on Software Craftsmanship: Understanding Core Fundamentals",
+    category: "Engineering Thoughts",
     readTime: "6 min read",
     date: "Jul 2026",
     videoUrl: null,
-    excerpt: "Tools and frameworks change constantly, but building lasting confidence comes from understanding fundamental mechanisms under the hood.",
+    excerpt: "Why spending time to understand underlying framework mechanisms builds long-term confidence compared to surface-level tutorial copying.",
     codeSnippet: `// Continuous Learning Loop
 while (engineering) {
   understandCoreMechanisms();
   writeCleanCode();
   refactorWithCare();
 }`,
-    teachingMethodology: [
-      "Prioritize understanding 'Why' over just 'How'",
-      "Build small toy implementations to understand core concepts",
-      "Value clean structure and readability"
+    keyTakeaways: [
+      "Frameworks change constantly, but core computer science principles endure",
+      "Building minimal implementations removes black-box magic",
+      "Code readability is an investment in your future self"
     ]
   }
 ];

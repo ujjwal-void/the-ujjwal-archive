@@ -4,7 +4,7 @@ import GlobalSearch from './components/GlobalSearch';
 import Hero from './components/Hero';
 import ProjectsSection from './components/ProjectsSection';
 import MediaVaultSection from './components/MediaVaultSection';
-import TeachingHubSection from './components/TeachingHubSection';
+import TechEssaysSection from './components/TechEssaysSection';
 import SportsTakesSection from './components/SportsTakesSection';
 import LinktreeSection from './components/LinktreeSection';
 import AIDigitalTwinModal from './components/AIDigitalTwinModal';
@@ -40,8 +40,9 @@ export default function App() {
         return <ProjectsSection />;
       case 'media':
         return <MediaVaultSection />;
+      case 'essays':
       case 'teaching':
-        return <TeachingHubSection />;
+        return <TechEssaysSection />;
       case 'sports':
         return <SportsTakesSection />;
       case 'links':
@@ -69,9 +70,9 @@ export default function App() {
       </main>
 
       {/* Floating AI Digital Companion Trigger */}
-      <button className="ai-twin-trigger" onClick={() => setAiModalOpen(true)} title="Ask Ujjwal's AI Twin">
-        <Bot size={20} />
-        <span>Ask Ujjwal's AI</span>
+      <button className="ai-twin-trigger" onClick={() => setAiModalOpen(true)} title="Ask Ujjwal's AI Assistant">
+        <Bot size={18} />
+        <span>Ask My AI</span>
       </button>
 
       {/* AI Digital Companion Drawer Modal */}
