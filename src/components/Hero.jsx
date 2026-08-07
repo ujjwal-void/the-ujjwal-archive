@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Zap, Briefcase, Cpu, FileText, Code2, ExternalLink } from 'lucide-react';
 import { PROFILE_DATA } from '../data/portfolioData';
+import { checkIsRecruiterMode } from '../utils/privacyHelper';
 import TerminalConsole from './TerminalConsole';
 
 export default function Hero({ onNavigate }) {
+  const [isRecruiter, setIsRecruiter] = useState(false);
+
+  useEffect(() => {
+    setIsRecruiter(checkIsRecruiterMode());
+  }, []);
+
   return (
     <div>
       <section className="hero-wrapper" style={{ paddingTop: '1rem' }}>
@@ -49,12 +56,21 @@ export default function Hero({ onNavigate }) {
             <button onClick={() => onNavigate('projects')} className="btn-glass">
               <Cpu size={16} /> Projects
             </button>
-            <a href="https://leetcode.com/u/ujjwal92/" target="_blank" rel="noreferrer" className="btn-glass" title="LeetCode @ujjwal92">
-              <Code2 size={16} /> LeetCode
-            </a>
             <a href="https://github.com/ujjwal-void" target="_blank" rel="noreferrer" className="btn-glass" title="GitHub @ujjwal-void">
               <ExternalLink size={16} /> GitHub
             </a>
+
+            {/* Recruiter-Only Social Links */}
+            {isRecruiter && (
+              <>
+                <a href="https://leetcode.com/u/ujjwal92/" target="_blank" rel="noreferrer" className="btn-glass" title="LeetCode @ujjwal92">
+                  <Code2 size={16} /> LeetCode
+                </a>
+                <a href="https://www.linkedin.com/in/ujjwal-ujjwal-dev/" target="_blank" rel="noreferrer" className="btn-glass" title="LinkedIn Profile">
+                  <ExternalLink size={16} /> LinkedIn
+                </a>
+              </>
+            )}
           </div>
         </div>
 
