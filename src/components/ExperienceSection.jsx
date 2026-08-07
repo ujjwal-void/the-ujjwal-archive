@@ -1,8 +1,9 @@
 import React from 'react';
-import { Briefcase, GraduationCap, Award, Mail, ExternalLink, Code2, Cpu, CheckCircle, CreditCard } from 'lucide-react';
+import { Briefcase, GraduationCap, Award, Mail, ExternalLink, Code2, Cpu, CheckCircle, CreditCard, Lock } from 'lucide-react';
 import { PROFILE_DATA, WORK_EXPERIENCE, ACHIEVEMENTS, TECHNICAL_SKILLS } from '../data/portfolioData';
+import RecruiterPrivacyShield from './RecruiterPrivacyShield';
 
-export default function ExperienceSection({ onNavigate }) {
+export default function ExperienceSection() {
   return (
     <div>
       {/* Header Banner */}
@@ -19,16 +20,18 @@ export default function ExperienceSection({ onNavigate }) {
       <div className="card" style={{ marginBottom: '2.5rem', background: '#e0e7ff', borderColor: '#c7d2fe', padding: '1.4rem' }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1rem' }}>
           <div>
-            <h3 style={{ fontSize: '1.3rem', color: '#1e1b4b', marginBottom: '0.2rem' }}>Ujjwal Ujjwal — Software Engineer</h3>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <h3 style={{ fontSize: '1.3rem', color: '#1e1b4b', marginBottom: '0.2rem' }}>Ujjwal Ujjwal — Software Engineer</h3>
+              <span style={{ fontSize: '0.7rem', background: '#d1fae5', color: '#047857', border: '1px solid #a7f3d0', padding: '0.1rem 0.4rem', borderRadius: '4px', fontFamily: 'var(--font-mono)', fontWeight: 700 }}>PRIVACY SHIELD ACTIVE</span>
+            </div>
             <p style={{ fontSize: '0.88rem', color: '#3730a3' }}>{PROFILE_DATA.education.degree} • VIT Chennai (2021-2025)</p>
           </div>
-          <div style={{ display: 'flex', gap: '0.6rem', flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', gap: '0.6rem', flexWrap: 'wrap', alignItems: 'center' }}>
             <a href="#card" onClick={() => window.location.hash = 'card'} className="btn-primary" style={{ fontSize: '0.82rem', padding: '0.45rem 0.9rem' }}>
               <CreditCard size={14} /> 🎴 Download 1-Page Profile Pass
             </a>
-            <a href="mailto:ujjwal.02023@gmail.com" className="btn-glass" style={{ fontSize: '0.82rem', padding: '0.45rem 0.9rem' }}>
-              <Mail size={14} /> Email Ujjwal
-            </a>
+            <RecruiterPrivacyShield type="email" />
+            <RecruiterPrivacyShield type="phone" />
             <a href="https://www.linkedin.com/in/ujjwal-ujjwal-dev/" target="_blank" rel="noreferrer" className="btn-glass" style={{ fontSize: '0.82rem', padding: '0.45rem 0.9rem' }}>
               <ExternalLink size={14} /> LinkedIn
             </a>
