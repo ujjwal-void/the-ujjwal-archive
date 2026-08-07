@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Briefcase, GraduationCap, Award, Mail, Phone, ExternalLink, Code2, Cpu, CheckCircle, CreditCard, ShieldCheck } from 'lucide-react';
+import { Briefcase, GraduationCap, Award, Mail, Phone, ExternalLink, Code2, Cpu, CheckCircle, CreditCard } from 'lucide-react';
 import { PROFILE_DATA, WORK_EXPERIENCE, ACHIEVEMENTS, TECHNICAL_SKILLS } from '../data/portfolioData';
 import { checkIsRecruiterMode } from '../utils/privacyHelper';
 
@@ -22,22 +22,7 @@ export default function ExperienceSection() {
         <p style={{ color: 'var(--text-muted)' }}>Software Engineer specializing in AI/LLM architectures, high-concurrency backends, and microservices.</p>
       </div>
 
-      {/* Recruiter Verified Header Badge (ONLY rendered for recruiters on #recruiter / ?r=1) */}
-      {isRecruiter && (
-        <div style={{ background: '#ecfdf5', border: '1.5px solid #a7f3d0', padding: '1rem 1.2rem', borderRadius: 'var(--radius-md)', marginBottom: '2rem', display: 'flex', alignItems: 'center', gap: '0.8rem', boxShadow: 'var(--shadow-subtle)' }}>
-          <ShieldCheck size={24} style={{ color: '#047857', flexShrink: 0 }} />
-          <div>
-            <div style={{ fontSize: '0.92rem', fontWeight: 800, color: '#047857', fontFamily: 'var(--font-mono)' }}>
-              🟢 RECRUITER VERIFIED DOSSIER UNLOCKED
-            </div>
-            <div style={{ fontSize: '0.84rem', color: '#065f46', marginTop: '0.1rem' }}>
-              Full candidate profile unlocked for Hiring Managers: Academic CGPA (7.23), Class XII (83.25%), LinkedIn, LeetCode & Direct Contact Info.
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* Recruiter Quick Contact Box */}
+      {/* Quick Contact & Credentials Box */}
       <div className="card" style={{ marginBottom: '2.5rem', background: '#e0e7ff', borderColor: '#c7d2fe', padding: '1.4rem' }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1rem' }}>
           <div>
@@ -50,7 +35,7 @@ export default function ExperienceSection() {
               <ExternalLink size={14} /> GitHub
             </a>
 
-            {/* Recruiter-Only Unlocked Links */}
+            {/* Render confidential data ONLY if recruiter */}
             {isRecruiter && (
               <>
                 <a href="#card" onClick={() => window.location.hash = 'card'} className="btn-primary" style={{ fontSize: '0.82rem', padding: '0.45rem 0.9rem' }}>
@@ -159,7 +144,7 @@ export default function ExperienceSection() {
         </div>
       </div>
 
-      {/* Achievements & Education (CGPA scores ONLY rendered for recruiters) */}
+      {/* Achievements & Education */}
       <div className="grid-2">
         <div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '1.2rem' }}>
@@ -190,14 +175,14 @@ export default function ExperienceSection() {
             <h4 style={{ fontSize: '1.2rem', marginBottom: '0.3rem' }}>{PROFILE_DATA.education.degree}</h4>
             <p style={{ fontSize: '0.95rem', fontWeight: 600, color: 'var(--accent-indigo)' }}>{PROFILE_DATA.education.institution}</p>
             
-            {/* CGPA Display (Only rendered for recruiters) */}
+            {/* Render CGPA ONLY if recruiter */}
             {isRecruiter && (
               <p style={{ fontSize: '0.88rem', color: '#047857', fontWeight: 800, marginTop: '0.5rem', fontFamily: 'var(--font-mono)', background: '#d1fae5', padding: '0.25rem 0.6rem', borderRadius: '4px', display: 'inline-block' }}>
                 CGPA: {PROFILE_DATA.education.gpa}
               </p>
             )}
 
-            {/* Schooling Display */}
+            {/* Schooling */}
             <div style={{ borderTop: '1px solid var(--border-muted)', marginTop: '0.8rem', paddingTop: '0.8rem' }}>
               <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}><strong>Schooling:</strong> Lucknow Public College</p>
               {isRecruiter && (
