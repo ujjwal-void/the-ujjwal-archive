@@ -1,37 +1,76 @@
-import React from 'react';
-import { Briefcase, GraduationCap, Award, Mail, Phone, ExternalLink, Code2, Cpu, CheckCircle, CreditCard } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Briefcase, GraduationCap, Award, Mail, Phone, ExternalLink, Code2, Cpu, CheckCircle, CreditCard, Lock, ShieldAlert } from 'lucide-react';
 import { PROFILE_DATA, WORK_EXPERIENCE, ACHIEVEMENTS, TECHNICAL_SKILLS } from '../data/portfolioData';
+import { checkIsRecruiterMode } from '../utils/privacyHelper';
 
 export default function ExperienceSection() {
+  const [isRecruiter, setIsRecruiter] = useState(false);
+
+  useEffect(() => {
+    setIsRecruiter(checkIsRecruiterMode());
+  }, []);
+
   return (
     <div>
       {/* Header Banner */}
       <div style={{ marginBottom: '2.5rem' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '0.4rem' }}>
-          <span className="meta-tag meta-emerald">RECRUITER & CAREER ARCHIVE</span>
-          <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: 'var(--text-dim)' }}>[Gurugram, India]</span>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1rem', marginBottom: '0.8rem' }}>
+          <div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '0.4rem' }}>
+              <span className="meta-tag meta-emerald">CAREER ARCHIVE</span>
+              <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: 'var(--text-dim)' }}>[Gurugram, India]</span>
+            </div>
+            <h2 style={{ fontSize: '2.2rem', marginBottom: '0.4rem' }}>💼 Work Experience & Track Record</h2>
+            <p style={{ color: 'var(--text-muted)' }}>Software Engineer specializing in AI/LLM architectures, high-concurrency backends, and microservices.</p>
+          </div>
+
+          {/* Privacy Shield Indicator */}
+          {!isRecruiter && (
+            <div style={{ background: '#fef3c7', border: '1.5px solid #fde68a', padding: '0.5rem 0.9rem', borderRadius: 'var(--radius-md)', display: 'flex', alignItems: 'center', gap: '0.5rem', boxShadow: 'var(--shadow-subtle)' }}>
+              <Lock size={16} style={{ color: '#b45309' }} />
+              <div>
+                <div style={{ fontSize: '0.75rem', fontWeight: 700, color: '#92400e', fontFamily: 'var(--font-mono)' }}>CONFIDENTIAL DATA SHIELD ACTIVE</div>
+                <div style={{ fontSize: '0.7rem', color: '#b45309' }}>Personal contact, CGPA scores & Resume PDF hidden from public web view</div>
+              </div>
+            </div>
+          )}
         </div>
-        <h2 style={{ fontSize: '2.2rem', marginBottom: '0.4rem' }}>💼 Work Experience & Resume</h2>
-        <p style={{ color: 'var(--text-muted)' }}>Software Engineer specializing in AI/LLM architectures, high-concurrency backends, and microservices.</p>
       </div>
 
-      {/* Recruiter Quick Contact Box */}
+      {/* Quick Contact & Credentials Box */}
       <div className="card" style={{ marginBottom: '2.5rem', background: '#e0e7ff', borderColor: '#c7d2fe', padding: '1.4rem' }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1rem' }}>
           <div>
             <h3 style={{ fontSize: '1.3rem', color: '#1e1b4b', marginBottom: '0.2rem' }}>Ujjwal Ujjwal — Software Engineer</h3>
-            <p style={{ fontSize: '0.88rem', color: '#3730a3' }}>{PROFILE_DATA.education.degree} • VIT Chennai (2021-2025)</p>
+            <p style={{ fontSize: '0.88rem', color: '#3730a3' }}>{PROFILE_DATA.education.degree} • VIT Chennai</p>
           </div>
+
           <div style={{ display: 'flex', gap: '0.6rem', flexWrap: 'wrap', alignItems: 'center' }}>
-            <a href="#card" onClick={() => window.location.hash = 'card'} className="btn-primary" style={{ fontSize: '0.82rem', padding: '0.45rem 0.9rem' }}>
-              <CreditCard size={14} /> 🎴 Download 1-Page Profile Pass
-            </a>
-            <a href={`mailto:${PROFILE_DATA.email}`} className="btn-glass" style={{ fontSize: '0.82rem', padding: '0.45rem 0.9rem' }}>
-              <Mail size={14} /> {PROFILE_DATA.email}
-            </a>
-            <a href={`tel:${PROFILE_DATA.phone}`} className="btn-glass" style={{ fontSize: '0.82rem', padding: '0.45rem 0.9rem' }}>
-              <Phone size={14} /> {PROFILE_DATA.phone}
-            </a>
+            {isRecruiter ? (
+              <>
+                <a href="#card" onClick={() => window.location.hash = 'card'} className="btn-primary" style={{ fontSize: '0.82rem', padding: '0.45rem 0.9rem' }}>
+                  <CreditCard size={14} /> 🎴 Download 1-Page Profile Pass
+                </a>
+                <a href={`mailto:${PROFILE_DATA.email}`} className="btn-glass" style={{ fontSize: '0.82rem', padding: '0.45rem 0.9rem' }}>
+                  <Mail size={14} /> {PROFILE_DATA.email}
+                </a>
+                <a href={`tel:${PROFILE_DATA.phone}`} className="btn-glass" style={{ fontSize: '0.82rem', padding: '0.45rem 0.9rem' }}>
+                  <Phone size={14} /> {PROFILE_DATA.phone}
+                </a>
+              </>
+            ) : (
+              <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+                <span style={{ fontSize: '0.78rem', background: '#fef3c7', border: '1px dashed #fde68a', color: '#92400e', padding: '0.35rem 0.75rem', borderRadius: 'var(--radius-sm)', fontFamily: 'var(--font-mono)', fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: '0.3rem' }}>
+                  <Lock size={13} /> Email: [Confidential Protected]
+                </span>
+                <span style={{ fontSize: '0.78rem', background: '#fef3c7', border: '1px dashed #fde68a', color: '#92400e', padding: '0.35rem 0.75rem', borderRadius: 'var(--radius-sm)', fontFamily: 'var(--font-mono)', fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: '0.3rem' }}>
+                  <Lock size={13} /> Phone: [Confidential Protected]
+                </span>
+                <span style={{ fontSize: '0.78rem', background: '#fef3c7', border: '1px dashed #fde68a', color: '#92400e', padding: '0.35rem 0.75rem', borderRadius: 'var(--radius-sm)', fontFamily: 'var(--font-mono)', fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: '0.3rem' }}>
+                  <Lock size={13} /> Resume: [Recruiter URL Only]
+                </span>
+              </div>
+            )}
             <a href="https://www.linkedin.com/in/ujjwal-ujjwal-dev/" target="_blank" rel="noreferrer" className="btn-glass" style={{ fontSize: '0.82rem', padding: '0.45rem 0.9rem' }}>
               <ExternalLink size={14} /> LinkedIn
             </a>
@@ -127,7 +166,7 @@ export default function ExperienceSection() {
         </div>
       </div>
 
-      {/* Achievements & Education */}
+      {/* Achievements & Education (Confidential CGPA Protected in Public View) */}
       <div className="grid-2">
         <div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '1.2rem' }}>
@@ -150,16 +189,43 @@ export default function ExperienceSection() {
         <div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '1.2rem' }}>
             <GraduationCap size={22} style={{ color: 'var(--accent-indigo)' }} />
-            <h3 style={{ fontSize: '1.4rem' }}>Education & Academic Scores</h3>
+            <h3 style={{ fontSize: '1.4rem' }}>Education & Marks</h3>
           </div>
 
           <div className="card" style={{ padding: '1.4rem' }}>
             <span className="meta-tag meta-cyan" style={{ marginBottom: '0.5rem', display: 'inline-block' }}>{PROFILE_DATA.education.period}</span>
             <h4 style={{ fontSize: '1.2rem', marginBottom: '0.3rem' }}>{PROFILE_DATA.education.degree}</h4>
             <p style={{ fontSize: '0.95rem', fontWeight: 600, color: 'var(--accent-indigo)' }}>{PROFILE_DATA.education.institution}</p>
-            <p style={{ fontSize: '0.88rem', color: '#047857', fontWeight: 700, marginTop: '0.4rem', fontFamily: 'var(--font-mono)' }}>CGPA: {PROFILE_DATA.education.gpa}</p>
-            <div style={{ borderTop: '1px solid var(--border-muted)', marginTop: '1rem', paddingTop: '0.8rem' }}>
-              <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}><strong>Schooling:</strong> {PROFILE_DATA.education.schooling}</p>
+            
+            {/* CGPA Display */}
+            <div style={{ marginTop: '0.5rem' }}>
+              <span style={{ fontSize: '0.78rem', color: 'var(--text-muted)', fontFamily: 'var(--font-mono)' }}>UNDERGRADUATE CGPA: </span>
+              {isRecruiter ? (
+                <span style={{ fontSize: '0.88rem', color: '#047857', fontWeight: 800, fontFamily: 'var(--font-mono)', background: '#d1fae5', padding: '0.2rem 0.5rem', borderRadius: '4px' }}>
+                  {PROFILE_DATA.education.gpa}
+                </span>
+              ) : (
+                <span style={{ fontSize: '0.75rem', background: '#fef3c7', border: '1px dashed #fde68a', color: '#92400e', padding: '0.2rem 0.5rem', borderRadius: '4px', fontFamily: 'var(--font-mono)', fontWeight: 600 }}>
+                  🔒 [Confidential Score • Hidden in Public View]
+                </span>
+              )}
+            </div>
+
+            {/* Schooling Display */}
+            <div style={{ borderTop: '1px solid var(--border-muted)', marginTop: '0.8rem', paddingTop: '0.8rem' }}>
+              <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}><strong>Schooling:</strong> Lucknow Public College</p>
+              <div style={{ marginTop: '0.2rem' }}>
+                <span style={{ fontSize: '0.78rem', color: 'var(--text-muted)', fontFamily: 'var(--font-mono)' }}>MARKS PERCENTAGE: </span>
+                {isRecruiter ? (
+                  <span style={{ fontSize: '0.85rem', color: '#047857', fontWeight: 700, fontFamily: 'var(--font-mono)' }}>
+                    83.25% (Class XII)
+                  </span>
+                ) : (
+                  <span style={{ fontSize: '0.72rem', background: '#fef3c7', border: '1px dashed #fde68a', color: '#92400e', padding: '0.15rem 0.45rem', borderRadius: '4px', fontFamily: 'var(--font-mono)', fontWeight: 600 }}>
+                    🔒 [Confidential Score • Hidden in Public View]
+                  </span>
+                )}
+              </div>
             </div>
           </div>
         </div>
