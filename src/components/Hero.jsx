@@ -1,10 +1,15 @@
 import React from 'react';
 import { Zap, Link as LinkIcon, Film, Cpu, BookOpen } from 'lucide-react';
 import { PROFILE_DATA } from '../data/portfolioData';
+import TerminalConsole from './TerminalConsole';
+import ActivityHeatmap from './ActivityHeatmap';
 
 export default function Hero({ onNavigate }) {
   return (
     <div>
+      {/* Interactive CLI Console */}
+      <TerminalConsole onNavigate={onNavigate} />
+
       <section className="hero-wrapper">
         <div className="hero-text">
           <div className="badge-status">
@@ -84,8 +89,11 @@ export default function Hero({ onNavigate }) {
         </div>
       </section>
 
+      {/* Activity Matrix / Study Log Heatmap */}
+      <ActivityHeatmap />
+
       {/* Feature Pillar Grid */}
-      <div className="grid-3" style={{ marginTop: '2rem' }}>
+      <div className="grid-3">
         <div className="card" style={{ cursor: 'pointer' }} onClick={() => onNavigate('projects')}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.8rem' }}>
             <Cpu size={28} style={{ color: 'var(--accent-cyan)' }} />
