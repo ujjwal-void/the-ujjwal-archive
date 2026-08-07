@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Menu, X, Zap, Briefcase, Cpu, Film, FileText, Link as LinkIcon } from 'lucide-react';
+import { Menu, X, Zap, Briefcase, Cpu, Film, FileText, Atom, Link as LinkIcon } from 'lucide-react';
 
 export default function Navbar({ activeRoute, onNavigate }) {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -43,6 +43,11 @@ export default function Navbar({ activeRoute, onNavigate }) {
             </button>
           </li>
           <li>
+            <button className={`nav-btn ${activeRoute === 'physics' ? 'active' : ''}`} onClick={() => handleNav('physics')}>
+              <Atom size={15} /> Physics & Math
+            </button>
+          </li>
+          <li>
             <button className={`nav-btn ${activeRoute === 'culture' || activeRoute === 'media' || activeRoute === 'sports' ? 'active' : ''}`} onClick={() => handleNav('culture')}>
               <Film size={15} /> Culture & Sports
             </button>
@@ -74,6 +79,9 @@ export default function Navbar({ activeRoute, onNavigate }) {
           </button>
           <button className={`mobile-nav-btn ${activeRoute === 'essays' || activeRoute === 'teaching' ? 'active' : ''}`} onClick={() => handleNav('essays')}>
             📝 Tech Essays & Explanations
+          </button>
+          <button className={`mobile-nav-btn ${activeRoute === 'physics' ? 'active' : ''}`} onClick={() => handleNav('physics')}>
+            ⚛️ Physics & Mathematics Notes
           </button>
           <button className={`mobile-nav-btn ${activeRoute === 'culture' || activeRoute === 'media' || activeRoute === 'sports' ? 'active' : ''}`} onClick={() => handleNav('culture')}>
             🍿 Culture & Sports Notes

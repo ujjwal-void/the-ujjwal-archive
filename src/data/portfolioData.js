@@ -1,10 +1,10 @@
 // Core Dataset for Ujjwal's Personal Digital Portfolio & Recruiter Archive
-// Grounded 100% in Ujjwal's Resume, GitHub & LeetCode Profiles
+// Grounded 100% in Ujjwal's Resume, GitHub, LeetCode & Physics/Math Notes
 
 export const PROFILE_DATA = {
   name: "Ujjwal Ujjwal",
   title: "Software Engineer & AI/Backend Architect",
-  tagline: "Software Engineer at ZFunds & Founding Engineer at Advor.ai. Specializing in AI/LLM Systems, Hybrid RAG, High-Concurrency Backends, and Distributed Infrastructure.",
+  tagline: "Software Engineer at ZFunds & Founding Engineer at Advor.ai. Specializing in AI/LLM Systems, Hybrid RAG, High-Concurrency Backends, and Physics/Mathematics Foundations.",
   email: "ujjwal.02023@gmail.com",
   phone: "+91 7380679251",
   location: "Gurugram, India",
@@ -115,6 +115,39 @@ export const TECHNICAL_SKILLS = {
   devops_cloud: ["AWS (EC2, S3, Lambda, RDS, DynamoDB, CloudWatch)", "Docker", "Kubernetes", "CI/CD Pipelines", "Coolify"],
   observability: ["Kafka", "RabbitMQ", "Sentry", "Grafana", "Prometheus"]
 };
+
+export const PHYSICS_MATH_NOTES = [
+  {
+    id: "vector-spaces-geometry",
+    title: "High-Dimensional Vector Geometry & Cosine Distance",
+    category: "Linear Algebra & AI Math",
+    date: "Aug 2026",
+    formula: "cos(θ) = (A · B) / (||A|| ||B||) = Σ(A_i * B_i) / (sqrt(Σ A_i^2) * sqrt(Σ B_i^2))",
+    summary: "Why angle-based cosine similarity outperforms Euclidean distance in high-dimensional embedding spaces, and how HNSW graph indexing turns exponential search into O(log N) lookup.",
+    csConnection: "Direct mathematical foundation for vector search databases (FAISS, Qdrant, ChromaDB) used in LLM Retrieval-Augmented Generation.",
+    keyTakeaway: "In 1536-dimensional OpenAI vector space, magnitude matters less than directional alignment—making dot products on normalized vectors equivalent to cosine similarity."
+  },
+  {
+    id: "general-relativity-dilation",
+    title: "Schwarzschild Metric & Gravitational Time Dilation",
+    category: "Astrophysics & Relativity",
+    date: "Jul 2026",
+    formula: "dτ^2 = (1 - 2GM / r c^2) dt^2 - (1 - 2GM / r c^2)^(-1) dr^2 - r^2 dΩ^2",
+    summary: "Deriving time dilation near massive celestial bodies (like Miller's Planet near Gargantua in Interstellar). As radial distance r approaches the event horizon (r_s = 2GM/c^2), proper time dτ slows dramatically relative to distant observer coordinate time dt.",
+    csConnection: "A physical reminder of non-linear state progression and distributed clock synchronization challenges in global computer networks.",
+    keyTakeaway: "1 hour on Miller's planet = 7 years Earth time. In system design, latency bottlenecks compound exponentially when processing queues stall near saturation."
+  },
+  {
+    id: "shannon-entropy-information",
+    title: "Shannon Information Entropy & Cross-Entropy Loss",
+    category: "Information Theory & ML",
+    date: "Jun 2026",
+    formula: "H(X) = - Σ P(x_i) log2 P(x_i)  |  L_CE = - Σ y_i log(p_i)",
+    summary: "Measuring uncertainty and information content in probability distributions. How cross-entropy quantifies the difference between predicted token probability distributions p and true target labels y.",
+    csConnection: "Core loss metric used in backpropagation to train Next-Token Prediction in Transformer Large Language Models (LLMs).",
+    keyTakeaway: "Minimizing cross-entropy loss is mathematically equivalent to maximizing the likelihood of predicted text."
+  }
+];
 
 export const PROJECTS_DATA = [
   {
@@ -227,7 +260,7 @@ export const LINKTREE_LINKS = [
   {
     id: "portfolio-main",
     title: "⚡ Ujjwal's Main Archive",
-    description: "Work Experience, Real Projects, Tech Essays & Culture Notes",
+    description: "Work Experience, Real Projects, Physics/Math & Culture Notes",
     url: "#home",
     icon: "Sparkles",
     badge: "Main",
@@ -240,6 +273,14 @@ export const LINKTREE_LINKS = [
     url: "#experience",
     icon: "FileText",
     badge: "Recruiter"
+  },
+  {
+    id: "physics-math",
+    title: "⚛️ Physics & Mathematics Notes",
+    description: "Vector spaces, general relativity metrics & Shannon entropy math",
+    url: "#physics",
+    icon: "Atom",
+    badge: "Science"
   },
   {
     id: "leetcode-profile",
@@ -264,14 +305,6 @@ export const LINKTREE_LINKS = [
     url: "https://www.linkedin.com/in/ujjwal-ujjwal-dev/",
     icon: "Linkedin",
     badge: "Network"
-  },
-  {
-    id: "projects-view",
-    title: "🧠 Production Projects & Hackathons",
-    description: "ZIVA V2, Advor.ai, Nexus PM, Write Medium & AdCraft",
-    url: "#projects",
-    icon: "Cpu",
-    badge: "Projects"
   }
 ];
 

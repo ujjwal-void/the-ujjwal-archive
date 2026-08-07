@@ -5,6 +5,7 @@ import Hero from './components/Hero';
 import ExperienceSection from './components/ExperienceSection';
 import ProjectsSection from './components/ProjectsSection';
 import TechEssaysSection from './components/TechEssaysSection';
+import PhysicsMathSection from './components/PhysicsMathSection';
 import CultureSportsSection from './components/CultureSportsSection';
 import LinktreeSection from './components/LinktreeSection';
 import AIDigitalTwinModal from './components/AIDigitalTwinModal';
@@ -43,6 +44,9 @@ export default function App() {
       case 'essays':
       case 'teaching':
         return <TechEssaysSection />;
+      case 'physics':
+      case 'math':
+        return <PhysicsMathSection />;
       case 'culture':
       case 'media':
       case 'sports':

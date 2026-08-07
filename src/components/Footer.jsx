@@ -9,7 +9,9 @@ export default function Footer({ onNavigate }) {
         </p>
         <div style={{ display: 'flex', gap: '1.2rem', fontSize: '0.85rem', flexWrap: 'wrap', justifyContent: 'center' }}>
           <button onClick={() => onNavigate('projects')} style={{ background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer', fontWeight: 600 }}>Projects</button>
+          <button onClick={() => onNavigate('experience')} style={{ background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer', fontWeight: 600 }}>Experience</button>
           <button onClick={() => onNavigate('essays')} style={{ background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer', fontWeight: 600 }}>Tech Essays</button>
+          <button onClick={() => onNavigate('physics')} style={{ background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer', fontWeight: 600 }}>Physics & Math</button>
           <button onClick={() => onNavigate('culture')} style={{ background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer', fontWeight: 600 }}>Culture & Sports</button>
           <button onClick={() => onNavigate('links')} style={{ background: 'none', border: 'none', color: 'var(--text-main)', cursor: 'pointer', fontWeight: 600 }}>Linktree</button>
         </div>

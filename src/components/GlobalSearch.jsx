@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Search } from 'lucide-react';
-import { PROJECTS_DATA, MEDIA_DATA, TECH_ESSAYS, SPORTS_TAKES } from '../data/portfolioData';
+import { PROJECTS_DATA, MEDIA_DATA, TECH_ESSAYS, PHYSICS_MATH_NOTES, SPORTS_TAKES } from '../data/portfolioData';
 
 export default function GlobalSearch({ onNavigate }) {
   const [query, setQuery] = useState('');
@@ -41,6 +41,12 @@ export default function GlobalSearch({ onNavigate }) {
       }
     });
 
+    PHYSICS_MATH_NOTES.forEach(pm => {
+      if (pm.title.toLowerCase().includes(q) || pm.summary.toLowerCase().includes(q) || pm.csConnection.toLowerCase().includes(q)) {
+        matches.push({ type: 'Physics & Math', title: pm.title, snippet: pm.summary.substring(0, 85) + '...', route: 'physics' });
+      }
+    });
+
     MEDIA_DATA.forEach(m => {
       if (m.title.toLowerCase().includes(q) || m.summary.toLowerCase().includes(q) || m.personalImpact.toLowerCase().includes(q)) {
         matches.push({ type: `Culture (${m.type})`, title: m.title, snippet: m.summary.substring(0, 85) + '...', route: 'culture' });
@@ -72,7 +78,7 @@ export default function GlobalSearch({ onNavigate }) {
           ref={searchInputRef}
           type="text"
           className="search-input"
-          placeholder="Search projects, tech essays, culture notes, and sports commentary..."
+          placeholder="Search projects, physics, math, tech essays, culture, and sports..."
           value={query}
           onChange={handleInputChange}
           onFocus={() => setIsOpen(query.trim().length > 0)}

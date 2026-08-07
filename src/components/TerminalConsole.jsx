@@ -1,11 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Terminal as TerminalIcon, CornerDownLeft } from 'lucide-react';
-import { PROJECTS_DATA, MEDIA_DATA, TECH_ESSAYS, SPORTS_TAKES } from '../data/portfolioData';
+import { PROJECTS_DATA, MEDIA_DATA, TECH_ESSAYS, PHYSICS_MATH_NOTES, SPORTS_TAKES } from '../data/portfolioData';
 
 export default function TerminalConsole({ onNavigate }) {
   const [history, setHistory] = useState([
     { type: 'output', text: 'UJJWAL_ARCHIVE_OS v2.4 (x86_64-pc-linux-gnu)' },
-    { type: 'output', text: 'Type "help" or "ls" to explore the digital brain. Try "cat manifesto" or "grep anime".' }
+    { type: 'output', text: 'Type "help" or "ls" to explore the digital brain. Try "cat manifesto" or "grep vector".' }
   ]);
   const [input, setInput] = useState('');
   const inputRef = useRef(null);
@@ -29,7 +29,7 @@ export default function TerminalConsole({ onNavigate }) {
           type: 'output',
           text: `AVAILABLE COMMANDS:
   ls           - List all archive directories
-  cd <dir>     - Navigate to section (projects, media, essays, sports, links)
+  cd <dir>     - Navigate to section (projects, physics, essays, culture, links)
   cat manifesto- Display Ujjwal's core engineering manifesto
   grep <term>  - Search the digital brain for a keyword
   clear        - Clear terminal screen`
@@ -38,32 +38,33 @@ export default function TerminalConsole({ onNavigate }) {
         newHistory.push({
           type: 'output',
           text: `DIRECTORIES:
-  /projects          [3 Craftsman Spec Sheets]
-  /media-vault       [4 Classified Narrative Dossiers]
+  /projects          [6 Verified Production Projects]
+  /physics           [3 Physics & Math Derivations]
   /essays            [2 Tech Essays & Explanations]
-  /sports-telemetry  [3 Tactical Strategy Logs]
+  /culture           [7 Culture & Sports Notes]
   /links             [Standalone Bio Linktree]`
         });
       } else if (lower === 'cat manifesto') {
         newHistory.push({
           type: 'output',
           text: `MANIFESTO:
-"Software engineering, vector geometry, narrative time-loops, and tactical pressing are all the same thing: hyper-obsessive human craft. I build, write, and analyze not for CV fluff, but because I am genuinely fascinated by how complex systems operate under the hood."`
+"Software engineering, high-dimensional vector spaces, relativity time metrics, and fluid tactical rotations are all manifestations of pure human craft. I build, write, and analyze not for CV fluff, but because I am genuinely fascinated by how complex systems operate under the hood."`
         });
       } else if (lower.startsWith('cd ')) {
         const dir = lower.replace('cd ', '').trim();
-        if (['projects', 'media', 'essays', 'teaching', 'sports', 'links', 'home'].includes(dir)) {
-          onNavigate(dir === 'teaching' ? 'essays' : dir);
+        if (['projects', 'physics', 'math', 'media', 'essays', 'teaching', 'sports', 'culture', 'links', 'home'].includes(dir)) {
+          onNavigate(dir === 'math' ? 'physics' : dir);
           newHistory.push({ type: 'output', text: `Navigated to /${dir}` });
         } else {
-          newHistory.push({ type: 'output', text: `Directory not found: ${dir}. Try: cd projects, cd media, cd essays, cd sports` });
+          newHistory.push({ type: 'output', text: `Directory not found: ${dir}. Try: cd projects, cd physics, cd essays, cd culture` });
         }
       } else if (lower.startsWith('grep ')) {
         const query = lower.replace('grep ', '').trim();
         const results = [];
         PROJECTS_DATA.forEach(p => p.title.toLowerCase().includes(query) && results.push(`[PROJECT] ${p.title} -> ${p.tagline}`));
-        MEDIA_DATA.forEach(m => m.title.toLowerCase().includes(query) && results.push(`[MEDIA] ${m.title} (${m.type}) -> ${m.summary.substring(0, 50)}...`));
+        PHYSICS_MATH_NOTES.forEach(pm => pm.title.toLowerCase().includes(query) && results.push(`[PHYSICS/MATH] ${pm.title}`));
         TECH_ESSAYS.forEach(b => b.title.toLowerCase().includes(query) && results.push(`[ESSAY] ${b.title}`));
+        MEDIA_DATA.forEach(m => m.title.toLowerCase().includes(query) && results.push(`[MEDIA] ${m.title} (${m.type}) -> ${m.summary.substring(0, 40)}...`));
         SPORTS_TAKES.forEach(s => s.title.toLowerCase().includes(query) && results.push(`[SPORTS] ${s.title}`));
 
         if (results.length > 0) {
@@ -81,7 +82,7 @@ export default function TerminalConsole({ onNavigate }) {
   };
 
   return (
-    <div style={{ background: 'var(--bg-card)', border: '1px solid var(--border-muted)', borderRadius: 'var(--radius-md)', padding: '1rem', fontFamily: 'var(--font-mono)', fontSize: '0.82rem', marginBottom: '2.5rem', boxShadow: 'var(--shadow-subtle)' }}>
+    <div style={{ background: 'var(--bg-card)', border: '1px solid var(--border-muted)', borderRadius: 'var(--radius-md)', padding: '1rem', fontFamily: 'var(--font-mono)', fontSize: '0.82rem', marginBottom: '1rem', boxShadow: 'var(--shadow-subtle)' }}>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderBottom: '1px solid var(--border-muted)', paddingBottom: '0.6rem', marginBottom: '0.8rem' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--accent-indigo)', fontWeight: 700 }}>
           <TerminalIcon size={16} />
