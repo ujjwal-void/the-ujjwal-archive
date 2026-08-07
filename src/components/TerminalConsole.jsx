@@ -29,7 +29,7 @@ export default function TerminalConsole({ onNavigate }) {
           type: 'output',
           text: `AVAILABLE COMMANDS:
   ls           - List all archive directories
-  cd <dir>     - Navigate to section (projects, media, teaching, sports, links)
+  cd <dir>     - Navigate to section (projects, media, essays, sports, links)
   cat manifesto- Display Ujjwal's core engineering manifesto
   grep <term>  - Search the digital brain for a keyword
   clear        - Clear terminal screen`
@@ -40,7 +40,7 @@ export default function TerminalConsole({ onNavigate }) {
           text: `DIRECTORIES:
   /projects          [3 Craftsman Spec Sheets]
   /media-vault       [4 Classified Narrative Dossiers]
-  /teaching-lab      [2 Visual Pedagogy Notebooks]
+  /essays            [2 Tech Essays & Explanations]
   /sports-telemetry  [3 Tactical Strategy Logs]
   /links             [Standalone Bio Linktree]`
         });
@@ -52,11 +52,11 @@ export default function TerminalConsole({ onNavigate }) {
         });
       } else if (lower.startsWith('cd ')) {
         const dir = lower.replace('cd ', '').trim();
-        if (['projects', 'media', 'teaching', 'sports', 'links', 'home'].includes(dir)) {
-          onNavigate(dir);
+        if (['projects', 'media', 'essays', 'teaching', 'sports', 'links', 'home'].includes(dir)) {
+          onNavigate(dir === 'teaching' ? 'essays' : dir);
           newHistory.push({ type: 'output', text: `Navigated to /${dir}` });
         } else {
-          newHistory.push({ type: 'output', text: `Directory not found: ${dir}. Try: cd projects, cd media, cd teaching, cd sports` });
+          newHistory.push({ type: 'output', text: `Directory not found: ${dir}. Try: cd projects, cd media, cd essays, cd sports` });
         }
       } else if (lower.startsWith('grep ')) {
         const query = lower.replace('grep ', '').trim();
@@ -81,25 +81,25 @@ export default function TerminalConsole({ onNavigate }) {
   };
 
   return (
-    <div style={{ background: '#030508', border: '1px solid var(--glass-border)', borderRadius: 'var(--radius-sm)', padding: '1rem', fontFamily: 'var(--font-mono)', fontSize: '0.82rem', marginBottom: '2.5rem' }}>
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderBottom: '1px solid rgba(255,255,255,0.06)', paddingBottom: '0.6rem', marginBottom: '0.8rem' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--accent-amber)' }}>
+    <div style={{ background: 'var(--bg-card)', border: '1px solid var(--border-muted)', borderRadius: 'var(--radius-md)', padding: '1rem', fontFamily: 'var(--font-mono)', fontSize: '0.82rem', marginBottom: '2.5rem', boxShadow: 'var(--shadow-subtle)' }}>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderBottom: '1px solid var(--border-muted)', paddingBottom: '0.6rem', marginBottom: '0.8rem' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--accent-indigo)', fontWeight: 700 }}>
           <TerminalIcon size={16} />
-          <span style={{ fontWeight: 700 }}>UJJWAL_CLI_SHELL</span>
+          <span>UJJWAL_CLI_SHELL</span>
         </div>
         <span style={{ color: 'var(--text-dim)', fontSize: '0.72rem' }}>Interactive Terminal • Type "help"</span>
       </div>
 
       <div style={{ maxHeight: '180px', overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '0.4rem', color: 'var(--text-muted)' }}>
         {history.map((item, idx) => (
-          <div key={idx} style={{ color: item.type === 'command' ? 'var(--accent-cyan)' : 'var(--text-main)', whiteSpace: 'pre-wrap' }}>
+          <div key={idx} style={{ color: item.type === 'command' ? 'var(--accent-indigo)' : 'var(--text-main)', fontWeight: item.type === 'command' ? 600 : 400, whiteSpace: 'pre-wrap' }}>
             {item.text}
           </div>
         ))}
       </div>
 
-      <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginTop: '0.8rem', borderTop: '1px solid rgba(255,255,255,0.04)', paddingTop: '0.6rem' }}>
-        <span style={{ color: 'var(--accent-emerald)', fontWeight: 700 }}>$</span>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginTop: '0.8rem', borderTop: '1px solid var(--border-muted)', paddingTop: '0.6rem' }}>
+        <span style={{ color: 'var(--accent-indigo)', fontWeight: 700 }}>$</span>
         <input
           ref={inputRef}
           type="text"
