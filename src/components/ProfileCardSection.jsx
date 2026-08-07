@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Download, Share2, Mail, Phone, MapPin, Briefcase, GraduationCap, Code2, ExternalLink, Check, Award } from 'lucide-react';
+import { Download, Share2, Mail, Phone, MapPin, Briefcase, GraduationCap, Code2, ExternalLink, Check, Award, Sparkles } from 'lucide-react';
 import { PROFILE_DATA } from '../data/portfolioData';
 
 export default function ProfileCardSection() {
@@ -43,137 +43,109 @@ END:VCARD`;
 
   return (
     <div>
-      <div style={{ marginBottom: '2.5rem' }}>
+      <div className="no-print" style={{ marginBottom: '1.5rem' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '0.4rem' }}>
-          <span className="meta-tag meta-emerald">RECRUITER & DEVELOPER CARD</span>
-          <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: 'var(--text-dim)' }}>[Verified Digital ID]</span>
+          <span className="meta-tag meta-emerald">OFFICIAL RECRUITER PASS</span>
+          <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: 'var(--text-dim)' }}>[1-Page Developer ID]</span>
         </div>
-        <h2 style={{ fontSize: '2.2rem', marginBottom: '0.4rem' }}>🎴 Digital Profile & Recruiter Card</h2>
-        <p style={{ color: 'var(--text-muted)' }}>Official contact card and developer pass for recruiters, engineering hiring managers, and collaborators.</p>
+        <h2 style={{ fontSize: '2rem', marginBottom: '0.3rem' }}>🎴 Developer Executive Badge</h2>
+        <p style={{ color: 'var(--text-muted)', fontSize: '0.92rem' }}>A concise single-page summary card engineered for quick recruiter assessment and offline reference.</p>
+        
+        {/* Action Toolbar */}
+        <div style={{ display: 'flex', gap: '0.6rem', marginTop: '1.2rem', flexWrap: 'wrap' }}>
+          <button className="btn-primary" onClick={handlePrintCard} style={{ fontSize: '0.85rem', padding: '0.45rem 1rem', gap: '0.4rem' }}>
+            <Download size={15} /> Save / Print 1-Page PDF Card
+          </button>
+          <button className="btn-glass" onClick={handleDownloadVCard} style={{ fontSize: '0.85rem', padding: '0.45rem 1rem', gap: '0.4rem' }}>
+            <Download size={15} /> Download vCard (.vcf)
+          </button>
+          <button className="btn-glass" onClick={handleCopyShare} style={{ fontSize: '0.85rem', padding: '0.45rem 1rem', gap: '0.4rem' }}>
+            {copied ? <Check size={15} style={{ color: 'var(--accent-emerald)' }} /> : <Share2 size={15} />}
+            {copied ? 'Link Copied!' : 'Share Card'}
+          </button>
+        </div>
       </div>
 
-      {/* Action Toolbar */}
-      <div style={{ display: 'flex', gap: '0.8rem', marginBottom: '2rem', flexWrap: 'wrap' }}>
-        <button className="btn-primary" onClick={handleDownloadVCard} style={{ fontSize: '0.9rem', gap: '0.5rem' }}>
-          <Download size={16} /> Download vCard (.vcf)
-        </button>
-        <button className="btn-glass" onClick={handlePrintCard} style={{ fontSize: '0.9rem', gap: '0.5rem' }}>
-          <Download size={16} /> Print / Save PDF Card
-        </button>
-        <button className="btn-glass" onClick={handleCopyShare} style={{ fontSize: '0.9rem', gap: '0.5rem' }}>
-          {copied ? <Check size={16} style={{ color: 'var(--accent-emerald)' }} /> : <Share2 size={16} />}
-          {copied ? 'Card Link Copied!' : 'Share Digital Card'}
-        </button>
-      </div>
-
-      {/* Printable / Downloadable Developer ID Card */}
+      {/* Ultra-Compact 1-Page Printable Profile Card */}
       <div style={{ display: 'flex', justifyContent: 'center' }}>
         <div
           id="developer-profile-card"
-          className="card"
           style={{
-            maxWidth: '680px',
+            maxWidth: '580px',
             width: '100%',
-            background: 'linear-gradient(135deg, #ffffff 0%, #f8fafc 100%)',
-            border: '2px solid var(--border-muted)',
-            borderRadius: 'var(--radius-lg)',
-            padding: '2rem',
-            boxShadow: '0 12px 36px rgba(15, 23, 42, 0.08)',
-            position: 'relative'
+            background: '#ffffff',
+            border: '2px solid #cbd5e1',
+            borderRadius: '12px',
+            padding: '1.4rem',
+            boxShadow: '0 8px 24px rgba(15, 23, 42, 0.06)',
+            boxSizing: 'border-box'
           }}
         >
-          {/* Card Top Banner */}
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderBottom: '2px solid var(--border-muted)', paddingBottom: '1.2rem', marginBottom: '1.5rem', flexWrap: 'wrap', gap: '1rem' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-              <img
-                src="./ujjwal_avatar.jpeg"
-                alt={PROFILE_DATA.name}
-                style={{ width: '80px', height: '80px', borderRadius: 'var(--radius-md)', objectFit: 'cover', border: '2px solid var(--accent-indigo)', boxShadow: '0 4px 12px rgba(67, 56, 202, 0.15)' }}
-              />
-              <div>
-                <span className="meta-tag meta-emerald" style={{ marginBottom: '0.3rem', display: 'inline-block' }}>VERIFIED SOFTWARE ENGINEER</span>
-                <h3 style={{ fontSize: '1.8rem', color: 'var(--text-main)', margin: '0.1rem 0' }}>{PROFILE_DATA.name}</h3>
-                <p style={{ fontSize: '0.95rem', fontWeight: 600, color: 'var(--accent-indigo)' }}>{PROFILE_DATA.title}</p>
+          {/* Header Row */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', borderBottom: '1.5px solid #e2e8f0', paddingBottom: '1rem', marginBottom: '1rem' }}>
+            <img
+              src="./ujjwal_avatar.jpeg"
+              alt={PROFILE_DATA.name}
+              style={{ width: '64px', height: '64px', borderRadius: '8px', objectFit: 'cover', border: '1.5px solid #4338ca', flexShrink: 0 }}
+            />
+            <div style={{ flex: 1 }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <h3 style={{ fontSize: '1.5rem', color: '#0f172a', fontWeight: 800, margin: 0, letterSpacing: '-0.02em' }}>{PROFILE_DATA.name}</h3>
+                <span style={{ fontSize: '0.68rem', background: '#d1fae5', color: '#047857', border: '1px solid #a7f3d0', padding: '0.15rem 0.5rem', borderRadius: '4px', fontFamily: 'var(--font-mono)', fontWeight: 700 }}>VERIFIED SDE</span>
               </div>
-            </div>
-
-            <div style={{ textAlign: 'right' }}>
-              <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: 'var(--text-dim)' }}>ID: UJJWAL-2026-SDE</span>
-              <div style={{ fontSize: '0.82rem', fontWeight: 700, color: 'var(--accent-emerald)', marginTop: '0.2rem', fontFamily: 'var(--font-mono)' }}>● ACTIVE FOR HIRE / ROLES</div>
+              <p style={{ fontSize: '0.88rem', fontWeight: 700, color: '#4338ca', margin: '0.15rem 0' }}>Software Engineer at ZFunds • Gurugram</p>
+              <p style={{ fontSize: '0.78rem', color: '#64748b', margin: 0 }}>B.Tech CSE (AI & ML) • VIT Chennai (2021-2025)</p>
             </div>
           </div>
 
-          {/* Current Status & Education */}
-          <div className="grid-2" style={{ marginBottom: '1.5rem', gap: '1rem' }}>
-            <div style={{ background: 'var(--bg-secondary)', padding: '1rem', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border-muted)' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: 'var(--accent-indigo)', fontWeight: 700, fontSize: '0.82rem', marginBottom: '0.3rem', fontFamily: 'var(--font-mono)' }}>
-                <Briefcase size={15} /> CURRENT ROLE
-              </div>
-              <p style={{ fontSize: '0.9rem', fontWeight: 600, color: 'var(--text-main)' }}>SDE at ZFunds (Gurugram)</p>
-              <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>ZIVA V2 AI WealthTech • Portfolio Engine</p>
-            </div>
-
-            <div style={{ background: 'var(--bg-secondary)', padding: '1rem', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border-muted)' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: 'var(--accent-purple)', fontWeight: 700, fontSize: '0.82rem', marginBottom: '0.3rem', fontFamily: 'var(--font-mono)' }}>
-                <GraduationCap size={15} /> EDUCATION
-              </div>
-              <p style={{ fontSize: '0.9rem', fontWeight: 600, color: 'var(--text-main)' }}>B.Tech CSE (AI & ML) • VIT Chennai</p>
-              <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>CGPA: 7.23 / 10.0 (2021-2025)</p>
-            </div>
-          </div>
-
-          {/* Core Technical Matrix */}
-          <div style={{ marginBottom: '1.5rem' }}>
-            <h4 style={{ fontSize: '0.82rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.6rem', fontFamily: 'var(--font-mono)' }}>PRIMARY TECH STACK</h4>
-            <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap' }}>
-              <span className="meta-tag meta-cyan">Python</span>
-              <span className="meta-tag meta-cyan">TypeScript</span>
-              <span className="meta-tag meta-cyan">FastAPI</span>
-              <span className="meta-tag meta-cyan">Node.js</span>
-              <span className="meta-tag meta-cyan">RabbitMQ</span>
-              <span className="meta-tag meta-cyan">Redis</span>
-              <span className="meta-tag meta-cyan">FAISS / RAG</span>
-              <span className="meta-tag meta-cyan">AWS</span>
-              <span className="meta-tag meta-cyan">Docker / K8s</span>
-              <span className="meta-tag meta-cyan">React.js</span>
-            </div>
-          </div>
-
-          {/* Notable Achievements */}
-          <div style={{ background: '#fef3c7', padding: '1rem 1.2rem', borderRadius: 'var(--radius-sm)', borderLeft: '3px solid var(--accent-amber)', marginBottom: '1.5rem' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: '#b45309', fontWeight: 700, fontSize: '0.82rem', fontFamily: 'var(--font-mono)', marginBottom: '0.2rem' }}>
-              <Award size={15} /> KEY HONORS & HIGHLIGHTS
-            </div>
-            <p style={{ fontSize: '0.88rem', color: '#78350f' }}>
-              • <strong>Osmos Hackathon 1st Runner-Up</strong> (Out of 131 teams, INR 30k prize)<br />
-              • Slashing P99 response latency from 700ms to <strong>&lt;150ms</strong> at Advor.ai using RabbitMQ & Redis.
+          {/* Quick Glimpse Bio */}
+          <div style={{ background: '#f8fafc', padding: '0.8rem 1rem', borderRadius: '6px', borderLeft: '3px solid #4338ca', marginBottom: '1rem' }}>
+            <p style={{ fontSize: '0.84rem', color: '#334155', lineHeight: '1.5', margin: 0 }}>
+              <strong>Executive Summary:</strong> Core engineer driving ZIVA V2 AI WealthTech platform at ZFunds. Scaled RabbitMQ event microservices to &lt;150ms P99 latency & built FAISS hybrid RAG at Advor.ai. 1st Runner-Up at Osmos Hackathon (131 teams).
             </p>
           </div>
 
-          {/* Card Footer Contacts */}
-          <div style={{ borderTop: '2px solid var(--border-muted)', paddingTop: '1.2rem', display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
-            <div style={{ display: 'flex', gap: '1.2rem', flexWrap: 'wrap', fontSize: '0.88rem' }}>
-              <a href={`mailto:${PROFILE_DATA.email}`} style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: 'var(--accent-indigo)', textDecoration: 'none', fontWeight: 600 }}>
-                <Mail size={15} /> {PROFILE_DATA.email}
-              </a>
-              <a href={`tel:${PROFILE_DATA.phone}`} style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: 'var(--text-main)', textDecoration: 'none' }}>
-                <Phone size={15} /> {PROFILE_DATA.phone}
-              </a>
-              <span style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: 'var(--text-muted)' }}>
-                <MapPin size={15} /> {PROFILE_DATA.location}
-              </span>
+          {/* Core Tech Stack Pills */}
+          <div style={{ marginBottom: '1rem' }}>
+            <div style={{ fontSize: '0.72rem', fontWeight: 700, color: '#64748b', textTransform: 'uppercase', fontFamily: 'var(--font-mono)', marginBottom: '0.4rem' }}>
+              PRIMARY STACK & DOMAINS
             </div>
+            <div style={{ display: 'flex', gap: '0.35rem', flexWrap: 'wrap' }}>
+              {['Python', 'TypeScript', 'FastAPI', 'Node.js', 'RabbitMQ', 'Redis', 'FAISS (RAG)', 'AWS', 'Docker/K8s', 'React.js'].map((tech, idx) => (
+                <span key={idx} style={{ fontSize: '0.72rem', background: '#f1f5f9', border: '1px solid #e2e8f0', color: '#334155', padding: '0.15rem 0.5rem', borderRadius: '4px', fontFamily: 'var(--font-mono)', fontWeight: 600 }}>
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </div>
 
-            <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', fontSize: '0.85rem', marginTop: '0.4rem' }}>
-              <a href="https://github.com/ujjwal-void" target="_blank" rel="noreferrer" style={{ color: 'var(--text-muted)', textDecoration: 'none', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
-                <Code2 size={14} /> GitHub (@ujjwal-void) <ExternalLink size={12} />
-              </a>
-              <a href="https://www.linkedin.com/in/ujjwal-ujjwal-dev/" target="_blank" rel="noreferrer" style={{ color: 'var(--text-muted)', textDecoration: 'none', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
-                <ExternalLink size={14} /> LinkedIn Profile
-              </a>
-              <a href="https://leetcode.com/u/ujjwal92/" target="_blank" rel="noreferrer" style={{ color: 'var(--text-muted)', textDecoration: 'none', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
-                <Code2 size={14} /> LeetCode (@ujjwal92)
-              </a>
+          {/* 3-Column Highlights */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '0.6rem', marginBottom: '1rem' }}>
+            <div style={{ background: '#f1f5f9', padding: '0.6rem', borderRadius: '6px', textAlign: 'center' }}>
+              <div style={{ fontSize: '0.7rem', color: '#64748b', fontFamily: 'var(--font-mono)' }}>CURRENT ROLE</div>
+              <div style={{ fontSize: '0.82rem', fontWeight: 700, color: '#0f172a', marginTop: '0.1rem' }}>ZFunds SDE</div>
+            </div>
+            <div style={{ background: '#f1f5f9', padding: '0.6rem', borderRadius: '6px', textAlign: 'center' }}>
+              <div style={{ fontSize: '0.7rem', color: '#64748b', fontFamily: 'var(--font-mono)' }}>PAST FOUNDING</div>
+              <div style={{ fontSize: '0.82rem', fontWeight: 700, color: '#0f172a', marginTop: '0.1rem' }}>Advor.ai Engineer</div>
+            </div>
+            <div style={{ background: '#fef3c7', padding: '0.6rem', borderRadius: '6px', textAlign: 'center', border: '1px solid #fde68a' }}>
+              <div style={{ fontSize: '0.7rem', color: '#b45309', fontFamily: 'var(--font-mono)' }}>HACKATHON</div>
+              <div style={{ fontSize: '0.82rem', fontWeight: 700, color: '#78350f', marginTop: '0.1rem' }}>1st Runner-Up</div>
+            </div>
+          </div>
+
+          {/* Contact Bar */}
+          <div style={{ borderTop: '1.5px solid #e2e8f0', paddingTop: '0.8rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.5rem', fontSize: '0.78rem' }}>
+            <div style={{ display: 'flex', gap: '0.8rem', flexWrap: 'wrap', color: '#334155' }}>
+              <span>✉️ ujjwal.02023@gmail.com</span>
+              <span>📞 +91 7380679251</span>
+              <span>📍 Gurugram, India</span>
+            </div>
+            <div style={{ display: 'flex', gap: '0.6rem', fontWeight: 600 }}>
+              <a href="https://github.com/ujjwal-void" target="_blank" rel="noreferrer" style={{ color: '#4338ca', textDecoration: 'none' }}>GitHub</a>
+              <a href="https://www.linkedin.com/in/ujjwal-ujjwal-dev/" target="_blank" rel="noreferrer" style={{ color: '#4338ca', textDecoration: 'none' }}>LinkedIn</a>
+              <a href="https://leetcode.com/u/ujjwal92/" target="_blank" rel="noreferrer" style={{ color: '#4338ca', textDecoration: 'none' }}>LeetCode</a>
             </div>
           </div>
         </div>

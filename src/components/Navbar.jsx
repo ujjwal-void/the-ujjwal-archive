@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Menu, X, Zap, Briefcase, Cpu, Film, FileText, Atom, CreditCard, Link as LinkIcon } from 'lucide-react';
+import { Menu, X, Zap, Briefcase, Cpu, Film, FileText, Atom, Link as LinkIcon } from 'lucide-react';
 
 export default function Navbar({ activeRoute, onNavigate }) {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -35,11 +35,6 @@ export default function Navbar({ activeRoute, onNavigate }) {
           <li>
             <button className={`nav-btn ${activeRoute === 'projects' ? 'active' : ''}`} onClick={() => handleNav('projects')}>
               <Cpu size={15} /> Projects
-            </button>
-          </li>
-          <li>
-            <button className={`nav-btn ${activeRoute === 'card' ? 'active' : ''}`} onClick={() => handleNav('card')}>
-              <CreditCard size={15} /> Profile Card
             </button>
           </li>
           <li>
@@ -83,7 +78,7 @@ export default function Navbar({ activeRoute, onNavigate }) {
             🧠 Projects
           </button>
           <button className={`mobile-nav-btn ${activeRoute === 'card' ? 'active' : ''}`} onClick={() => handleNav('card')}>
-            🎴 Digital Profile Card
+            🎴 1-Page Developer Card
           </button>
           <button className={`mobile-nav-btn ${activeRoute === 'essays' || activeRoute === 'teaching' ? 'active' : ''}`} onClick={() => handleNav('essays')}>
             📝 Tech Essays & Explanations

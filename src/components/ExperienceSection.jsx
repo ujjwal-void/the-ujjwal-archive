@@ -1,8 +1,8 @@
 import React from 'react';
-import { Briefcase, GraduationCap, Award, Mail, ExternalLink, Code2, Cpu, CheckCircle } from 'lucide-react';
+import { Briefcase, GraduationCap, Award, Mail, ExternalLink, Code2, Cpu, CheckCircle, CreditCard } from 'lucide-react';
 import { PROFILE_DATA, WORK_EXPERIENCE, ACHIEVEMENTS, TECHNICAL_SKILLS } from '../data/portfolioData';
 
-export default function ExperienceSection() {
+export default function ExperienceSection({ onNavigate }) {
   return (
     <div>
       {/* Header Banner */}
@@ -23,17 +23,17 @@ export default function ExperienceSection() {
             <p style={{ fontSize: '0.88rem', color: '#3730a3' }}>{PROFILE_DATA.education.degree} • VIT Chennai (2021-2025)</p>
           </div>
           <div style={{ display: 'flex', gap: '0.6rem', flexWrap: 'wrap' }}>
-            <a href="mailto:ujjwal.02023@gmail.com" className="btn-primary" style={{ fontSize: '0.82rem', padding: '0.45rem 0.9rem' }}>
+            <a href="#card" onClick={() => window.location.hash = 'card'} className="btn-primary" style={{ fontSize: '0.82rem', padding: '0.45rem 0.9rem' }}>
+              <CreditCard size={14} /> 🎴 Download 1-Page Profile Pass
+            </a>
+            <a href="mailto:ujjwal.02023@gmail.com" className="btn-glass" style={{ fontSize: '0.82rem', padding: '0.45rem 0.9rem' }}>
               <Mail size={14} /> Email Ujjwal
             </a>
             <a href="https://www.linkedin.com/in/ujjwal-ujjwal-dev/" target="_blank" rel="noreferrer" className="btn-glass" style={{ fontSize: '0.82rem', padding: '0.45rem 0.9rem' }}>
-              <ExternalLink size={14} /> LinkedIn Profile
+              <ExternalLink size={14} /> LinkedIn
             </a>
             <a href="https://leetcode.com/u/ujjwal92/" target="_blank" rel="noreferrer" className="btn-glass" style={{ fontSize: '0.82rem', padding: '0.45rem 0.9rem' }}>
-              <Code2 size={14} /> LeetCode (@ujjwal92)
-            </a>
-            <a href="https://github.com/ujjwal-void" target="_blank" rel="noreferrer" className="btn-glass" style={{ fontSize: '0.82rem', padding: '0.45rem 0.9rem' }}>
-              <Code2 size={14} /> GitHub (@ujjwal-void)
+              <Code2 size={14} /> LeetCode
             </a>
           </div>
         </div>
