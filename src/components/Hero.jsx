@@ -7,17 +7,28 @@ export default function Hero({ onNavigate }) {
   return (
     <div>
       <section className="hero-wrapper" style={{ paddingTop: '1rem' }}>
-        {/* Left Column: Intro Bio, Avatar Badge, Status, Manifesto & CTAs */}
+        {/* Left Column: Intro Bio, Medium Avatar Badge, Status, Manifesto & CTAs */}
         <div className="hero-text">
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', marginBottom: '1.2rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1.2rem', marginBottom: '1.4rem' }}>
             <img
               src="./ujjwal_avatar.jpeg"
               alt={PROFILE_DATA.name}
-              style={{ width: '42px', height: '42px', borderRadius: 'var(--radius-sm)', objectFit: 'cover', border: '1.5px solid var(--border-accent)', boxShadow: '0 2px 8px rgba(15,23,42,0.1)' }}
+              style={{
+                width: '76px',
+                height: '76px',
+                borderRadius: '12px',
+                objectFit: 'cover',
+                border: '2px solid var(--accent-indigo)',
+                boxShadow: '0 4px 14px rgba(67, 56, 202, 0.18)',
+                flexShrink: 0
+              }}
             />
-            <div className="badge-status" style={{ marginBottom: 0 }}>
-              <span className="pulse-dot"></span>
-              {PROFILE_DATA.status}
+            <div>
+              <div className="badge-status" style={{ marginBottom: '0.4rem' }}>
+                <span className="pulse-dot"></span>
+                {PROFILE_DATA.status}
+              </div>
+              <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', fontWeight: 600 }}>Gurugram, India • VIT Chennai Alum</p>
             </div>
           </div>
           

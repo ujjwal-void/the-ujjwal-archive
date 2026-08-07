@@ -82,15 +82,15 @@ END:VCARD`;
           }}
         >
           {/* Header Row */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', borderBottom: '1.5px solid #e2e8f0', paddingBottom: '1rem', marginBottom: '1rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1.2rem', borderBottom: '1.5px solid #e2e8f0', paddingBottom: '1rem', marginBottom: '1rem' }}>
             <img
               src="./ujjwal_avatar.jpeg"
               alt={PROFILE_DATA.name}
-              style={{ width: '64px', height: '64px', borderRadius: '8px', objectFit: 'cover', border: '1.5px solid #4338ca', flexShrink: 0 }}
+              style={{ width: '76px', height: '76px', borderRadius: '10px', objectFit: 'cover', border: '2px solid #4338ca', flexShrink: 0, boxShadow: '0 4px 12px rgba(67, 56, 202, 0.15)' }}
             />
             <div style={{ flex: 1 }}>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                <h3 style={{ fontSize: '1.5rem', color: '#0f172a', fontWeight: 800, margin: 0, letterSpacing: '-0.02em' }}>{PROFILE_DATA.name}</h3>
+                <h3 style={{ fontSize: '1.55rem', color: '#0f172a', fontWeight: 800, margin: 0, letterSpacing: '-0.02em' }}>{PROFILE_DATA.name}</h3>
                 <span style={{ fontSize: '0.68rem', background: '#d1fae5', color: '#047857', border: '1px solid #a7f3d0', padding: '0.15rem 0.5rem', borderRadius: '4px', fontFamily: 'var(--font-mono)', fontWeight: 700 }}>VERIFIED SDE</span>
               </div>
               <p style={{ fontSize: '0.88rem', fontWeight: 700, color: '#4338ca', margin: '0.15rem 0' }}>Software Engineer at ZFunds • Gurugram</p>
