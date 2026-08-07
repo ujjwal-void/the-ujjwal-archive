@@ -1,15 +1,13 @@
 import React from 'react';
-import { Zap, Briefcase, Cpu, FileText, Award } from 'lucide-react';
+import { Zap, Briefcase, Cpu, FileText, Code2, ExternalLink } from 'lucide-react';
 import { PROFILE_DATA } from '../data/portfolioData';
 import TerminalConsole from './TerminalConsole';
 
 export default function Hero({ onNavigate }) {
   return (
     <div>
-      {/* Interactive CLI Console */}
-      <TerminalConsole onNavigate={onNavigate} />
-
-      <section className="hero-wrapper">
+      <section className="hero-wrapper" style={{ paddingTop: '1rem' }}>
+        {/* Left Column: Intro Bio, Status, Manifesto & CTAs */}
         <div className="hero-text">
           <div className="badge-status">
             <span className="pulse-dot"></span>
@@ -31,57 +29,57 @@ export default function Hero({ onNavigate }) {
               <Briefcase size={16} /> Work Experience
             </button>
             <button onClick={() => onNavigate('projects')} className="btn-glass">
-              <Cpu size={16} /> View Projects
+              <Cpu size={16} /> Projects
             </button>
-            <button onClick={() => onNavigate('essays')} className="btn-glass">
-              <FileText size={16} /> Tech Essays
-            </button>
+            <a href="https://leetcode.com/u/ujjwal92/" target="_blank" rel="noreferrer" className="btn-glass" title="LeetCode @ujjwal92">
+              <Code2 size={16} /> LeetCode
+            </a>
+            <a href="https://github.com/ujjwal-void" target="_blank" rel="noreferrer" className="btn-glass" title="GitHub @ujjwal-void">
+              <ExternalLink size={16} /> GitHub
+            </a>
           </div>
         </div>
 
-        {/* Workbench Stream Terminal */}
-        <div className="workbench-card">
-          <div className="workbench-header">
-            <div className="terminal-dots">
-              <span className="dot"></span>
-              <span className="dot"></span>
-              <span className="dot"></span>
-            </div>
-            <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', color: 'var(--text-dim)' }}>
-              ujjwal/career_stream
-            </span>
-          </div>
+        {/* Right Column: Interactive CLI Shell Terminal (Side-by-Side, Zero Page Push) */}
+        <div>
+          <TerminalConsole onNavigate={onNavigate} />
 
-          <div className="workbench-stream-list">
-            <div className="stream-item">
-              <span className="meta-tag meta-emerald">ZFunds</span>
-              <div>
-                <div style={{ fontSize: '0.88rem', fontWeight: 600, color: 'var(--text-main)' }}>SDE — ZIVA V2 WealthTech AI</div>
-                <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>Architected Portfolio Analysis, Goal & Fund Proposal Engines</div>
+          {/* Workbench Activity Stream */}
+          <div className="workbench-card" style={{ marginTop: '1rem' }}>
+            <div className="workbench-header">
+              <div className="terminal-dots">
+                <span className="dot"></span>
+                <span className="dot"></span>
+                <span className="dot"></span>
               </div>
+              <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', color: 'var(--text-dim)' }}>
+                ujjwal/career_stream
+              </span>
             </div>
 
-            <div className="stream-item">
-              <span className="meta-tag meta-cyan">Advor.ai</span>
-              <div>
-                <div style={{ fontSize: '0.88rem', fontWeight: 600, color: 'var(--text-main)' }}>Founding Engineer — Hybrid RAG</div>
-                <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>RabbitMQ microservices (under 150ms P99) & FAISS search (+40% accuracy)</div>
+            <div className="workbench-stream-list">
+              <div className="stream-item">
+                <span className="meta-tag meta-emerald">ZFunds</span>
+                <div>
+                  <div style={{ fontSize: '0.88rem', fontWeight: 600, color: 'var(--text-main)' }}>SDE — ZIVA V2 WealthTech AI</div>
+                  <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>Architected Portfolio Analysis & Recommendation Engines</div>
+                </div>
               </div>
-            </div>
 
-            <div className="stream-item">
-              <span className="meta-tag meta-amber">Award</span>
-              <div>
-                <div style={{ fontSize: '0.88rem', fontWeight: 600, color: 'var(--text-main)' }}>Osmos Hackathon 1st Runner-Up</div>
-                <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>AdCraft AI platform (out of 131 teams, INR 30k prize)</div>
+              <div className="stream-item">
+                <span className="meta-tag meta-cyan">Advor.ai</span>
+                <div>
+                  <div style={{ fontSize: '0.88rem', fontWeight: 600, color: 'var(--text-main)' }}>Founding Engineer — Hybrid RAG</div>
+                  <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>RabbitMQ microservices (under 150ms P99) & FAISS search (+40% accuracy)</div>
+                </div>
               </div>
-            </div>
 
-            <div className="stream-item">
-              <span className="meta-tag meta-purple">DRDO</span>
-              <div>
-                <div style={{ fontSize: '0.88rem', fontWeight: 600, color: 'var(--text-main)' }}>DevOps & LAN Packet Inspection</div>
-                <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>Flask LAN bandwidth monitor & Docker/Kubernetes CI/CD</div>
+              <div className="stream-item">
+                <span className="meta-tag meta-amber">Award</span>
+                <div>
+                  <div style={{ fontSize: '0.88rem', fontWeight: 600, color: 'var(--text-main)' }}>Osmos Hackathon 1st Runner-Up</div>
+                  <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>AdCraft AI platform (out of 131 teams, INR 30k prize)</div>
+                </div>
               </div>
             </div>
           </div>

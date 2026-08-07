@@ -1,5 +1,5 @@
 import React from 'react';
-import { Briefcase, GraduationCap, Award, Mail, Phone, ExternalLink, Code2, Cpu, CheckCircle } from 'lucide-react';
+import { Briefcase, GraduationCap, Award, Mail, ExternalLink, Code2, Cpu, CheckCircle } from 'lucide-react';
 import { PROFILE_DATA, WORK_EXPERIENCE, ACHIEVEMENTS, TECHNICAL_SKILLS } from '../data/portfolioData';
 
 export default function ExperienceSection() {
@@ -28,6 +28,9 @@ export default function ExperienceSection() {
             </a>
             <a href="https://www.linkedin.com/in/ujjwal-ujjwal-dev/" target="_blank" rel="noreferrer" className="btn-glass" style={{ fontSize: '0.82rem', padding: '0.45rem 0.9rem' }}>
               <ExternalLink size={14} /> LinkedIn Profile
+            </a>
+            <a href="https://leetcode.com/u/ujjwal92/" target="_blank" rel="noreferrer" className="btn-glass" style={{ fontSize: '0.82rem', padding: '0.45rem 0.9rem' }}>
+              <Code2 size={14} /> LeetCode (@ujjwal92)
             </a>
             <a href="https://github.com/ujjwal-void" target="_blank" rel="noreferrer" className="btn-glass" style={{ fontSize: '0.82rem', padding: '0.45rem 0.9rem' }}>
               <Code2 size={14} /> GitHub (@ujjwal-void)

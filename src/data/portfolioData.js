@@ -1,5 +1,5 @@
 // Core Dataset for Ujjwal's Personal Digital Portfolio & Recruiter Archive
-// Grounded 100% in Ujjwal's Resume & Verified Projects
+// Grounded 100% in Ujjwal's Resume, GitHub & LeetCode Profiles
 
 export const PROFILE_DATA = {
   name: "Ujjwal Ujjwal",
@@ -8,6 +8,7 @@ export const PROFILE_DATA = {
   email: "ujjwal.02023@gmail.com",
   phone: "+91 7380679251",
   location: "Gurugram, India",
+  leetcode: "https://leetcode.com/u/ujjwal92/",
   status: "SDE at ZFunds • Building ZIVA V2 WealthTech AI",
   bio: "Software Engineer with deep experience in building high-scale distributed backends and production AI systems. Core engineer on ZIVA V2 WealthTech platform at ZFunds and former Founding Engineer at Advor.ai, where I scaled event-driven microservices to <150ms P99 latency and built hybrid RAG pipelines with Redis caching.",
   education: {
@@ -20,6 +21,7 @@ export const PROFILE_DATA = {
   socials: [
     { name: "GitHub", url: "https://github.com/ujjwal-void", icon: "Github", label: "github.com/ujjwal-void" },
     { name: "LinkedIn", url: "https://www.linkedin.com/in/ujjwal-ujjwal-dev/", icon: "Linkedin", label: "linkedin.com/in/ujjwal-ujjwal-dev" },
+    { name: "LeetCode", url: "https://leetcode.com/u/ujjwal92/", icon: "Code2", label: "leetcode.com/u/ujjwal92" },
     { name: "Email", url: "mailto:ujjwal.02023@gmail.com", icon: "Mail", label: "ujjwal.02023@gmail.com" },
     { name: "Phone", url: "tel:+917380679251", icon: "Phone", label: "+91 7380679251" }
   ]
@@ -80,7 +82,7 @@ export const WORK_EXPERIENCE = [
     highlights: [
       "Built RESTful endpoints using Spring Boot with custom DTOs and input validation for core content modules.",
       "Integrated SonarQube into CI pipeline for automated security vulnerability detection.",
-      "Built React administrative dashboard for bulk CRUD operations, eliminating manual production SQL updates.",
+      "Built a React administrative dashboard for bulk CRUD operations, eliminating manual production SQL updates.",
       "Configured Kafka consumer groups for background data synchronization during heavy write traffic."
     ]
   }
@@ -233,11 +235,19 @@ export const LINKTREE_LINKS = [
   },
   {
     id: "resume-pdf",
-    title: "📄 Official Resume (PDF)",
-    description: "View Software Engineer Resume & Contact Details",
+    title: "📄 Official Resume & Work Experience",
+    description: "View Software Engineer Experience at ZFunds, Advor.ai & DRDO",
     url: "#experience",
     icon: "FileText",
     badge: "Recruiter"
+  },
+  {
+    id: "leetcode-profile",
+    title: "🧩 LeetCode (@ujjwal92)",
+    description: "Algorithmic Problem Solving & Data Structures Profile",
+    url: "https://leetcode.com/u/ujjwal92/",
+    icon: "Code2",
+    badge: "Algorithms"
   },
   {
     id: "github-profile",
@@ -262,14 +272,6 @@ export const LINKTREE_LINKS = [
     url: "#projects",
     icon: "Cpu",
     badge: "Projects"
-  },
-  {
-    id: "tech-essays",
-    title: "📝 Tech Essays & Notes",
-    description: "Deep dive articles explaining RAG & system architectures in my own words",
-    url: "#essays",
-    icon: "BookOpen",
-    badge: "Writing"
   }
 ];
 
