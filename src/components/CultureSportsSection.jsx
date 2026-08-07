@@ -1,20 +1,20 @@
 import React, { useState } from 'react';
-import { Eye, Unlock, Bot, Quote, Flame, Activity } from 'lucide-react';
+import { Eye, EyeOff, Unlock, Bot, Quote, Flame, Activity, ShieldAlert, ShieldCheck } from 'lucide-react';
 import { MEDIA_DATA, SPORTS_TAKES } from '../data/portfolioData';
 
 export default function CultureSportsSection() {
   const [activeFilter, setActiveFilter] = useState('all');
+  const [spoilerModeOff, setSpoilerModeOff] = useState(false); // Default: Spoiler Shield ON (Safe View)
   const [unlockedSpoilers, setUnlockedSpoilers] = useState({});
 
-  const toggleSpoiler = (id) => {
+  const toggleSingleSpoiler = (id) => {
     setUnlockedSpoilers(prev => ({ ...prev, [id]: true }));
   };
 
   const handleAiVerdict = (title, opinion) => {
-    alert(`🤖 Reflection on "${title}":\n\n${opinion}\n\nKey Takeaway: Worth exploring if you value story depth and structural execution.`);
+    alert(`🤖 Narrative Analysis for "${title}":\n\n${opinion}\n\nConclusion: Key structural payoff in narrative execution.`);
   };
 
-  // Combine items for unified rendering when 'all' is selected
   const isShowMedia = activeFilter === 'all' || ['anime', 'movie', 'book'].includes(activeFilter);
   const isShowSports = activeFilter === 'all' || activeFilter === 'sports';
 
@@ -24,8 +24,8 @@ export default function CultureSportsSection() {
 
   return (
     <div>
-      <div style={{ marginBottom: '2.5rem' }}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1rem', marginBottom: '1.5rem' }}>
+      <div style={{ marginBottom: '2rem' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1rem', marginBottom: '1.2rem' }}>
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '0.4rem' }}>
               <span className="meta-tag meta-amber">CULTURE & SPORTS NOTES</span>
@@ -34,7 +34,7 @@ export default function CultureSportsSection() {
               </span>
             </div>
             <h2 style={{ fontSize: '2.2rem', marginBottom: '0.4rem' }}>🍿 Anime, Movies, Books & Sports</h2>
-            <p style={{ color: 'var(--text-muted)' }}>Personal reflections on stories that shaped my thinking, alongside tactical sports strategy and engineering parallels.</p>
+            <p style={{ color: 'var(--text-muted)' }}>Personal reflections on stories and sports tactics—with a global Spoiler Mode toggle.</p>
           </div>
 
           <div style={{ display: 'flex', gap: '0.4rem', background: 'var(--bg-card)', padding: '0.3rem', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border-muted)', flexWrap: 'wrap' }}>
@@ -44,6 +44,53 @@ export default function CultureSportsSection() {
             <button className={`filter-btn ${activeFilter === 'book' ? 'active' : ''}`} onClick={() => setActiveFilter('book')}>Books 📖</button>
             <button className={`filter-btn ${activeFilter === 'sports' ? 'active' : ''}`} onClick={() => setActiveFilter('sports')}>Sports ⚽</button>
           </div>
+        </div>
+
+        {/* Global Spoiler Mode Toggle Banner */}
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          justify: 'space-between',
+          background: spoilerModeOff ? '#ffe4e6' : '#e0f2fe',
+          border: `1.5px solid ${spoilerModeOff ? '#e11d48' : '#0284c7'}`,
+          borderRadius: 'var(--radius-md)',
+          padding: '0.8rem 1.2rem',
+          flexWrap: 'wrap',
+          gap: '0.8rem',
+          transition: 'all 0.2s ease'
+        }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+            {spoilerModeOff ? (
+              <ShieldAlert size={20} style={{ color: '#be123c' }} />
+            ) : (
+              <ShieldCheck size={20} style={{ color: '#0369a1' }} />
+            )}
+            <div>
+              <div style={{ fontSize: '0.9rem', fontWeight: 700, color: spoilerModeOff ? '#be123c' : '#0369a1', fontFamily: 'var(--font-mono)' }}>
+                {spoilerModeOff ? 'SPOILER MODE: OFF (UNCENSORED VIEW)' : 'SPOILER SHIELD: ON (SAFE VIEW)'}
+              </div>
+              <div style={{ fontSize: '0.8rem', color: spoilerModeOff ? '#9f1239' : '#075985' }}>
+                {spoilerModeOff
+                  ? 'All plot twists, climaxes, endings, and deep narrative breakdowns are fully visible.'
+                  : 'Plot climaxes and story twists are hidden behind protection blurs.'}
+              </div>
+            </div>
+          </div>
+
+          <button
+            onClick={() => setSpoilerModeOff(!spoilerModeOff)}
+            className="btn-primary"
+            style={{
+              background: spoilerModeOff ? '#e11d48' : '#0284c7',
+              borderColor: spoilerModeOff ? '#be123c' : '#0369a1',
+              color: '#ffffff',
+              fontSize: '0.82rem',
+              padding: '0.45rem 0.95rem'
+            }}
+          >
+            {spoilerModeOff ? <EyeOff size={15} /> : <Eye size={15} />}
+            {spoilerModeOff ? 'Turn Spoiler Shield ON' : 'Turn Spoiler Mode OFF (Show Climax)'}
+          </button>
         </div>
       </div>
 
@@ -59,7 +106,8 @@ export default function CultureSportsSection() {
             )}
             <div className="grid-2">
               {filteredMedia.map(item => {
-                const isUnlocked = unlockedSpoilers[item.id] || !item.spoilerContent.hasSpoilers;
+                // If global Spoiler Mode is OFF, OR item has no spoilers, OR card was individually unlocked
+                const isUnlocked = spoilerModeOff || unlockedSpoilers[item.id] || !item.spoilerContent.hasSpoilers;
 
                 return (
                   <div key={item.id} className="media-card">
@@ -101,28 +149,30 @@ export default function CultureSportsSection() {
 
                       {/* Spoiler Guard Box */}
                       {item.spoilerContent.hasSpoilers && (
-                        <div className="spoiler-box">
+                        <div className="spoiler-box" style={{ borderColor: isUnlocked ? '#a7f3d0' : '#fecdd3', background: isUnlocked ? '#ecfdf5' : '#fff1f2' }}>
                           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
-                            <span style={{ fontSize: '0.78rem', fontWeight: 600, color: 'var(--accent-rose)', display: 'flex', alignItems: 'center', gap: '0.4rem', fontFamily: 'var(--font-mono)' }}>
-                              Plot Spoilers Hidden
+                            <span style={{ fontSize: '0.78rem', fontWeight: 600, color: isUnlocked ? '#047857' : 'var(--accent-rose)', display: 'flex', alignItems: 'center', gap: '0.4rem', fontFamily: 'var(--font-mono)' }}>
+                              {isUnlocked ? '[UNCENSORED CLIMAX & PLOT ANALYSIS]' : '[PLOT SPOILERS HIDDEN]'}
                             </span>
                             {isUnlocked && <span style={{ fontSize: '0.75rem', color: 'var(--accent-emerald)', display: 'flex', alignItems: 'center', gap: '0.2rem', fontFamily: 'var(--font-mono)' }}><Unlock size={12} /> Unlocked</span>}
                           </div>
 
                           <div className={`spoiler-content ${isUnlocked ? '' : 'blurred'}`}>
-                            <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginBottom: '0.5rem' }}><strong>Climax Analysis:</strong> {item.spoilerContent.twistSummary}</p>
+                            <p style={{ fontSize: '0.88rem', color: isUnlocked ? '#064e3b' : 'var(--text-muted)', marginBottom: '0.5rem', lineHeight: '1.5' }}>
+                              <strong>Climax Analysis:</strong> {item.spoilerContent.twistSummary}
+                            </p>
                             <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap' }}>
                               {item.spoilerContent.keyThemes.map((theme, idx) => (
-                                <span key={idx} style={{ fontSize: '0.72rem', background: 'var(--bg-secondary)', padding: '0.2rem 0.5rem', borderRadius: '4px', color: 'var(--text-muted)', border: '1px solid var(--border-muted)' }}>#{theme}</span>
+                                <span key={idx} style={{ fontSize: '0.72rem', background: isUnlocked ? '#d1fae5' : 'var(--bg-secondary)', padding: '0.2rem 0.5rem', borderRadius: '4px', color: isUnlocked ? '#047857' : 'var(--text-muted)', border: '1px solid var(--border-muted)', fontFamily: 'var(--font-mono)' }}>#{theme}</span>
                               ))}
                             </div>
                           </div>
 
                           {!isUnlocked && (
-                            <div className="spoiler-overlay-toggle" onClick={() => toggleSpoiler(item.id)}>
+                            <div className="spoiler-overlay-toggle" onClick={() => toggleSingleSpoiler(item.id)}>
                               <Eye size={20} style={{ color: 'var(--accent-rose)' }} />
                               <span style={{ fontSize: '0.85rem', fontWeight: 600 }}>Click to reveal plot breakdown</span>
-                              <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>Contains key story twists</span>
+                              <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>Or toggle Spoiler Mode OFF above</span>
                             </div>
                           )}
                         </div>
