@@ -21,12 +21,12 @@ export default function Hero({ onNavigate }) {
               src="./ujjwal_avatar.jpeg"
               alt={PROFILE_DATA.name}
               style={{
-                width: '76px',
-                height: '76px',
-                borderRadius: '12px',
+                width: '96px',
+                height: '96px',
+                borderRadius: '14px',
                 objectFit: 'cover',
-                border: '2px solid var(--accent-indigo)',
-                boxShadow: '0 4px 14px rgba(67, 56, 202, 0.18)',
+                border: '2.5px solid var(--accent-indigo)',
+                boxShadow: '0 6px 18px rgba(67, 56, 202, 0.22)',
                 flexShrink: 0
               }}
             />

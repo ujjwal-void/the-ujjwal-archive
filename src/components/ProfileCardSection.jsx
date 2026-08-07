@@ -86,7 +86,7 @@ END:VCARD`;
             <img
               src="./ujjwal_avatar.jpeg"
               alt={PROFILE_DATA.name}
-              style={{ width: '76px', height: '76px', borderRadius: '10px', objectFit: 'cover', border: '2px solid #4338ca', flexShrink: 0, boxShadow: '0 4px 12px rgba(67, 56, 202, 0.15)' }}
+              style={{ width: '90px', height: '90px', borderRadius: '12px', objectFit: 'cover', border: '2px solid #4338ca', flexShrink: 0, boxShadow: '0 4px 14px rgba(67, 56, 202, 0.2)' }}
             />
             <div style={{ flex: 1 }}>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
