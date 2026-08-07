@@ -1,11 +1,11 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import { Terminal as TerminalIcon, CornerDownLeft } from 'lucide-react';
 import { PROJECTS_DATA, MEDIA_DATA, TECH_ESSAYS, PHYSICS_MATH_NOTES, SPORTS_TAKES } from '../data/portfolioData';
 
 export default function TerminalConsole({ onNavigate }) {
   const [history, setHistory] = useState([
     { type: 'output', text: 'UJJWAL_ARCHIVE_OS v2.4 (x86_64-pc-linux-gnu)' },
-    { type: 'output', text: 'Type "help" or "ls" to explore the digital brain. Try "cat manifesto" or "grep vector".' }
+    { type: 'output', text: 'Type "help" or "ls" to explore. Try "cat manifesto", "cd physics", or "grep RAG".' }
   ]);
   const [input, setInput] = useState('');
   const inputRef = useRef(null);
@@ -82,25 +82,52 @@ export default function TerminalConsole({ onNavigate }) {
   };
 
   return (
-    <div style={{ background: 'var(--bg-card)', border: '1px solid var(--border-muted)', borderRadius: 'var(--radius-md)', padding: '1rem', fontFamily: 'var(--font-mono)', fontSize: '0.82rem', marginBottom: '1rem', boxShadow: 'var(--shadow-subtle)' }}>
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderBottom: '1px solid var(--border-muted)', paddingBottom: '0.6rem', marginBottom: '0.8rem' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--accent-indigo)', fontWeight: 700 }}>
-          <TerminalIcon size={16} />
-          <span>UJJWAL_CLI_SHELL</span>
+    <div style={{
+      background: '#090d16',
+      border: '2px solid #1e293b',
+      borderRadius: 'var(--radius-md)',
+      padding: '1rem',
+      fontFamily: 'var(--font-mono)',
+      fontSize: '0.82rem',
+      marginBottom: '1rem',
+      boxShadow: '0 8px 24px rgba(15, 23, 42, 0.15)'
+    }}>
+      {/* Terminal Top Window Bar */}
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderBottom: '1px solid #1e293b', paddingBottom: '0.6rem', marginBottom: '0.8rem' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+          <div style={{ display: 'flex', gap: '5px' }}>
+            <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#ef4444' }} />
+            <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#f59e0b' }} />
+            <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#10b981' }} />
+          </div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: '#38bdf8', fontWeight: 700, fontSize: '0.78rem' }}>
+            <TerminalIcon size={14} />
+            <span>UJJWAL_CLI_SHELL</span>
+          </div>
         </div>
-        <span style={{ color: 'var(--text-dim)', fontSize: '0.72rem' }}>Interactive Terminal • Type "help"</span>
+        <span style={{ color: '#64748b', fontSize: '0.72rem' }}>Type "help" • bash</span>
       </div>
 
-      <div style={{ maxHeight: '180px', overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '0.4rem', color: 'var(--text-muted)' }}>
+      {/* Output Console Stream */}
+      <div style={{ maxHeight: '180px', overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '0.4rem', color: '#cbd5e1' }}>
         {history.map((item, idx) => (
-          <div key={idx} style={{ color: item.type === 'command' ? 'var(--accent-indigo)' : 'var(--text-main)', fontWeight: item.type === 'command' ? 600 : 400, whiteSpace: 'pre-wrap' }}>
+          <div
+            key={idx}
+            style={{
+              color: item.type === 'command' ? '#38bdf8' : '#e2e8f0',
+              fontWeight: item.type === 'command' ? 600 : 400,
+              whiteSpace: 'pre-wrap',
+              lineHeight: '1.5'
+            }}
+          >
             {item.text}
           </div>
         ))}
       </div>
 
-      <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginTop: '0.8rem', borderTop: '1px solid var(--border-muted)', paddingTop: '0.6rem' }}>
-        <span style={{ color: 'var(--accent-indigo)', fontWeight: 700 }}>$</span>
+      {/* CLI Input Line */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginTop: '0.8rem', borderTop: '1px solid #1e293b', paddingTop: '0.6rem' }}>
+        <span style={{ color: '#10b981', fontWeight: 700 }}>$</span>
         <input
           ref={inputRef}
           type="text"
@@ -108,9 +135,17 @@ export default function TerminalConsole({ onNavigate }) {
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={handleCommand}
           placeholder="Type command e.g. 'help', 'ls', 'cat manifesto'..."
-          style={{ flex: 1, background: 'transparent', border: 'none', outline: 'none', color: 'var(--text-main)', fontFamily: 'var(--font-mono)', fontSize: '0.82rem' }}
+          style={{
+            flex: 1,
+            background: 'transparent',
+            border: 'none',
+            outline: 'none',
+            color: '#f8fafc',
+            fontFamily: 'var(--font-mono)',
+            fontSize: '0.82rem'
+          }}
         />
-        <CornerDownLeft size={14} style={{ color: 'var(--text-dim)' }} />
+        <CornerDownLeft size={14} style={{ color: '#64748b' }} />
       </div>
     </div>
   );
