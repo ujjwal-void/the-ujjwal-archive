@@ -31,8 +31,8 @@ export default function LinktreeSection({ onNavigate }) {
   };
 
   const handleLinkClick = (link) => {
-    if (['resume-pdf', 'linkedin-profile', 'leetcode-profile'].includes(link.id) && !isRecruiter) {
-      // In public view without 'recruit' in URL, do not open confidential external links
+    if (['resume-pdf', 'leetcode-profile'].includes(link.id) && !isRecruiter) {
+      // Confidential items protected unless recruiter mode
       return;
     }
 

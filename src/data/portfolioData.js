@@ -284,7 +284,7 @@ export const LINKTREE_LINKS = [
   },
   {
     id: "leetcode-profile",
-    title: "🧩 LeetCode (@ujjwal92)",
+    title: "🧩 LeetCode Competitive Coding",
     description: "Algorithmic Problem Solving & Data Structures Profile",
     url: "https://leetcode.com/u/ujjwal92/",
     icon: "Code2",
