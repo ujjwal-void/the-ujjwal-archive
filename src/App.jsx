@@ -4,6 +4,7 @@ import GlobalSearch from './components/GlobalSearch';
 import Hero from './components/Hero';
 import ExperienceSection from './components/ExperienceSection';
 import ProjectsSection from './components/ProjectsSection';
+import ProfileCardSection from './components/ProfileCardSection';
 import TechEssaysSection from './components/TechEssaysSection';
 import PhysicsMathSection from './components/PhysicsMathSection';
 import CultureSportsSection from './components/CultureSportsSection';
@@ -41,6 +42,10 @@ export default function App() {
         return <ExperienceSection />;
       case 'projects':
         return <ProjectsSection />;
+      case 'card':
+      case 'id':
+      case 'profile':
+        return <ProfileCardSection />;
       case 'essays':
       case 'teaching':
         return <TechEssaysSection />;

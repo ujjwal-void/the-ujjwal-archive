@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Menu, X, Zap, Briefcase, Cpu, Film, FileText, Atom, Link as LinkIcon } from 'lucide-react';
+import { Menu, X, Zap, Briefcase, Cpu, Film, FileText, Atom, CreditCard, Link as LinkIcon } from 'lucide-react';
 
 export default function Navbar({ activeRoute, onNavigate }) {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -38,6 +38,11 @@ export default function Navbar({ activeRoute, onNavigate }) {
             </button>
           </li>
           <li>
+            <button className={`nav-btn ${activeRoute === 'card' ? 'active' : ''}`} onClick={() => handleNav('card')}>
+              <CreditCard size={15} /> Profile Card
+            </button>
+          </li>
+          <li>
             <button className={`nav-btn ${activeRoute === 'essays' || activeRoute === 'teaching' ? 'active' : ''}`} onClick={() => handleNav('essays')}>
               <FileText size={15} /> Tech Essays
             </button>
@@ -49,7 +54,7 @@ export default function Navbar({ activeRoute, onNavigate }) {
           </li>
           <li>
             <button className={`nav-btn ${activeRoute === 'culture' || activeRoute === 'media' || activeRoute === 'sports' ? 'active' : ''}`} onClick={() => handleNav('culture')}>
-              <Film size={15} /> Culture & Sports
+              <Film size={15} /> Culture
             </button>
           </li>
           <li>
@@ -76,6 +81,9 @@ export default function Navbar({ activeRoute, onNavigate }) {
           </button>
           <button className={`mobile-nav-btn ${activeRoute === 'projects' ? 'active' : ''}`} onClick={() => handleNav('projects')}>
             🧠 Projects
+          </button>
+          <button className={`mobile-nav-btn ${activeRoute === 'card' ? 'active' : ''}`} onClick={() => handleNav('card')}>
+            🎴 Digital Profile Card
           </button>
           <button className={`mobile-nav-btn ${activeRoute === 'essays' || activeRoute === 'teaching' ? 'active' : ''}`} onClick={() => handleNav('essays')}>
             📝 Tech Essays & Explanations
