@@ -1,8 +1,7 @@
 import React from 'react';
-import { Zap, Link as LinkIcon, Film, Cpu, FileText } from 'lucide-react';
+import { Zap, Film, Cpu, FileText } from 'lucide-react';
 import { PROFILE_DATA } from '../data/portfolioData';
 import TerminalConsole from './TerminalConsole';
-import ActivityHeatmap from './ActivityHeatmap';
 
 export default function Hero({ onNavigate }) {
   return (
@@ -89,11 +88,8 @@ export default function Hero({ onNavigate }) {
         </div>
       </section>
 
-      {/* Activity Matrix / Study Log Heatmap */}
-      <ActivityHeatmap />
-
       {/* Feature Pillar Grid */}
-      <div className="grid-3">
+      <div className="grid-3" style={{ marginTop: '1.5rem' }}>
         <div className="card" style={{ cursor: 'pointer' }} onClick={() => onNavigate('projects')}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.8rem' }}>
             <Cpu size={26} style={{ color: 'var(--text-main)' }} />
