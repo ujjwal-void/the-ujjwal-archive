@@ -3,9 +3,8 @@ import Navbar from './components/Navbar';
 import GlobalSearch from './components/GlobalSearch';
 import Hero from './components/Hero';
 import ProjectsSection from './components/ProjectsSection';
-import MediaVaultSection from './components/MediaVaultSection';
 import TechEssaysSection from './components/TechEssaysSection';
-import SportsTakesSection from './components/SportsTakesSection';
+import CultureSportsSection from './components/CultureSportsSection';
 import LinktreeSection from './components/LinktreeSection';
 import AIDigitalTwinModal from './components/AIDigitalTwinModal';
 import Footer from './components/Footer';
@@ -38,13 +37,13 @@ export default function App() {
         return <Hero onNavigate={navigateTo} />;
       case 'projects':
         return <ProjectsSection />;
-      case 'media':
-        return <MediaVaultSection />;
       case 'essays':
       case 'teaching':
         return <TechEssaysSection />;
+      case 'culture':
+      case 'media':
       case 'sports':
-        return <SportsTakesSection />;
+        return <CultureSportsSection />;
       case 'links':
         return <LinktreeSection onNavigate={navigateTo} />;
       default:

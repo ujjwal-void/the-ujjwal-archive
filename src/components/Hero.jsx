@@ -34,8 +34,8 @@ export default function Hero({ onNavigate }) {
             <button onClick={() => onNavigate('essays')} className="btn-glass">
               <FileText size={16} /> Tech Essays
             </button>
-            <button onClick={() => onNavigate('media')} className="btn-glass">
-              <Film size={16} /> Media Notes
+            <button onClick={() => onNavigate('culture')} className="btn-glass">
+              <Film size={16} /> Culture & Sports
             </button>
           </div>
         </div>
@@ -112,13 +112,13 @@ export default function Hero({ onNavigate }) {
           <p style={{ fontSize: '0.88rem', color: 'var(--text-muted)' }}>Explaining technical topics in my own words — notes, architectures & personal perspectives.</p>
         </div>
 
-        <div className="card" style={{ cursor: 'pointer' }} onClick={() => onNavigate('media')}>
+        <div className="card" style={{ cursor: 'pointer' }} onClick={() => onNavigate('culture')}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.8rem' }}>
             <Film size={26} style={{ color: 'var(--text-main)' }} />
-            <span className="meta-tag">Media</span>
+            <span className="meta-tag">Culture & Sports</span>
           </div>
-          <h3 style={{ fontSize: '1.2rem', marginBottom: '0.4rem' }}>Books, Anime & Films</h3>
-          <p style={{ fontSize: '0.88rem', color: 'var(--text-muted)' }}>Stories that left an impression, with personal reflections & spoiler toggles.</p>
+          <h3 style={{ fontSize: '1.2rem', marginBottom: '0.4rem' }}>Culture & Sports</h3>
+          <p style={{ fontSize: '0.88rem', color: 'var(--text-muted)' }}>Media reviews (anime, movies, books with spoiler toggles) & sports tactical commentary.</p>
         </div>
       </div>
     </div>

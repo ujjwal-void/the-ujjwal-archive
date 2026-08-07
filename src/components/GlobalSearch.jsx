@@ -43,13 +43,13 @@ export default function GlobalSearch({ onNavigate }) {
 
     MEDIA_DATA.forEach(m => {
       if (m.title.toLowerCase().includes(q) || m.summary.toLowerCase().includes(q) || m.personalImpact.toLowerCase().includes(q)) {
-        matches.push({ type: `Media (${m.type})`, title: m.title, snippet: m.summary.substring(0, 85) + '...', route: 'media' });
+        matches.push({ type: `Culture (${m.type})`, title: m.title, snippet: m.summary.substring(0, 85) + '...', route: 'culture' });
       }
     });
 
     SPORTS_TAKES.forEach(s => {
       if (s.title.toLowerCase().includes(q) || s.opinion.toLowerCase().includes(q) || s.sport.toLowerCase().includes(q)) {
-        matches.push({ type: 'Sports Note', title: s.title, snippet: s.opinion.substring(0, 85) + '...', route: 'sports' });
+        matches.push({ type: 'Sports Note', title: s.title, snippet: s.opinion.substring(0, 85) + '...', route: 'culture' });
       }
     });
 
@@ -72,12 +72,12 @@ export default function GlobalSearch({ onNavigate }) {
           ref={searchInputRef}
           type="text"
           className="search-input"
-          placeholder="Search projects, tech essays, media notes, and sports commentary..."
+          placeholder="Search projects, tech essays, culture notes, and sports commentary..."
           value={query}
           onChange={handleInputChange}
           onFocus={() => setIsOpen(query.trim().length > 0)}
         />
-        <span style={{ fontSize: '0.72rem', background: 'rgba(255,255,255,0.05)', padding: '0.2rem 0.5rem', borderRadius: '4px', color: 'var(--text-dim)', fontFamily: 'var(--font-mono)' }}>
+        <span style={{ fontSize: '0.72rem', background: 'var(--bg-secondary)', padding: '0.2rem 0.5rem', borderRadius: '4px', color: 'var(--text-dim)', fontFamily: 'var(--font-mono)' }}>
           Ctrl + K
         </span>
       </div>

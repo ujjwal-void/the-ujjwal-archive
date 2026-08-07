@@ -8,11 +8,10 @@ export default function Footer({ onNavigate }) {
           Ujjwal's Digital Archive & Notes
         </p>
         <div style={{ display: 'flex', gap: '1.2rem', fontSize: '0.85rem', flexWrap: 'wrap', justifyContent: 'center' }}>
-          <button onClick={() => onNavigate('projects')} style={{ background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer' }}>Projects</button>
-          <button onClick={() => onNavigate('essays')} style={{ background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer' }}>Tech Essays</button>
-          <button onClick={() => onNavigate('media')} style={{ background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer' }}>Media Notes</button>
-          <button onClick={() => onNavigate('sports')} style={{ background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer' }}>Sports Notes</button>
-          <button onClick={() => onNavigate('links')} style={{ background: 'none', border: 'none', color: 'var(--text-main)', cursor: 'pointer' }}>Linktree</button>
+          <button onClick={() => onNavigate('projects')} style={{ background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer', fontWeight: 600 }}>Projects</button>
+          <button onClick={() => onNavigate('essays')} style={{ background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer', fontWeight: 600 }}>Tech Essays</button>
+          <button onClick={() => onNavigate('culture')} style={{ background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer', fontWeight: 600 }}>Culture & Sports</button>
+          <button onClick={() => onNavigate('links')} style={{ background: 'none', border: 'none', color: 'var(--text-main)', cursor: 'pointer', fontWeight: 600 }}>Linktree</button>
         </div>
       </div>
     </footer>
