@@ -1,28 +1,28 @@
-// Core Dataset for Ujjwal's React Personal OS & Digital Sanctuary
+// Core Dataset for Ujjwal's Personal Digital Garden & Notes
 
 export const PROFILE_DATA = {
   name: "Ujjwal",
-  title: "AI Craftsman • Tech Educator • Media & Sports Analyst",
-  tagline: "Building intelligent systems & sharing the passion for tech, storytelling, and sports — purely for the love of the game.",
+  title: "Software Engineer & Educator",
+  tagline: "Building software, breaking down AI concepts, and sharing thoughts on cinema, literature, and sports.",
   location: "Global / Remote",
-  status: "🟢 Architecting Adaptive RAG & AI Companions",
-  bio: "Software engineer and educator driven by curiosity. I spend my time building AI agents, dissecting narrative masterpieces in anime/cinema/literature, writing about how to teach tech intuitively, and passionately debating sports hot takes.",
+  status: "Working on Adaptive RAG & AI Systems",
+  bio: "Software engineer and teacher driven by curiosity. I spend my time building retrieval systems, dissecting story structures in anime and films, writing visual tutorials for students, and following tactical strategy in sports.",
   socials: [
-    { name: "GitHub", url: "https://github.com", icon: "Github", label: "Open Source Code" },
-    { name: "Twitter / X", url: "https://twitter.com", icon: "Twitter", label: "Raw Takes & Threads" },
-    { name: "LinkedIn", url: "https://linkedin.com", icon: "Linkedin", label: "Professional Network" },
-    { name: "YouTube", url: "https://youtube.com", icon: "Youtube", label: "Teaching & Code Walks" }
+    { name: "GitHub", url: "https://github.com/ujjwal-void", icon: "Github", label: "Repositories" },
+    { name: "Twitter / X", url: "https://twitter.com", icon: "Twitter", label: "Thoughts" },
+    { name: "LinkedIn", url: "https://linkedin.com", icon: "Linkedin", label: "Professional" },
+    { name: "YouTube", url: "https://youtube.com", icon: "Youtube", label: "Tutorials" }
   ]
 };
 
 export const LINKTREE_LINKS = [
   {
     id: "portfolio-main",
-    title: "⚡ Full Interactive Sanctuary & OS",
-    description: "Explore projects, media essays, teaching blogs & sports feed",
+    title: "⚡ Digital Garden & Notes",
+    description: "Projects, media reviews, teaching articles & sports notes",
     url: "#home",
     icon: "Sparkles",
-    badge: "Featured",
+    badge: "Main",
     highlight: true
   },
   {
@@ -31,36 +31,36 @@ export const LINKTREE_LINKS = [
     description: "Self-correcting retrieval augmented generation engine",
     url: "#projects",
     icon: "Cpu",
-    badge: "AI Architecture"
+    badge: "Project"
   },
   {
     id: "teaching-blog",
-    title: "📚 How I Teach: Intuitive Tech Blogs",
+    title: "📚 Teaching & Tech Articles",
     description: "Breaking down complex CS & AI concepts step-by-step",
     url: "#teaching",
     icon: "BookOpen",
-    badge: "Articles"
+    badge: "Writing"
   },
   {
     id: "media-vault",
-    title: "🍿 Media Vault: Anime, Movies & Books",
-    description: "Personal reviews + Spoiler Shield & Relatability Scores",
+    title: "🍿 Media Notes: Anime, Movies & Books",
+    description: "Personal reflections with spoiler toggles",
     url: "#media",
     icon: "Film",
-    badge: "Curation"
+    badge: "Curated"
   },
   {
     id: "sports-feed",
-    title: "⚽ Sports News & Unfiltered Takes",
-    description: "Tactical analysis, F1 telemetry & game reactions",
+    title: "⚽ Sports Commentary & Tactics",
+    description: "Tactical analysis on football, F1 & basketball",
     url: "#sports",
     icon: "Trophy",
-    badge: "Live Takes"
+    badge: "Notes"
   },
   {
     id: "ai-twin",
-    title: "🤖 Chat with My AI Digital Companion",
-    description: "Ask my AI assistant about my code, recommendations & opinions",
+    title: "🤖 Ask My AI Assistant",
+    description: "Inquire about my code, reading list, or recommendations",
     url: "#ai-twin",
     icon: "Bot",
     badge: "Interactive"
@@ -71,50 +71,50 @@ export const PROJECTS_DATA = [
   {
     id: "adaptive-rag-search",
     title: "Adaptive RAG Search System",
-    category: "AI Engineering & Graph RAG",
-    tagline: "Dynamic self-correcting RAG pipeline using LangGraph & Qdrant.",
-    description: "An advanced Retrieval-Augmented Generation system that dynamically evaluates retrieval precision, executes web search fallbacks when confidence is low, and maintains long-term conversational memory.",
+    category: "AI & Graph RAG",
+    tagline: "Self-correcting retrieval pipeline with dynamic routing.",
+    description: "A retrieval-augmented generation engine that evaluates retrieval confidence in real time, rewrites ambiguous queries, and falls back to targeted web searches when local knowledge is insufficient.",
     tags: ["Python", "LangChain", "Qdrant", "MongoDB", "FastAPI"],
-    githubUrl: "https://github.com",
+    githubUrl: "https://github.com/ujjwal-void",
     demoUrl: "#",
-    metrics: { accuracy: "94.2%", latency: "180ms", testCoverage: "98%" },
+    metrics: { accuracy: "94.2%", latency: "180ms" },
     keyFeatures: [
       "Dynamic Router & Query Rewriter",
       "Vector + Graph hybrid retrieval",
       "Hallucination grading & automatic self-correction",
-      "Streamlit UI & REST API suite"
+      "REST API & interactive UI"
     ]
   },
   {
     id: "ai-spoiler-shield",
-    title: "AI Narrative Spoiler Guard",
-    category: "NLP & Front-End Security",
-    tagline: "Intelligent contextual spoiler masking for media reviews.",
-    description: "Real-time AI model interface that analyzes text sentiment and narrative climax points to shield readers from story twists based on their desired spoiler tolerance level.",
-    tags: ["JavaScript", "React", "Transformers.js", "CSS Modules"],
-    githubUrl: "https://github.com",
+    title: "Contextual Spoiler Shield",
+    category: "NLP & Front-End UI",
+    tagline: "Client-side narrative twist masking for reviews.",
+    description: "An interface pattern that parses review text for plot climaxes and key narrative turns, blurring sensitive sections until un-redacted by the reader.",
+    tags: ["JavaScript", "React", "Transformers.js", "CSS"],
+    githubUrl: "https://github.com/ujjwal-void",
     demoUrl: "#",
-    metrics: { precision: "99.1%", zeroServerLag: "Client-side" },
+    metrics: { latency: "<10ms" },
     keyFeatures: [
-      "Multi-tiered spoiler blur (Mild / Moderate / Deep)",
-      "Zero-latency client-side NLP execution",
-      "Dynamic hover reveal with warning previews"
+      "Tiered spoiler blur (Mild / Deep)",
+      "Client-side text parsing",
+      "Interactive click-to-reveal toggle"
     ]
   },
   {
     id: "sports-hype-pulse",
-    title: "Sports Hype Pulse & Tactical Analyzer",
-    category: "Data Analytics & WebSockets",
-    tagline: "Real-time sports sentiment aggregation & tactical commentary engine.",
-    description: "Pulls live match statistics, fan sentiment feeds, and tactical metrics to produce instant visual breakdown dashboards for major sporting events.",
+    title: "Sports Tactical Pulse",
+    category: "Data Analytics",
+    tagline: "Real-time match sentiment & tactical momentum dashboard.",
+    description: "Aggregates live match statistics, tactical metrics, and fan sentiment to visualize pressure swings during major sporting events.",
     tags: ["TypeScript", "React", "Next.js", "D3.js", "WebSockets"],
-    githubUrl: "https://github.com",
+    githubUrl: "https://github.com/ujjwal-void",
     demoUrl: "#",
-    metrics: { updateInterval: "500ms", activeUsers: "1,200+" },
+    metrics: { interval: "500ms" },
     keyFeatures: [
       "Live momentum & pressure graphs",
-      "Tactical heatmaps & player impact rating",
-      "Interactive commentary timeline"
+      "Tactical positioning heatmaps",
+      "Match timeline commentary"
     ]
   }
 ];
@@ -127,15 +127,15 @@ export const MEDIA_DATA = [
     creator: "White Fox / Chiyomaru Shikura",
     year: "2011",
     relatabilityScore: 98,
-    impactRating: "Life Changing",
+    impactRating: "Essential",
     image: "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600&auto=format&fit=crop&q=80",
-    summary: "A self-proclaimed mad scientist inadvertently discovers time travel via a modified microwave, triggering a perilous struggle against secret organizations and world timeline convergence.",
-    personalImpact: "Steins;Gate profoundly shaped how I view perseverance, cause-and-effect in software architecture, and the emotional weight of choices. Okabe's relentless drive to save those he cares about resonates deeply with the spirit of never giving up on solving a complex problem.",
+    summary: "A self-proclaimed scientist accidentally discovers timeline manipulation, leading to a desperate attempt to undo unintended consequences across converging world lines.",
+    personalImpact: "Steins;Gate shaped how I think about cause-and-effect in software architecture. Okabe's persistent iterations to find a viable path resonate with how complex engineering problems get solved.",
     spoilerContent: {
       hasSpoilers: true,
-      twistSummary: "Okabe must traverse endless time loops in World Line Beta and Alpha, ultimately sacrificing Kurisu's initial timeline to reach the elusive 'Steins Gate' timeline where both Kurisu and Mayuri survive.",
-      keyThemes: ["Timeline Divergence", "Sacrifice", "Determinism vs Free Will"],
-      aiOpinion: "Ujjwal rates Episode 22 and Episode 23 as peak storytelling. The execution of deceiving one's past self to save the future is a masterclass in narrative engineering."
+      twistSummary: "Okabe traverses Beta and Alpha world lines, ultimately deceiving his past self to reach the 'Steins Gate' line where both Kurisu and Mayuri survive.",
+      keyThemes: ["Timeline Divergence", "Consequence", "Determinism vs Choice"],
+      aiOpinion: "Episode 22 & 23 demonstrate masterclass narrative structure—deceiving past observations to change the future without altering established history."
     }
   },
   {
@@ -145,15 +145,15 @@ export const MEDIA_DATA = [
     creator: "Christopher Nolan",
     year: "2014",
     relatabilityScore: 95,
-    impactRating: "Profound Inspiration",
+    impactRating: "Favorite",
     image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&auto=format&fit=crop&q=80",
-    summary: "When Earth becomes uninhabitable, a team of ex-NASA astronauts travels through a wormhole near Saturn in search of a new home for humanity.",
-    personalImpact: "Hans Zimmer's score paired with Nolan's depiction of time dilation on Miller's Planet reminds me of how precious time is. The idea that 'love is the one thing we're capable of perceiving that transcends dimensions of time and space' inspires both my creative work and code.",
+    summary: "Faced with global crop blight, a team of pilots travels through a wormhole near Saturn to find a habitational alternative for humanity.",
+    personalImpact: "The depiction of gravitational time dilation on Miller's Planet is a striking reminder of time's non-linear value. It inspires a thoughtful approach to both life priorities and async programming.",
     spoilerContent: {
       hasSpoilers: true,
-      twistSummary: "Cooper drops into the Tesseract inside Gargantua, created by future 5th-dimensional humans, allowing him to manipulate gravity in Murph's bedroom in the past to transmit quantum data via Morse code on her watch.",
-      keyThemes: ["Gravitational Time Dilation", "Parental Devotion", "Relativity"],
-      aiOpinion: "Interstellar is Ujjwal's go-to film when designing complex async algorithms—reminding him that time and execution flow are non-linear."
+      twistSummary: "Cooper enters the 5-dimensional Tesseract inside Gargantua, using gravity to send quantum data back to Murph in Morse code on her childhood watch.",
+      keyThemes: ["Time Dilation", "Devotion", "Relativity"],
+      aiOpinion: "A visually and musically grounded story about human connection transcending physical constraints."
     }
   },
   {
@@ -163,15 +163,15 @@ export const MEDIA_DATA = [
     creator: "James Clear",
     year: "2018",
     relatabilityScore: 99,
-    impactRating: "Daily Blueprint",
+    impactRating: "Practical",
     image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80",
-    summary: "A practical framework for improving every day by focusing on tiny 1% systems, identity-based habits, and environment design rather than willpower alone.",
-    personalImpact: "This book changed my approach to mastering new frameworks and engineering disciplines. Instead of trying to learn an entire stack overnight, focusing on continuous daily iteration yields compound interest in technical mastery.",
+    summary: "A practical framework for small, 1% daily improvements, identity-driven habits, and thoughtful environment design.",
+    personalImpact: "Shifted my approach from trying to master an entire stack in a weekend to small, consistent daily engineering habits that compound over time.",
     spoilerContent: {
       hasSpoilers: false,
-      twistSummary: "No narrative spoilers—key insight is focusing on system design rather than arbitrary goal setting.",
-      keyThemes: ["1% Compound Improvement", "Identity-Based Habits", "Environment Design"],
-      aiOpinion: "Ujjwal applies the 4 Laws of Behavior Change to code refactoring: Make it obvious, attractive, easy, and satisfying."
+      twistSummary: "Key takeaway: Focus on system architecture rather than arbitrary end targets.",
+      keyThemes: ["Compounding", "Systems vs Goals", "Environment Design"],
+      aiOpinion: "Clear's framework maps naturally to code refactoring: make good patterns easy and friction-free."
     }
   },
   {
@@ -183,13 +183,13 @@ export const MEDIA_DATA = [
     relatabilityScore: 96,
     impactRating: "Masterpiece",
     image: "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600&auto=format&fit=crop&q=80",
-    summary: "Humanity lives inside cities surrounded by enormous walls that protect them from gigantic man-eating humanoids called Titans, until a colossal titan breaches the outer wall.",
-    personalImpact: "Isayama's storytelling showcases how perspectives shift when context is revealed. It taught me empathy in problem solving: every system behavior makes sense once you understand its underlying environment and historical constraints.",
+    summary: "Humanity lives inside walled cities to stay safe from Titans, until a breach exposes centuries of hidden world history.",
+    personalImpact: "Isayama's narrative demonstrates how perspective shifts when context is revealed. A reminder that in software debugging, behavior makes sense once environment history is understood.",
     spoilerContent: {
       hasSpoilers: true,
-      twistSummary: "The Titans are actually transformed humans of the Eldian race, and Paradise Island is an isolated fragment of a broader technological world (Marley) holding Eldians in ghettos.",
-      keyThemes: ["Freedom", "Cycle of Hatred", "Perspective & Morality"],
-      aiOpinion: "Ujjwal admires the unbelievable foreshadowing from Chapter 1 to the end, using it as an ideal example of system architecture foresight."
+      twistSummary: "The Titans are Eldians, and Paradise Island is an isolated fragment of a technologically advanced world beyond the walls.",
+      keyThemes: ["Perspective", "Cycle of Conflict", "Freedom"],
+      aiOpinion: "An incredible study in long-term structural planning and narrative foreshadowing."
     }
   }
 ];
@@ -202,15 +202,15 @@ export const TEACHING_BLOGS = [
     readTime: "8 min read",
     date: "Aug 2026",
     videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-    excerpt: "Why explaining vector embeddings as multi-dimensional fruit maps helps students grasp semantic search instantly, without drowning in matrix math.",
-    codeSnippet: `// Intuitive RAG Pipeline Concept
+    excerpt: "Explaining vector embeddings using physical room spatial maps helps students grasp semantic search instantly, without drowning in matrix formulas.",
+    codeSnippet: `// Intuitive RAG Retrieval & Evaluation Flow
 async function queryAdaptiveRAG(userQuery) {
   const embedding = await generateVector(userQuery);
   const documents = await vectorDb.similaritySearch(embedding, { topK: 5 });
   
   const relevance = await evaluateRelevance(userQuery, documents);
   if (relevance.score < 0.7) {
-    // Self-Correction Fallback!
+    // Dynamic Fallback
     const webResults = await webSearchFallback(userQuery);
     return synthesizeAnswer(userQuery, [...documents, ...webResults]);
   }
@@ -218,31 +218,30 @@ async function queryAdaptiveRAG(userQuery) {
   return synthesizeAnswer(userQuery, documents);
 }`,
     teachingMethodology: [
-      "1. Analogy First: Compare vectors to spatial coordinates in a giant library.",
-      "2. Visual Diagrams: Trace data flow from User Query -> Router -> Retrieval -> Evaluation.",
-      "3. Fail-Safe Thinking: Teach students *why* RAG breaks before showing how to fix it.",
-      "4. Hands-on Refactoring: Build a 20-line baseline first, then layer graph routing."
+      "Start with physical analogies before code",
+      "Demystify framework black-boxes step-by-step",
+      "Analyze why systems fail before writing solutions",
+      "Build a minimalist 20-line baseline first"
     ]
   },
   {
     id: "for-the-love-of-the-game",
-    title: "For the Love of the Game: Why Craftsman Mindset Beats Hype Driven Dev",
-    category: "Philosophy & Growth",
+    title: "Craftsmanship in Software: Understanding Fundamentals",
+    category: "Engineering Philosophy",
     readTime: "6 min read",
     date: "Jul 2026",
     videoUrl: null,
-    excerpt: "In a world of shiny tools and AI auto-generators, true joy comes from deep technical mastery, understanding fundamentals, and building stuff just because it's beautiful.",
-    codeSnippet: `// The Craftsman Loop
-while (coding) {
-  understandUnderlyingMechanisms();
+    excerpt: "Tools and frameworks change constantly, but building lasting confidence comes from understanding fundamental mechanisms under the hood.",
+    codeSnippet: `// Continuous Learning Loop
+while (engineering) {
+  understandCoreMechanisms();
   writeCleanCode();
   refactorWithCare();
-  enjoyTheProcess(); // Pure passion
 }`,
     teachingMethodology: [
-      "Focus on 'Why' over 'How': Tools change every year, but fundamental principles remain constant.",
-      "Encourage tinkering: Build small toy compilers or custom algorithms to remove black-box magic.",
-      "Celebrate small wins: Debugging a tricky memory leak is just as rewarding as launching a product."
+      "Prioritize understanding 'Why' over just 'How'",
+      "Build small toy implementations to understand core concepts",
+      "Value clean structure and readability"
     ]
   }
 ];
@@ -250,29 +249,29 @@ while (coding) {
 export const SPORTS_TAKES = [
   {
     id: "champions-league-tactics-2026",
-    sport: "Football / Soccer",
-    title: "The Death of Static Positional Play & The Rise of Fluid Inversion",
+    sport: "Football",
+    title: "Fluid Positional Rotations & Dual Pivot Overloads",
     date: "Aug 04, 2026",
     hypeScore: 94,
-    opinion: "We are witnessing the complete evolution of modern tactical setups. Teams relying on rigid wing-hugging systems are getting dismantled by dynamic positional rotations. When fullbacks centralize as dual-pivots under high pressing, it creates an overload that traditional 4-3-3 defenses can't resolve.",
-    keyTakeaway: "Flexibility and rapid spatial recognition conquer static structure—in sports tactics and in distributed computing systems."
+    opinion: "Modern football tactics are moving away from rigid wing positions toward fluid central rotations. When fullbacks tuck inside as central pivots under pressure, it creates numerical overloads that static 4-3-3 setups struggle to contain.",
+    keyTakeaway: "Fluid spatial recognition beats static structure—a principle that applies equally to dynamic routing in distributed software systems."
   },
   {
     id: "f1-regulations-hype",
     sport: "Formula 1",
-    title: "Active Aerodynamics & Power Unit Battery Management Breakdown",
+    title: "Telemetry Optimization Under Active Aero Regulations",
     date: "Jul 28, 2026",
     hypeScore: 91,
-    opinion: "The new active aero rules and 50/50 electrical-to-ICE power split are forcing drivers to become energy strategists on every single straight. It's no longer just about raw apex speed; it's about telemetry optimization in real time.",
-    keyTakeaway: "Resource allocation under strict constraints brings out absolute engineering brilliance."
+    opinion: "Active aerodynamics and energy harvesting splits force drivers to manage battery deployment continuously on straights. Success is as much about real-time telemetry optimization as apex speed.",
+    keyTakeaway: "Managing finite system resources under tight constraints requires continuous monitoring and micro-adjustments."
   },
   {
     id: "nba-spacing-evolution",
     sport: "Basketball",
-    title: "Five-Out Offense & The Death of Non-Shooting Bigs",
+    title: "Five-Out Geometry & Offensive Gravity",
     date: "Jul 15, 2026",
     hypeScore: 88,
-    opinion: "If your center cannot shoot or make high-IQ passes from the top of the key, your offensive rating drops by 12 points in crunch time. Defensive gravity dictates modern geometry.",
-    keyTakeaway: "Every player on the court must be a multi-modal threat."
+    opinion: "When centers can shoot and make quick high-IQ passes from the perimeter, it stretches defense geometry and opens up driving lanes.",
+    keyTakeaway: "Every node in a system operates better when components are multi-functional threats."
   }
 ];

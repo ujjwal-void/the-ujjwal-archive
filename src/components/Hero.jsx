@@ -1,5 +1,5 @@
 import React from 'react';
-import { Terminal, Zap, Link as LinkIcon, Film, Cpu, BookOpen, Trophy } from 'lucide-react';
+import { Zap, Link as LinkIcon, Film, Cpu, BookOpen } from 'lucide-react';
 import { PROFILE_DATA } from '../data/portfolioData';
 
 export default function Hero({ onNavigate }) {
@@ -12,21 +12,25 @@ export default function Hero({ onNavigate }) {
             {PROFILE_DATA.status}
           </div>
           
-          <h1>Crafting Systems & Narratives <span className="gradient-text">For the Love of the Game.</span></h1>
+          <h1>Hi, I'm <span className="gradient-text">{PROFILE_DATA.name}</span></h1>
           
+          <p className="hero-subtitle">
+            {PROFILE_DATA.tagline}
+          </p>
+
           <div className="manifesto-callout">
-            "Software engineering, narrative storytelling in anime/cinema, and sports tactics are all manifestations of the same thing: pure human craftsmanship. I build, teach, and analyze strictly for the love of the game."
+            "I'm fascinated by how complex systems work under the hood—whether that's an adaptive RAG pipeline, the narrative time-loops of Steins;Gate, or tactical rotations in football."
           </div>
 
           <div className="hero-actions">
             <button onClick={() => onNavigate('projects')} className="btn-primary">
-              <Zap size={18} /> Craftsman Projects
+              <Zap size={17} /> View Projects
             </button>
             <button onClick={() => onNavigate('media')} className="btn-glass">
-              <Film size={18} /> Media Vault
+              <Film size={17} /> Media Notes
             </button>
             <button onClick={() => onNavigate('links')} className="btn-glass linktree-highlight">
-              <LinkIcon size={18} /> Bio Linktree
+              <LinkIcon size={17} /> Linktree
             </button>
           </div>
         </div>
@@ -40,40 +44,40 @@ export default function Hero({ onNavigate }) {
               <span className="dot dot-green"></span>
             </div>
             <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: 'var(--text-dim)' }}>
-              UJJWAL_WORKBENCH_STREAM_v2.4
+              ujjwal/workspace
             </span>
           </div>
 
           <div className="workbench-stream-list">
             <div className="stream-item">
-              <span className="meta-tag meta-cyan" style={{ shrink: 0 }}>BUILDING</span>
+              <span className="meta-tag meta-cyan">Building</span>
               <div>
-                <div style={{ fontSize: '0.88rem', fontWeight: 700, color: 'var(--text-main)' }}>Adaptive Graph RAG Engine</div>
+                <div style={{ fontSize: '0.88rem', fontWeight: 600, color: 'var(--text-main)' }}>Adaptive Graph RAG Engine</div>
                 <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>Self-correcting retrieval & Qdrant vector index</div>
               </div>
             </div>
 
             <div className="stream-item">
-              <span className="meta-tag meta-amber" style={{ shrink: 0 }}>ANALYZING</span>
+              <span className="meta-tag meta-amber">Notes</span>
               <div>
-                <div style={{ fontSize: '0.88rem', fontWeight: 700, color: 'var(--accent-amber)' }}>Steins;Gate Timeline Logic</div>
-                <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>World Line Beta divergence & episode 22 climax</div>
+                <div style={{ fontSize: '0.88rem', fontWeight: 600, color: 'var(--accent-amber)' }}>Steins;Gate Narrative Logic</div>
+                <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>World Line Beta divergence & timeline convergence</div>
               </div>
             </div>
 
             <div className="stream-item">
-              <span className="meta-tag meta-emerald" style={{ shrink: 0 }}>TEACHING</span>
+              <span className="meta-tag meta-emerald">Teaching</span>
               <div>
-                <div style={{ fontSize: '0.88rem', fontWeight: 700, color: 'var(--accent-emerald)' }}>Intuition-First Vector Embeddings</div>
-                <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>Demystifying multi-dimensional math for students</div>
+                <div style={{ fontSize: '0.88rem', fontWeight: 600, color: 'var(--accent-emerald)' }}>Intuition-First Embeddings</div>
+                <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>Visual spatial analogies for vector search</div>
               </div>
             </div>
 
             <div className="stream-item">
-              <span className="meta-tag meta-rose" style={{ shrink: 0 }}>TACTICAL</span>
+              <span className="meta-tag meta-purple">Tactics</span>
               <div>
-                <div style={{ fontSize: '0.88rem', fontWeight: 700, color: 'var(--text-main)' }}>Fluid Inversion in Modern Football</div>
-                <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>Overloading central pivots under high press</div>
+                <div style={{ fontSize: '0.88rem', fontWeight: 600, color: 'var(--text-main)' }}>Fluid Inversion in Football</div>
+                <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>Central pivot overloads under high pressing</div>
               </div>
             </div>
           </div>
@@ -84,29 +88,29 @@ export default function Hero({ onNavigate }) {
       <div className="grid-3" style={{ marginTop: '2rem' }}>
         <div className="card" style={{ cursor: 'pointer' }} onClick={() => onNavigate('projects')}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.8rem' }}>
-            <Cpu size={32} style={{ color: 'var(--accent-cyan)' }} />
-            <span className="meta-tag meta-cyan">ENGINEERING</span>
+            <Cpu size={28} style={{ color: 'var(--accent-cyan)' }} />
+            <span className="meta-tag meta-cyan">Projects</span>
           </div>
-          <h3 style={{ fontSize: '1.25rem', marginBottom: '0.4rem' }}>Craftsman Projects</h3>
-          <p style={{ fontSize: '0.88rem', color: 'var(--text-muted)' }}>Self-correcting RAG search, vector databases, and NLP spoiler shields built with technical rigor.</p>
+          <h3 style={{ fontSize: '1.2rem', marginBottom: '0.4rem' }}>Software & AI</h3>
+          <p style={{ fontSize: '0.88rem', color: 'var(--text-muted)' }}>Self-correcting RAG search, vector databases, and NLP spoiler masking.</p>
         </div>
 
         <div className="card" style={{ cursor: 'pointer' }} onClick={() => onNavigate('media')}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.8rem' }}>
-            <Film size={32} style={{ color: 'var(--accent-amber)' }} />
-            <span className="meta-tag meta-amber">NARRATIVE</span>
+            <Film size={28} style={{ color: 'var(--accent-amber)' }} />
+            <span className="meta-tag meta-amber">Media</span>
           </div>
-          <h3 style={{ fontSize: '1.25rem', marginBottom: '0.4rem' }}>Classified Media Vault</h3>
-          <p style={{ fontSize: '0.88rem', color: 'var(--text-muted)' }}>Anime, cinema, and literature reviews with emotional impact essays & classified spoiler redaction shields.</p>
+          <h3 style={{ fontSize: '1.2rem', marginBottom: '0.4rem' }}>Books, Anime & Films</h3>
+          <p style={{ fontSize: '0.88rem', color: 'var(--text-muted)' }}>Stories that left an impression, with personal reflections & spoiler toggles.</p>
         </div>
 
         <div className="card" style={{ cursor: 'pointer' }} onClick={() => onNavigate('teaching')}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.8rem' }}>
-            <BookOpen size={32} style={{ color: 'var(--accent-emerald)' }} />
-            <span className="meta-tag meta-emerald">PEDAGOGY</span>
+            <BookOpen size={28} style={{ color: 'var(--accent-emerald)' }} />
+            <span className="meta-tag meta-emerald">Teaching</span>
           </div>
-          <h3 style={{ fontSize: '1.25rem', marginBottom: '0.4rem' }}>Intuitive Teaching Hub</h3>
-          <p style={{ fontSize: '0.88rem', color: 'var(--text-muted)' }}>Breaking down complex CS & AI concepts with visual analogies, videos, and step-by-step logic gates.</p>
+          <h3 style={{ fontSize: '1.2rem', marginBottom: '0.4rem' }}>Teaching & Tutorials</h3>
+          <p style={{ fontSize: '0.88rem', color: 'var(--text-muted)' }}>Breaking down complex CS & AI concepts into intuitive mental models.</p>
         </div>
       </div>
     </div>
