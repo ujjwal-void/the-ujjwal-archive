@@ -5,6 +5,7 @@ import Hero from './components/Hero';
 import ExperienceSection from './components/ExperienceSection';
 import ProjectsSection from './components/ProjectsSection';
 import ProfileCardSection from './components/ProfileCardSection';
+import RecruiterPortalView from './components/RecruiterPortalView';
 import TechEssaysSection from './components/TechEssaysSection';
 import PhysicsMathSection from './components/PhysicsMathSection';
 import CultureSportsSection from './components/CultureSportsSection';
@@ -19,8 +20,15 @@ export default function App() {
 
   useEffect(() => {
     const handleHashChange = () => {
-      const hash = window.location.hash.replace('#', '') || 'home';
-      setActiveRoute(hash);
+      const hash = window.location.hash.replace('#', '') || '';
+      const searchParams = new URLSearchParams(window.location.search);
+      const isRecruiterParam = searchParams.get('r') === '1' || searchParams.get('recruiter') === 'true';
+
+      if (hash === 'recruiter' || hash === 'hiring' || isRecruiterParam) {
+        setActiveRoute('recruiter');
+      } else {
+        setActiveRoute(hash || 'home');
+      }
       window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
@@ -42,6 +50,9 @@ export default function App() {
         return <ExperienceSection />;
       case 'projects':
         return <ProjectsSection />;
+      case 'recruiter':
+      case 'hiring':
+        return <RecruiterPortalView />;
       case 'card':
       case 'id':
       case 'profile':
