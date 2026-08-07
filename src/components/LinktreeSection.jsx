@@ -17,7 +17,7 @@ export default function LinktreeSection({ onNavigate }) {
       case 'Sparkles': return <Sparkles size={20} style={{ color: 'var(--accent-indigo)' }} />;
       case 'FileText': return <FileText size={20} style={{ color: 'var(--accent-emerald)' }} />;
       case 'Code2': return <Code2 size={20} style={{ color: 'var(--accent-amber)' }} />;
-      case 'Linkedin': return <Briefcase size={20} style={{ color: 'var(--accent-blue)' }} />;
+      case 'Briefcase': return <Briefcase size={20} style={{ color: 'var(--accent-blue)' }} />;
       case 'Cpu': return <Cpu size={20} style={{ color: 'var(--accent-purple)' }} />;
       case 'BookOpen': return <BookOpen size={20} style={{ color: 'var(--accent-emerald)' }} />;
       default: return <LinkIcon size={20} />;
@@ -35,9 +35,9 @@ export default function LinktreeSection({ onNavigate }) {
 
   return (
     <div className="linktree-standalone">
-      {/* Subtle Avatar Image */}
+      {/* Avatar Image */}
       <img
-        src="./ujjwal_avatar.png"
+        src="./ujjwal_avatar.jpeg"
         alt={PROFILE_DATA.name}
         className="linktree-avatar"
       />

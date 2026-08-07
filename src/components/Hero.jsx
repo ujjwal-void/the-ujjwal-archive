@@ -11,7 +11,7 @@ export default function Hero({ onNavigate }) {
         <div className="hero-text">
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', marginBottom: '1.2rem' }}>
             <img
-              src="./ujjwal_avatar.png"
+              src="./ujjwal_avatar.jpeg"
               alt={PROFILE_DATA.name}
               style={{ width: '42px', height: '42px', borderRadius: 'var(--radius-sm)', objectFit: 'cover', border: '1.5px solid var(--border-accent)', boxShadow: '0 2px 8px rgba(15,23,42,0.1)' }}
             />

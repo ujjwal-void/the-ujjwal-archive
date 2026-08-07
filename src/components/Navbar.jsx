@@ -14,7 +14,7 @@ export default function Navbar({ activeRoute, onNavigate }) {
       <nav className="nav-bar">
         <a href="#home" className="brand-logo" onClick={(e) => { e.preventDefault(); handleNav('home'); }}>
           <img
-            src="./ujjwal_avatar.png"
+            src="./ujjwal_avatar.jpeg"
             alt="Ujjwal"
             style={{ width: '28px', height: '28px', borderRadius: '6px', objectFit: 'cover', border: '1px solid var(--border-muted)' }}
           />
