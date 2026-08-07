@@ -5,7 +5,6 @@ import Hero from './components/Hero';
 import ExperienceSection from './components/ExperienceSection';
 import ProjectsSection from './components/ProjectsSection';
 import ProfileCardSection from './components/ProfileCardSection';
-import RecruiterPortalView from './components/RecruiterPortalView';
 import TechEssaysSection from './components/TechEssaysSection';
 import PhysicsMathSection from './components/PhysicsMathSection';
 import CultureSportsSection from './components/CultureSportsSection';
@@ -20,15 +19,10 @@ export default function App() {
 
   useEffect(() => {
     const handleHashChange = () => {
-      const hash = window.location.hash.replace('#', '') || '';
-      const searchParams = new URLSearchParams(window.location.search);
-      const isRecruiterParam = searchParams.get('r') === '1' || searchParams.get('recruiter') === 'true';
-
-      if (hash === 'recruiter' || hash === 'hiring' || isRecruiterParam) {
-        setActiveRoute('recruiter');
-      } else {
-        setActiveRoute(hash || 'home');
-      }
+      const hash = window.location.hash.replace('#', '') || 'home';
+      // Strip any recruit prefix from hash if present (e.g. recruit/experience -> experience)
+      const cleanRoute = hash.replace(/^recruit\/?/, '') || 'home';
+      setActiveRoute(cleanRoute);
       window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
@@ -38,7 +32,10 @@ export default function App() {
   }, []);
 
   const navigateTo = (route) => {
-    window.location.hash = route;
+    // Preserve recruit flag in hash if currently in recruit mode
+    const isRecruit = window.location.hash.includes('recruit') || window.location.pathname.includes('recruit') || window.location.search.includes('recruit');
+    const newHash = isRecruit ? `recruit/${route}` : route;
+    window.location.hash = newHash;
     setActiveRoute(route);
   };
 
@@ -50,9 +47,6 @@ export default function App() {
         return <ExperienceSection />;
       case 'projects':
         return <ProjectsSection />;
-      case 'recruiter':
-      case 'hiring':
-        return <RecruiterPortalView />;
       case 'card':
       case 'id':
       case 'profile':

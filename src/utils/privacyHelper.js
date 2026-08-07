@@ -1,8 +1,8 @@
-// Helper utility to detect if current URL is the Recruiter Pass URL
+// Exact Recruiter Route Check: returns true if URL path, hash, or search contains 'recruit'
 export function checkIsRecruiterMode() {
   if (typeof window === 'undefined') return false;
-  const hash = window.location.hash.replace('#', '');
-  const searchParams = new URLSearchParams(window.location.search);
-  const isRecruiterQuery = searchParams.get('r') === '1' || searchParams.get('recruiter') === 'true';
-  return hash === 'recruiter' || hash === 'hiring' || isRecruiterQuery;
+  const path = window.location.pathname.toLowerCase();
+  const hash = window.location.hash.toLowerCase();
+  const search = window.location.search.toLowerCase();
+  return path.includes('recruit') || hash.includes('recruit') || search.includes('recruit');
 }

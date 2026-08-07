@@ -30,19 +30,19 @@ export default function LinktreeSection({ onNavigate }) {
     }
   };
 
-  const handleLinkClick = (url) => {
-    if (url.startsWith('http')) {
-      window.open(url, '_blank', 'noopener,noreferrer');
+  const handleLinkClick = (link) => {
+    if (['resume-pdf', 'linkedin-profile', 'leetcode-profile'].includes(link.id) && !isRecruiter) {
+      // In public view without 'recruit' in URL, do not open confidential external links
+      return;
+    }
+
+    if (link.url.startsWith('http')) {
+      window.open(link.url, '_blank', 'noopener,noreferrer');
     } else {
-      const route = url.replace('#', '') || 'home';
+      const route = link.url.replace('#', '') || 'home';
       onNavigate(route);
     }
   };
-
-  // Filter out LeetCode & LinkedIn & Resume from public linktree view
-  const visibleLinks = isRecruiter
-    ? LINKTREE_LINKS
-    : LINKTREE_LINKS.filter(l => !['leetcode-profile', 'linkedin-profile', 'resume-pdf'].includes(l.id));
 
   return (
     <div className="linktree-standalone">
@@ -67,11 +67,11 @@ export default function LinktreeSection({ onNavigate }) {
       </div>
 
       <div className="linktree-card-list">
-        {visibleLinks.map(link => (
+        {LINKTREE_LINKS.map(link => (
           <div
             key={link.id}
             className={`linktree-link-item ${link.highlight ? 'highlight' : ''}`}
-            onClick={() => handleLinkClick(link.url)}
+            onClick={() => handleLinkClick(link)}
           >
             <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
               {getIcon(link.icon)}
