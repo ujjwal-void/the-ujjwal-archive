@@ -1,76 +1,37 @@
 import React from 'react';
-import { Briefcase, GraduationCap, Award, Mail, ExternalLink, Code2, Cpu, CheckCircle, CreditCard, Lock, ShieldCheck, ShieldAlert, Download } from 'lucide-react';
+import { Briefcase, GraduationCap, Award, Mail, Phone, ExternalLink, Code2, Cpu, CheckCircle, CreditCard } from 'lucide-react';
 import { PROFILE_DATA, WORK_EXPERIENCE, ACHIEVEMENTS, TECHNICAL_SKILLS } from '../data/portfolioData';
-import { useSecurityClearance } from '../context/SecurityClearanceContext';
-import RecruiterPrivacyShield from './RecruiterPrivacyShield';
 
 export default function ExperienceSection() {
-  const { isRecruiter, openModal } = useSecurityClearance();
-
   return (
     <div>
       {/* Header Banner */}
-      <div style={{ marginBottom: '2rem' }}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1rem', marginBottom: '0.8rem' }}>
-          <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '0.4rem' }}>
-              <span className="meta-tag meta-emerald">RECRUITER & CAREER ARCHIVE</span>
-              <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: 'var(--text-dim)' }}>[Gurugram, India]</span>
-            </div>
-            <h2 style={{ fontSize: '2.2rem', marginBottom: '0.4rem' }}>💼 Work Experience & Resume</h2>
-            <p style={{ color: 'var(--text-muted)' }}>Software Engineer specializing in AI/LLM architectures, high-concurrency backends, and microservices.</p>
-          </div>
-
-          {/* Recruiter Security Clearance Indicator Bar */}
-          <div
-            onClick={openModal}
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '0.6rem',
-              background: isRecruiter ? '#ecfdf5' : '#fef3c7',
-              border: `1.5px solid ${isRecruiter ? '#a7f3d0' : '#fde68a'}`,
-              padding: '0.5rem 0.9rem',
-              borderRadius: 'var(--radius-md)',
-              cursor: 'pointer',
-              boxShadow: 'var(--shadow-subtle)'
-            }}
-          >
-            {isRecruiter ? (
-              <ShieldCheck size={18} style={{ color: '#047857' }} />
-            ) : (
-              <Lock size={18} style={{ color: '#b45309' }} />
-            )}
-            <div>
-              <div style={{ fontSize: '0.78rem', fontWeight: 700, color: isRecruiter ? '#047857' : '#92400e', fontFamily: 'var(--font-mono)' }}>
-                {isRecruiter ? 'RECRUITER CLEARANCE: TIER-2 ACTIVE' : 'RECRUITER SHIELD: PUBLIC (TIER-1)'}
-              </div>
-              <div style={{ fontSize: '0.72rem', color: isRecruiter ? '#065f46' : '#b45309' }}>
-                {isRecruiter ? 'Full academic scores & contact unlocked' : 'Click to unlock academic marks & resume'}
-              </div>
-            </div>
-          </div>
+      <div style={{ marginBottom: '2.5rem' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '0.4rem' }}>
+          <span className="meta-tag meta-emerald">RECRUITER & CAREER ARCHIVE</span>
+          <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: 'var(--text-dim)' }}>[Gurugram, India]</span>
         </div>
+        <h2 style={{ fontSize: '2.2rem', marginBottom: '0.4rem' }}>💼 Work Experience & Resume</h2>
+        <p style={{ color: 'var(--text-muted)' }}>Software Engineer specializing in AI/LLM architectures, high-concurrency backends, and microservices.</p>
       </div>
 
       {/* Recruiter Quick Contact Box */}
       <div className="card" style={{ marginBottom: '2.5rem', background: '#e0e7ff', borderColor: '#c7d2fe', padding: '1.4rem' }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1rem' }}>
           <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <h3 style={{ fontSize: '1.3rem', color: '#1e1b4b', marginBottom: '0.2rem' }}>Ujjwal Ujjwal — Software Engineer</h3>
-              <span style={{ fontSize: '0.7rem', background: isRecruiter ? '#d1fae5' : '#fef3c7', color: isRecruiter ? '#047857' : '#b45309', border: '1px solid #a7f3d0', padding: '0.1rem 0.4rem', borderRadius: '4px', fontFamily: 'var(--font-mono)', fontWeight: 700 }}>
-                {isRecruiter ? 'CLEARANCE VERIFIED' : 'PROTECTED VIEW'}
-              </span>
-            </div>
-            <p style={{ fontSize: '0.88rem', color: '#3730a3' }}>{PROFILE_DATA.education.degree} • VIT Chennai</p>
+            <h3 style={{ fontSize: '1.3rem', color: '#1e1b4b', marginBottom: '0.2rem' }}>Ujjwal Ujjwal — Software Engineer</h3>
+            <p style={{ fontSize: '0.88rem', color: '#3730a3' }}>{PROFILE_DATA.education.degree} • VIT Chennai (2021-2025)</p>
           </div>
           <div style={{ display: 'flex', gap: '0.6rem', flexWrap: 'wrap', alignItems: 'center' }}>
             <a href="#card" onClick={() => window.location.hash = 'card'} className="btn-primary" style={{ fontSize: '0.82rem', padding: '0.45rem 0.9rem' }}>
               <CreditCard size={14} /> 🎴 Download 1-Page Profile Pass
             </a>
-            <RecruiterPrivacyShield type="email" />
-            <RecruiterPrivacyShield type="phone" />
+            <a href={`mailto:${PROFILE_DATA.email}`} className="btn-glass" style={{ fontSize: '0.82rem', padding: '0.45rem 0.9rem' }}>
+              <Mail size={14} /> {PROFILE_DATA.email}
+            </a>
+            <a href={`tel:${PROFILE_DATA.phone}`} className="btn-glass" style={{ fontSize: '0.82rem', padding: '0.45rem 0.9rem' }}>
+              <Phone size={14} /> {PROFILE_DATA.phone}
+            </a>
             <a href="https://www.linkedin.com/in/ujjwal-ujjwal-dev/" target="_blank" rel="noreferrer" className="btn-glass" style={{ fontSize: '0.82rem', padding: '0.45rem 0.9rem' }}>
               <ExternalLink size={14} /> LinkedIn
             </a>
@@ -166,7 +127,7 @@ export default function ExperienceSection() {
         </div>
       </div>
 
-      {/* Achievements & Education (Protected CGPA/Scores) */}
+      {/* Achievements & Education */}
       <div className="grid-2">
         <div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '1.2rem' }}>
@@ -189,69 +150,16 @@ export default function ExperienceSection() {
         <div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '1.2rem' }}>
             <GraduationCap size={22} style={{ color: 'var(--accent-indigo)' }} />
-            <h3 style={{ fontSize: '1.4rem' }}>Education & Marks</h3>
+            <h3 style={{ fontSize: '1.4rem' }}>Education & Academic Scores</h3>
           </div>
 
           <div className="card" style={{ padding: '1.4rem' }}>
             <span className="meta-tag meta-cyan" style={{ marginBottom: '0.5rem', display: 'inline-block' }}>{PROFILE_DATA.education.period}</span>
             <h4 style={{ fontSize: '1.2rem', marginBottom: '0.3rem' }}>{PROFILE_DATA.education.degree}</h4>
             <p style={{ fontSize: '0.95rem', fontWeight: 600, color: 'var(--accent-indigo)' }}>{PROFILE_DATA.education.institution}</p>
-            
-            {/* Protected CGPA Score */}
-            <div style={{ marginTop: '0.6rem', marginBottom: '0.6rem' }}>
-              <span style={{ fontSize: '0.78rem', color: 'var(--text-muted)', fontFamily: 'var(--font-mono)' }}>UNDERGRADUATE CGPA: </span>
-              {isRecruiter ? (
-                <span style={{ fontSize: '0.9rem', fontWeight: 800, color: '#047857', fontFamily: 'var(--font-mono)', background: '#d1fae5', padding: '0.2rem 0.6rem', borderRadius: '4px' }}>
-                  {PROFILE_DATA.education.gpa} (Verified)
-                </span>
-              ) : (
-                <button
-                  onClick={openModal}
-                  style={{
-                    fontSize: '0.75rem',
-                    background: '#fef3c7',
-                    border: '1px dashed #fde68a',
-                    color: '#92400e',
-                    padding: '0.2rem 0.5rem',
-                    borderRadius: '4px',
-                    cursor: 'pointer',
-                    fontFamily: 'var(--font-mono)',
-                    fontWeight: 600
-                  }}
-                >
-                  🔒 [LOCKED • Recruiter Clearance Required]
-                </button>
-              )}
-            </div>
-
-            {/* Protected Schooling Percentage */}
-            <div style={{ borderTop: '1px solid var(--border-muted)', marginTop: '0.8rem', paddingTop: '0.8rem' }}>
-              <span style={{ fontSize: '0.82rem', color: 'var(--text-muted)' }}><strong>Schooling (Class XII):</strong> Lucknow Public College</span>
-              <div style={{ marginTop: '0.3rem' }}>
-                <span style={{ fontSize: '0.78rem', color: 'var(--text-muted)', fontFamily: 'var(--font-mono)' }}>MARKS SCORE: </span>
-                {isRecruiter ? (
-                  <span style={{ fontSize: '0.85rem', fontWeight: 700, color: '#047857', fontFamily: 'var(--font-mono)' }}>
-                    83.25% (Class XII)
-                  </span>
-                ) : (
-                  <button
-                    onClick={openModal}
-                    style={{
-                      fontSize: '0.72rem',
-                      background: '#fef3c7',
-                      border: '1px dashed #fde68a',
-                      color: '#92400e',
-                      padding: '0.15rem 0.5rem',
-                      borderRadius: '4px',
-                      cursor: 'pointer',
-                      fontFamily: 'var(--font-mono)',
-                      fontWeight: 600
-                    }}
-                  >
-                    🔒 [LOCKED • Recruiter Pass]
-                  </button>
-                )}
-              </div>
+            <p style={{ fontSize: '0.88rem', color: '#047857', fontWeight: 700, marginTop: '0.4rem', fontFamily: 'var(--font-mono)' }}>CGPA: {PROFILE_DATA.education.gpa}</p>
+            <div style={{ borderTop: '1px solid var(--border-muted)', marginTop: '1rem', paddingTop: '0.8rem' }}>
+              <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}><strong>Schooling:</strong> {PROFILE_DATA.education.schooling}</p>
             </div>
           </div>
         </div>

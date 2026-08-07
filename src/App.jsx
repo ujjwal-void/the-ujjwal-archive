@@ -10,9 +10,7 @@ import PhysicsMathSection from './components/PhysicsMathSection';
 import CultureSportsSection from './components/CultureSportsSection';
 import LinktreeSection from './components/LinktreeSection';
 import AIDigitalTwinModal from './components/AIDigitalTwinModal';
-import SecurityClearanceModal from './components/SecurityClearanceModal';
 import Footer from './components/Footer';
-import { SecurityClearanceProvider } from './context/SecurityClearanceContext';
 import { Bot } from 'lucide-react';
 
 export default function App() {
@@ -66,40 +64,35 @@ export default function App() {
   };
 
   return (
-    <SecurityClearanceProvider>
-      <div className="app-container">
-        {/* Top Navbar (hidden on standalone linktree) */}
-        {activeRoute !== 'links' && (
-          <Navbar activeRoute={activeRoute} onNavigate={navigateTo} />
-        )}
+    <div className="app-container">
+      {/* Top Navbar (hidden on standalone linktree) */}
+      {activeRoute !== 'links' && (
+        <Navbar activeRoute={activeRoute} onNavigate={navigateTo} />
+      )}
 
-        {/* OS Search Bar (hidden on standalone linktree) */}
-        {activeRoute !== 'links' && (
-          <GlobalSearch onNavigate={navigateTo} />
-        )}
+      {/* OS Search Bar (hidden on standalone linktree) */}
+      {activeRoute !== 'links' && (
+        <GlobalSearch onNavigate={navigateTo} />
+      )}
 
-        {/* Main Dynamic View Content */}
-        <main className="container">
-          {renderSection()}
-        </main>
+      {/* Main Dynamic View Content */}
+      <main className="container">
+        {renderSection()}
+      </main>
 
-        {/* Floating AI Digital Companion Trigger */}
-        <button className="ai-twin-trigger" onClick={() => setAiModalOpen(true)} title="Ask Ujjwal's AI Assistant">
-          <Bot size={18} />
-          <span>Ask My AI</span>
-        </button>
+      {/* Floating AI Digital Companion Trigger */}
+      <button className="ai-twin-trigger" onClick={() => setAiModalOpen(true)} title="Ask Ujjwal's AI Assistant">
+        <Bot size={18} />
+        <span>Ask My AI</span>
+      </button>
 
-        {/* AI Digital Companion Drawer Modal */}
-        <AIDigitalTwinModal isOpen={aiModalOpen} onClose={() => setAiModalOpen(false)} />
+      {/* AI Digital Companion Drawer Modal */}
+      <AIDigitalTwinModal isOpen={aiModalOpen} onClose={() => setAiModalOpen(false)} />
 
-        {/* Recruiter Security Clearance Verification Modal */}
-        <SecurityClearanceModal />
-
-        {/* Footer */}
-        {activeRoute !== 'links' && (
-          <Footer onNavigate={navigateTo} />
-        )}
-      </div>
-    </SecurityClearanceProvider>
+      {/* Footer */}
+      {activeRoute !== 'links' && (
+        <Footer onNavigate={navigateTo} />
+      )}
+    </div>
   );
 }

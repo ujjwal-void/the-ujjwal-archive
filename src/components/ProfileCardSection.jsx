@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
-import { Download, Share2, Mail, Phone, MapPin, Briefcase, GraduationCap, Code2, ExternalLink, Check, Award, Lock, Unlock } from 'lucide-react';
+import { Download, Share2, Mail, Phone, MapPin, Briefcase, GraduationCap, Code2, ExternalLink, Check, Award } from 'lucide-react';
 import { PROFILE_DATA } from '../data/portfolioData';
-import RecruiterPrivacyShield from './RecruiterPrivacyShield';
 
 export default function ProfileCardSection() {
   const [copied, setCopied] = useState(false);
-  const [recruiterLinkCopied, setRecruiterLinkCopied] = useState(false);
 
   const handleDownloadVCard = () => {
     const vCardData = `BEGIN:VCARD
@@ -37,22 +35,21 @@ END:VCARD`;
     window.print();
   };
 
-  const handleCopyRecruiterLink = () => {
-    const recruiterUrl = window.location.origin + window.location.pathname + '?recruiter=true#card';
-    navigator.clipboard.writeText(recruiterUrl);
-    setRecruiterLinkCopied(true);
-    setTimeout(() => setRecruiterLinkCopied(false), 2000);
+  const handleCopyShare = () => {
+    navigator.clipboard.writeText(window.location.origin + window.location.pathname + '#card');
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
   };
 
   return (
     <div>
       <div className="no-print" style={{ marginBottom: '1.5rem' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '0.4rem' }}>
-          <span className="meta-tag meta-emerald">PRIVACY-PROTECTED DEVELOPER PASS</span>
-          <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: 'var(--text-dim)' }}>[Recruiter Shield Active]</span>
+          <span className="meta-tag meta-emerald">DEVELOPER PASS</span>
+          <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: 'var(--text-dim)' }}>[1-Page Executive ID]</span>
         </div>
         <h2 style={{ fontSize: '2rem', marginBottom: '0.3rem' }}>🎴 Developer Executive Badge</h2>
-        <p style={{ color: 'var(--text-muted)', fontSize: '0.92rem' }}>A concise single-page summary card with privacy protection for public sharing.</p>
+        <p style={{ color: 'var(--text-muted)', fontSize: '0.92rem' }}>A concise single-page summary card engineered for quick recruiter assessment and offline reference.</p>
         
         {/* Action Toolbar */}
         <div style={{ display: 'flex', gap: '0.6rem', marginTop: '1.2rem', flexWrap: 'wrap' }}>
@@ -62,9 +59,9 @@ END:VCARD`;
           <button className="btn-glass" onClick={handleDownloadVCard} style={{ fontSize: '0.85rem', padding: '0.45rem 1rem', gap: '0.4rem' }}>
             <Download size={15} /> Download vCard (.vcf)
           </button>
-          <button className="btn-glass" onClick={handleCopyRecruiterLink} style={{ fontSize: '0.85rem', padding: '0.45rem 1rem', gap: '0.4rem' }}>
-            {recruiterLinkCopied ? <Check size={15} style={{ color: 'var(--accent-emerald)' }} /> : <Lock size={15} />}
-            {recruiterLinkCopied ? 'Recruiter Link Copied!' : 'Copy Direct Recruiter Link (?recruiter=true)'}
+          <button className="btn-glass" onClick={handleCopyShare} style={{ fontSize: '0.85rem', padding: '0.45rem 1rem', gap: '0.4rem' }}>
+            {copied ? <Check size={15} style={{ color: 'var(--accent-emerald)' }} /> : <Share2 size={15} />}
+            {copied ? 'Card Link Copied!' : 'Share Card'}
           </button>
         </div>
       </div>
@@ -138,11 +135,11 @@ END:VCARD`;
             </div>
           </div>
 
-          {/* Contact Bar with Recruiter Privacy Shield */}
+          {/* Contact Bar */}
           <div style={{ borderTop: '1.5px solid #e2e8f0', paddingTop: '0.8rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.5rem', fontSize: '0.78rem' }}>
             <div style={{ display: 'flex', gap: '0.8rem', flexWrap: 'wrap', color: '#334155' }}>
-              <RecruiterPrivacyShield type="email" />
-              <RecruiterPrivacyShield type="phone" />
+              <a href={`mailto:${PROFILE_DATA.email}`} style={{ color: '#4338ca', textDecoration: 'none', fontWeight: 600 }}>✉️ {PROFILE_DATA.email}</a>
+              <a href={`tel:${PROFILE_DATA.phone}`} style={{ color: '#0f172a', textDecoration: 'none', fontWeight: 600 }}>📞 {PROFILE_DATA.phone}</a>
               <span>📍 Gurugram, India</span>
             </div>
             <div style={{ display: 'flex', gap: '0.6rem', fontWeight: 600 }}>
