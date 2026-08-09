@@ -31,13 +31,20 @@ export default function LinktreeSection({ onNavigate }) {
   };
 
   const handleLinkClick = (link) => {
-    if (['resume-pdf', 'leetcode-profile'].includes(link.id) && !isRecruiter) {
-      // Confidential items protected unless recruiter mode
+    if (link.id === 'leetcode-profile' && !isRecruiter) {
       return;
     }
 
     if (link.id === 'resume-pdf') {
-      window.open('./Ujjwal_Ujjwal_Resume.pdf', '_blank');
+      if (isRecruiter) {
+        const a = document.createElement('a');
+        a.href = './Ujjwal_Ujjwal_Resume.pdf';
+        a.download = 'Ujjwal_Ujjwal_Resume.pdf';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+      }
+      onNavigate('experience');
       return;
     }
 
