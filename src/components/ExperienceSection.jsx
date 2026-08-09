@@ -66,7 +66,7 @@ export default function ExperienceSection() {
                 >
                   <Download size={14} /> Download Resume (PDF)
                 </a>
-                <a href="#card" onClick={() => window.location.hash = 'card'} className="btn-glass" style={{ fontSize: '0.82rem', padding: '0.45rem 0.9rem' }}>
+                <a href={isRecruiter ? "#recruit/card" : "#card"} onClick={(e) => { e.preventDefault(); window.location.hash = isRecruiter ? 'recruit/card' : 'card'; }} className="btn-glass" style={{ fontSize: '0.82rem', padding: '0.45rem 0.9rem' }}>
                   <CreditCard size={14} /> 🎴 1-Page Pass
                 </a>
                 <a href={`mailto:${PROFILE_DATA.email}`} className="btn-glass" style={{ fontSize: '0.82rem', padding: '0.45rem 0.9rem' }}>
