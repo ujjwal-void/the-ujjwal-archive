@@ -9,6 +9,13 @@ export default function CultureSportsSection() {
     ? MEDIA_DATA
     : MEDIA_DATA.filter(item => item.type === activeFilter);
 
+  const getImageSrc = (url) => {
+    if (!url) return '';
+    if (url.startsWith('http://') || url.startsWith('https://')) return url;
+    const cleanPath = url.replace(/^\.\//, '').replace(/^\//, '');
+    return `${import.meta.env.BASE_URL}${cleanPath}`;
+  };
+
   return (
     <div>
       <div style={{ marginBottom: '2rem' }}>
@@ -42,7 +49,7 @@ export default function CultureSportsSection() {
               {filteredMedia.map(item => (
                 <div key={item.id} className="media-card">
                   <div className="media-header">
-                    <img src={item.image} alt={item.title} className="media-cover" />
+                    <img src={getImageSrc(item.image)} alt={item.title} className="media-cover" />
                     <span className="media-tag">{item.type} • {item.year}</span>
                   </div>
 
