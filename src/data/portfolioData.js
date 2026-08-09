@@ -321,7 +321,7 @@ export const MEDIA_DATA = [
     year: "2017",
     rating: "9.5 / 10",
     recommendation: "Must Read (Essential Communication)",
-    image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&auto=format&fit=crop&q=80",
     review: "A masterclass in active validation. It breaks down how validating human emotions—rather than immediately jumping to fix or debug symptoms—radically improves interpersonal dynamics and engineering leadership."
   },
   {
@@ -332,7 +332,7 @@ export const MEDIA_DATA = [
     year: "1915",
     rating: "9.8 / 10",
     recommendation: "Must Read (Existential Masterpiece)",
-    image: "https://images.unsplash.com/photo-1512820790803-83ca734da794?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1532012197267-da84d127e765?w=800&auto=format&fit=crop&q=80",
     review: "Kafka’s stark exploration of alienating routine and utility-driven human relationships. Gregor Samsa's transformation exposes how rapidly societal value fades when an individual can no longer contribute to economic output."
   },
   {
@@ -343,7 +343,7 @@ export const MEDIA_DATA = [
     year: "1890",
     rating: "9.7 / 10",
     recommendation: "Must Read (Classic Literature)",
-    image: "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?w=800&auto=format&fit=crop&q=80",
     review: "Wilde's brilliant philosophical examination of hedonism, aesthetics, and moral decay. The hidden portrait acting as a mirror for consequence is a timeless allegory for unseen system debt accumulated beneath a flawless surface."
   },
   {
@@ -354,7 +354,7 @@ export const MEDIA_DATA = [
     year: "2013",
     rating: "9.2 / 10",
     recommendation: "Highly Recommended (Witty & Heartfelt)",
-    image: "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1516979187457-637abb4f9353?w=800&auto=format&fit=crop&q=80",
     review: "A hilarious and clever perspective on applying rigid algorithmic heuristics and deterministic questionnaires to human relationships. Shows how life's best breakthroughs often emerge outside deterministic logic."
   },
   {
@@ -365,7 +365,7 @@ export const MEDIA_DATA = [
     year: "1949",
     rating: "8.8 / 10",
     recommendation: "Recommended (Historical Perspective)",
-    image: "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=800&auto=format&fit=crop&q=80",
     review: "A profound court statement study on political ideology, ideological polarization, and conflicting national visions during a tumultuous era of partition."
   },
 
@@ -378,19 +378,19 @@ export const MEDIA_DATA = [
     year: "2024",
     rating: "9.6 / 10",
     recommendation: "Must Watch (Mind-Bending Mystery)",
-    image: "https://images.unsplash.com/photo-1448375240586-882707db888b?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?w=800&auto=format&fit=crop&q=80",
     review: "An extraordinary Malayalam mystery thriller that uses memory degradation and monkey-infested forests as an intricate puzzle box. The gradual unspooling of clues without cheap jump scares is storytelling at its finest."
   },
   {
-    id: "smoking-kills",
+    id: "no-smoking",
     type: "movie",
-    title: "Thank You for Smoking / Smoking Kills",
-    creator: "Jason Reitman",
-    year: "2005",
-    rating: "9.1 / 10",
-    recommendation: "Highly Recommended (Satire & Rhetoric)",
-    image: "https://images.unsplash.com/photo-1485846234645-a62644f84728?w=600&auto=format&fit=crop&q=80",
-    review: "A sharp, cynical satire on corporate PR, spin doctors, and rhetoric. Demonstrates how framing and argument structure can reorient perception regardless of baseline truth."
+    title: "No Smoking (Smoking Kills)",
+    creator: "Anurag Kashyap / John Abraham",
+    year: "2007",
+    rating: "9.3 / 10",
+    recommendation: "Must Watch (Surrealist Neo-Noir)",
+    image: "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=800&auto=format&fit=crop&q=80",
+    review: "Anurag Kashyap's surrealist neo-noir masterpiece. K's terrifying journey through Baba Bengali's subterranean rehabilitation center is a brilliant Kafkaesque allegory on addiction, control, and creative freedom."
   },
   {
     id: "frankenstein",
@@ -400,7 +400,7 @@ export const MEDIA_DATA = [
     year: "1931 / Classic Cinema",
     rating: "9.5 / 10",
     recommendation: "Must Watch (Sci-Fi Archetype)",
-    image: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=800&auto=format&fit=crop&q=80",
     review: "The foundational warning of technological hubris. Creating autonomous intelligence without taking long-term architectural responsibility for its alignment remains the ultimate engineering lesson."
   },
   {
@@ -411,7 +411,7 @@ export const MEDIA_DATA = [
     year: "2019",
     rating: "9.4 / 10",
     recommendation: "Must Watch (Social Thriller)",
-    image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1508873696983-2df515122519?w=800&auto=format&fit=crop&q=80",
     review: "A brutal vertical prison allegory examining resource allocation, trickle-down greed, and systemic inefficiency. A stark reminder that unconstrained consumption at top levels leaves lower tiers starving."
   },
   {
@@ -422,19 +422,19 @@ export const MEDIA_DATA = [
     year: "2024",
     rating: "9.5 / 10",
     recommendation: "Must Watch (Pure Entertainment)",
-    image: "https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=800&auto=format&fit=crop&q=80",
     review: "High-voltage cinema driven by Fahadh Faasil's unmatched screen presence. Energetic pacing, hilarious character beats, and brilliant situational comedy make it an absolute blast."
   },
   {
-    id: "maharaj",
+    id: "maharaja",
     type: "movie",
-    title: "Maharaj",
-    creator: "Siddharth P. Malhotra",
+    title: "Maharaja",
+    creator: "Nithilan Saminathan / Vijay Sethupathi",
     year: "2024",
-    rating: "9.0 / 10",
-    recommendation: "Highly Recommended (Courageous Drama)",
-    image: "https://images.unsplash.com/photo-1461360370896-922624d12aa1?w=600&auto=format&fit=crop&q=80",
-    review: "A compelling historical courtroom drama highlighting Karsandas Mulji's crusade against blind dogma and institutional power in 1860s Bombay. Celebrates fearless journalism and critical reasoning."
+    rating: "9.7 / 10",
+    recommendation: "Must Watch (Masterful Nonlinear Thriller)",
+    image: "https://images.unsplash.com/photo-1509114397022-ed747cca3f65?w=800&auto=format&fit=crop&q=80",
+    review: "Vijay Sethupathi’s performance combined with Nithilan Saminathan’s non-linear screenplay make Maharaja a modern thriller masterpiece. The intricate timeline manipulation around a stolen dustbin ('Lakshmi') reveals a deeply emotional revenge story."
   },
 
   // ANIME SECTION
@@ -446,7 +446,7 @@ export const MEDIA_DATA = [
     year: "2021-2023",
     rating: "9.3 / 10",
     recommendation: "Must Watch (Time-Leap Drama)",
-    image: "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1563089145-599997674d42?w=800&auto=format&fit=crop&q=80",
     review: "Takemichi’s relentless grit across time leaps shows that emotional resilience matters more than physical strength. Intricate gang dynamics and butterfly effect consequences make every jump high stakes."
   },
   {
@@ -457,7 +457,7 @@ export const MEDIA_DATA = [
     year: "2016",
     rating: "9.8 / 10",
     recommendation: "Must Watch (Psychological Thriller)",
-    image: "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1483921020237-2ff51e5e4b22?w=800&auto=format&fit=crop&q=80",
     review: "A masterclass in suspense and time rewind ('Revival'). Satoru’s desperate effort to alter past tragedies by paying meticulous attention to small details makes this one of the tightest mystery anime ever created."
   },
   {
@@ -468,8 +468,19 @@ export const MEDIA_DATA = [
     year: "2012",
     rating: "9.2 / 10",
     recommendation: "Highly Recommended (Atmospheric Horror)",
-    image: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=800&auto=format&fit=crop&q=80",
     review: "Chilling, atmospheric horror surrounding Class 3-3's curse. The eerie tension, systemic paranoia, and methodical search for the 'extra dead person' keep you guessing until the final episode."
+  },
+  {
+    id: "berserk",
+    type: "anime",
+    title: "Berserk",
+    creator: "Kentaro Miura / OLMC & Studio 4°C",
+    year: "1997 / Golden Age",
+    rating: "9.9 / 10",
+    recommendation: "Must Watch (Dark Fantasy Masterpiece)",
+    image: "https://images.unsplash.com/photo-1514539079130-25950c84af65?w=800&auto=format&fit=crop&q=80",
+    review: "Kentaro Miura's dark fantasy titan. Guts' unrelenting struggle against destiny, causality, and the God Hand is an epic exploration of human willpower under oppressive fate."
   }
 ];
 
@@ -480,7 +491,7 @@ export const TECH_ESSAYS = [
     category: "AI Engineering",
     readTime: "8 min read",
     date: "Aug 2026",
-    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    videoUrl: "https://www.youtube.com/embed/XvKiTfd6Xvo",
     excerpt: "Drawing from my work at CyberPoint building hybrid RAG search engines: why a deterministic keyword-trigger layer paired with FAISS vector search guarantees 100% database accuracy before falling back to LLM semantic search.",
     codeSnippet: `// Hybrid RAG Search Pipeline (Deterministic + Semantic)
 async function queryHybridRAG(userQuery) {
@@ -507,30 +518,6 @@ async function queryHybridRAG(userQuery) {
       "Deterministic keyword layers eliminate unnecessary LLM calls for structured DB data",
       "FAISS + Elasticsearch hybrid retrieval improved document accuracy by 40%",
       "Redis task queues keep long LLM generation non-blocking for background async tasks"
-    ]
-  },
-  {
-    id: "event-driven-microservices",
-    title: "Slashing P99 Latency from 700ms to <150ms with RabbitMQ & Redis",
-    category: "Backend Systems",
-    readTime: "6 min read",
-    date: "Jul 2026",
-    videoUrl: null,
-    excerpt: "How migrating our Profile Ranking service to an event-driven queue with RabbitMQ and Redis multi-layer caching handled massive traffic spikes smoothly.",
-    codeSnippet: `// Event-Driven RabbitMQ Publisher Pattern
-async function publishProfileRankingEvent(userId, scorePayload) {
-  const channel = await getRabbitMQChannel();
-  const queue = 'profile_ranking_queue';
-  
-  await channel.assertQueue(queue, { durable: true });
-  channel.sendToQueue(queue, Buffer.from(JSON.stringify({ userId, scorePayload, timestamp: Date.now() })), {
-    persistent: true
-  });
-}`,
-    keyTakeaways: [
-      "Decoupled synchronous web requests from heavy calculation pipelines using RabbitMQ queues",
-      "Redis multi-layer caching with prefetch pipelines prevented database connection pool exhaustion",
-      "Schema redesign + indexing dropped query times by over 78%"
     ]
   }
 ];
