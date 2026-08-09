@@ -315,17 +315,11 @@ export const MEDIA_DATA = [
     title: "Steins;Gate",
     creator: "White Fox / Chiyomaru Shikura",
     year: "2011",
+    rating: "9.8 / 10",
     relatabilityScore: 98,
-    impactRating: "Essential",
+    recommendation: "Must Watch (Anime Masterpiece)",
     image: "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600&auto=format&fit=crop&q=80",
-    summary: "A self-proclaimed scientist accidentally discovers timeline manipulation, leading to a desperate attempt to undo unintended consequences across converging world lines.",
-    personalImpact: "Steins;Gate shaped how I think about cause-and-effect in software architecture. Okabe's persistent iterations to find a viable path resonate with how complex engineering problems get solved.",
-    spoilerContent: {
-      hasSpoilers: true,
-      twistSummary: "Okabe traverses Beta and Alpha world lines, ultimately deceiving his past self to reach the 'Steins Gate' line where both Kurisu and Mayuri survive.",
-      keyThemes: ["Timeline Divergence", "Consequence", "Determinism vs Choice"],
-      aiOpinion: "Episode 22 & 23 demonstrate masterclass narrative structure—deceiving past observations to change the future without altering established history."
-    }
+    review: "Steins;Gate shaped how I think about cause-and-effect in software architecture. Okabe's persistent iterations across world lines to find a viable path resonate with how complex engineering problems get solved. Deceiving past observations to change the future without altering established history is brilliant narrative design."
   },
   {
     id: "interstellar",
@@ -333,17 +327,11 @@ export const MEDIA_DATA = [
     title: "Interstellar",
     creator: "Christopher Nolan",
     year: "2014",
+    rating: "10 / 10",
     relatabilityScore: 95,
-    impactRating: "Favorite",
+    recommendation: "Must Watch (Cinema Masterpiece)",
     image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&auto=format&fit=crop&q=80",
-    summary: "Faced with global crop blight, a team of pilots travels through a wormhole near Saturn to find a habitational alternative for humanity.",
-    personalImpact: "The depiction of gravitational time dilation on Miller's Planet is a striking reminder of time's non-linear value. It inspires a thoughtful approach to both life priorities and async programming.",
-    spoilerContent: {
-      hasSpoilers: true,
-      twistSummary: "Cooper enters the 5-dimensional Tesseract inside Gargantua, using gravity to send quantum data back to Murph in Morse code on her childhood watch.",
-      keyThemes: ["Time Dilation", "Devotion", "Relativity"],
-      aiOpinion: "A visually and musically grounded story about human connection transcending physical constraints."
-    }
+    review: "The depiction of gravitational time dilation on Miller's Planet is a striking reminder of time's non-linear value. Cooper entering the 5-dimensional Tesseract to transmit quantum data through gravity makes this a timeless sci-fi masterpiece."
   },
   {
     id: "atomic-habits",
@@ -351,17 +339,11 @@ export const MEDIA_DATA = [
     title: "Atomic Habits",
     creator: "James Clear",
     year: "2018",
+    rating: "9.5 / 10",
     relatabilityScore: 99,
-    impactRating: "Practical",
+    recommendation: "Must Read (Essential Growth)",
     image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80",
-    summary: "A practical framework for small, 1% daily improvements, identity-driven habits, and thoughtful environment design.",
-    personalImpact: "Shifted my approach from trying to master an entire stack in a weekend to small, consistent daily engineering habits that compound over time.",
-    spoilerContent: {
-      hasSpoilers: false,
-      twistSummary: "Key takeaway: Focus on system architecture rather than arbitrary end targets.",
-      keyThemes: ["Compounding", "Systems vs Goals", "Environment Design"],
-      aiOpinion: "Clear's framework maps naturally to code refactoring: make good patterns easy and friction-free."
-    }
+    review: "Shifted my approach from trying to master an entire stack in a weekend to small, consistent 1% daily engineering habits that compound over time. Focus on system architecture rather than arbitrary end targets."
   },
   {
     id: "attack-on-titan",
@@ -369,17 +351,11 @@ export const MEDIA_DATA = [
     title: "Attack on Titan",
     creator: "Hajime Isayama",
     year: "2013-2023",
+    rating: "9.9 / 10",
     relatabilityScore: 96,
-    impactRating: "Masterpiece",
+    recommendation: "Must Watch (Peak Storytelling)",
     image: "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600&auto=format&fit=crop&q=80",
-    summary: "Humanity lives inside walled cities to stay safe from Titans, until a breach exposes centuries of hidden world history.",
-    personalImpact: "Isayama's narrative demonstrates how perspective shifts when context is revealed. A reminder that in software debugging, behavior makes sense once environment history is understood.",
-    spoilerContent: {
-      hasSpoilers: true,
-      twistSummary: "The Titans are Eldians, and Paradise Island is an isolated fragment of a technologically advanced world beyond the walls.",
-      keyThemes: ["Perspective", "Cycle of Conflict", "Freedom"],
-      aiOpinion: "An incredible study in long-term structural planning and narrative foreshadowing."
-    }
+    review: "Isayama's narrative demonstrates how perspective shifts when context is revealed. The realization of the world beyond the walls is an incredible study in long-term structural planning and narrative foreshadowing."
   }
 ];
 
