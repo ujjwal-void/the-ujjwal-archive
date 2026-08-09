@@ -354,7 +354,7 @@ export const MEDIA_DATA = [
     year: "2013",
     rating: "9.2 / 10",
     recommendation: "Highly Recommended (Witty & Heartfelt)",
-    image: "https://images.unsplash.com/photo-1516979187457-637abb4f9353?w=800&auto=format&fit=crop&q=80",
+    image: "./media/rosie-project.jpg",
     review: "A hilarious and clever perspective on applying rigid algorithmic heuristics and deterministic questionnaires to human relationships. Shows how life's best breakthroughs often emerge outside deterministic logic."
   },
 
@@ -373,28 +373,6 @@ export const MEDIA_DATA = [
 
   // ANIME SECTION
   {
-    id: "tokyo-revengers",
-    type: "anime",
-    title: "Tokyo Revengers",
-    creator: "Ken Wakui / LidenFilms",
-    year: "2021-2023",
-    rating: "9.3 / 10",
-    recommendation: "Must Watch (Time-Leap Drama)",
-    image: "https://images.unsplash.com/photo-1563089145-599997674d42?w=800&auto=format&fit=crop&q=80",
-    review: "Takemichi’s relentless grit across time leaps shows that emotional resilience matters more than physical strength. Intricate gang dynamics and butterfly effect consequences make every jump high stakes."
-  },
-  {
-    id: "erased",
-    type: "anime",
-    title: "Erased (Boku dake ga Inai Machi)",
-    creator: "Kei Sanbe / A-1 Pictures",
-    year: "2016",
-    rating: "9.8 / 10",
-    recommendation: "Must Watch (Psychological Thriller)",
-    image: "https://images.unsplash.com/photo-1483921020237-2ff51e5e4b22?w=800&auto=format&fit=crop&q=80",
-    review: "A masterclass in suspense and time rewind ('Revival'). Satoru’s desperate effort to alter past tragedies by paying meticulous attention to small details makes this one of the tightest mystery anime ever created."
-  },
-  {
     id: "another",
     type: "anime",
     title: "Another",
@@ -404,17 +382,6 @@ export const MEDIA_DATA = [
     recommendation: "Highly Recommended (Atmospheric Horror)",
     image: "./media/another-anime.png",
     review: "Chilling, atmospheric horror surrounding Class 3-3's curse. The eerie tension, systemic paranoia, and methodical search for the 'extra dead person' keep you guessing until the final episode."
-  },
-  {
-    id: "berserk",
-    type: "anime",
-    title: "Berserk",
-    creator: "Kentaro Miura / OLMC & Studio 4°C",
-    year: "1997 / Golden Age",
-    rating: "9.9 / 10",
-    recommendation: "Must Watch (Dark Fantasy Masterpiece)",
-    image: "https://images.unsplash.com/photo-1514539079130-25950c84af65?w=800&auto=format&fit=crop&q=80",
-    review: "Kentaro Miura's dark fantasy titan. Guts' unrelenting struggle against destiny, causality, and the God Hand is an epic exploration of human willpower under oppressive fate."
   }
 ];
 
