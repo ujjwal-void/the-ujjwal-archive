@@ -321,7 +321,7 @@ export const MEDIA_DATA = [
     year: "2017",
     rating: "9.5 / 10",
     recommendation: "Must Read (Essential Communication)",
-    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&auto=format&fit=crop&q=80",
+    image: "./media/i-hear-you.png",
     review: "A masterclass in active validation. It breaks down how validating human emotions—rather than immediately jumping to fix or debug symptoms—radically improves interpersonal dynamics and engineering leadership."
   },
   {
@@ -332,7 +332,7 @@ export const MEDIA_DATA = [
     year: "1915",
     rating: "9.8 / 10",
     recommendation: "Must Read (Existential Masterpiece)",
-    image: "https://images.unsplash.com/photo-1532012197267-da84d127e765?w=800&auto=format&fit=crop&q=80",
+    image: "./media/metamorphosis.jpg",
     review: "Kafka’s stark exploration of alienating routine and utility-driven human relationships. Gregor Samsa's transformation exposes how rapidly societal value fades when an individual can no longer contribute to economic output."
   },
   {
@@ -468,7 +468,7 @@ export const MEDIA_DATA = [
     year: "2012",
     rating: "9.2 / 10",
     recommendation: "Highly Recommended (Atmospheric Horror)",
-    image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=800&auto=format&fit=crop&q=80",
+    image: "./media/another-anime.png",
     review: "Chilling, atmospheric horror surrounding Class 3-3's curse. The eerie tension, systemic paranoia, and methodical search for the 'extra dead person' keep you guessing until the final episode."
   },
   {
