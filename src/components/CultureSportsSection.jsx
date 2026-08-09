@@ -94,7 +94,7 @@ export default function CultureSportsSection() {
                 ⚽ Sports Tactics & Reviews
               </h3>
             )}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.2rem' }}>
+            <div className="grid-2">
               {SPORTS_TAKES.map(take => (
                 <div key={take.id} className="card">
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.8rem', flexWrap: 'wrap', gap: '0.5rem' }}>
