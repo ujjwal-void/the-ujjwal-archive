@@ -343,7 +343,7 @@ export const MEDIA_DATA = [
     year: "1890",
     rating: "9.7 / 10",
     recommendation: "Must Read (Classic Literature)",
-    image: "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?w=800&auto=format&fit=crop&q=80",
+    image: "./media/dorian-gray.jpg",
     review: "Wilde's brilliant philosophical examination of hedonism, aesthetics, and moral decay. The hidden portrait acting as a mirror for consequence is a timeless allegory for unseen system debt accumulated beneath a flawless surface."
   },
   {
@@ -357,17 +357,6 @@ export const MEDIA_DATA = [
     image: "https://images.unsplash.com/photo-1516979187457-637abb4f9353?w=800&auto=format&fit=crop&q=80",
     review: "A hilarious and clever perspective on applying rigid algorithmic heuristics and deterministic questionnaires to human relationships. Shows how life's best breakthroughs often emerge outside deterministic logic."
   },
-  {
-    id: "why-i-killed-gandhi",
-    type: "book",
-    title: "Why I Killed Gandhi",
-    creator: "Nathuram Godse",
-    year: "1949",
-    rating: "8.8 / 10",
-    recommendation: "Recommended (Historical Perspective)",
-    image: "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=800&auto=format&fit=crop&q=80",
-    review: "A profound court statement study on political ideology, ideological polarization, and conflicting national visions during a tumultuous era of partition."
-  },
 
   // MOVIES SECTION
   {
@@ -380,61 +369,6 @@ export const MEDIA_DATA = [
     recommendation: "Must Watch (Mind-Bending Mystery)",
     image: "https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?w=800&auto=format&fit=crop&q=80",
     review: "An extraordinary Malayalam mystery thriller that uses memory degradation and monkey-infested forests as an intricate puzzle box. The gradual unspooling of clues without cheap jump scares is storytelling at its finest."
-  },
-  {
-    id: "no-smoking",
-    type: "movie",
-    title: "No Smoking (Smoking Kills)",
-    creator: "Anurag Kashyap / John Abraham",
-    year: "2007",
-    rating: "9.3 / 10",
-    recommendation: "Must Watch (Surrealist Neo-Noir)",
-    image: "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=800&auto=format&fit=crop&q=80",
-    review: "Anurag Kashyap's surrealist neo-noir masterpiece. K's terrifying journey through Baba Bengali's subterranean rehabilitation center is a brilliant Kafkaesque allegory on addiction, control, and creative freedom."
-  },
-  {
-    id: "frankenstein",
-    type: "movie",
-    title: "Frankenstein",
-    creator: "Mary Shelley / Cinema Adaptations",
-    year: "1931 / Classic Cinema",
-    rating: "9.5 / 10",
-    recommendation: "Must Watch (Sci-Fi Archetype)",
-    image: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=800&auto=format&fit=crop&q=80",
-    review: "The foundational warning of technological hubris. Creating autonomous intelligence without taking long-term architectural responsibility for its alignment remains the ultimate engineering lesson."
-  },
-  {
-    id: "the-platform",
-    type: "movie",
-    title: "The Platform (El Hoyo)",
-    creator: "Galder Gaztelu-Urrutia",
-    year: "2019",
-    rating: "9.4 / 10",
-    recommendation: "Must Watch (Social Thriller)",
-    image: "https://images.unsplash.com/photo-1508873696983-2df515122519?w=800&auto=format&fit=crop&q=80",
-    review: "A brutal vertical prison allegory examining resource allocation, trickle-down greed, and systemic inefficiency. A stark reminder that unconstrained consumption at top levels leaves lower tiers starving."
-  },
-  {
-    id: "sambhavam",
-    type: "movie",
-    title: "Sambhavam / Aavesham",
-    creator: "Jithu Madhavan / Fahadh Faasil",
-    year: "2024",
-    rating: "9.5 / 10",
-    recommendation: "Must Watch (Pure Entertainment)",
-    image: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=800&auto=format&fit=crop&q=80",
-    review: "High-voltage cinema driven by Fahadh Faasil's unmatched screen presence. Energetic pacing, hilarious character beats, and brilliant situational comedy make it an absolute blast."
-  },
-  {
-    id: "maharaja",
-    type: "movie",
-    title: "Maharaja",
-    creator: "Nithilan Saminathan / Vijay Sethupathi",
-    year: "2024",
-    rating: "9.7 / 10",
-    recommendation: "Must Watch (Masterful Nonlinear Thriller)",
-    image: "https://images.unsplash.com/photo-1509114397022-ed747cca3f65?w=800&auto=format&fit=crop&q=80",
-    review: "Vijay Sethupathi’s performance combined with Nithilan Saminathan’s non-linear screenplay make Maharaja a modern thriller masterpiece. The intricate timeline manipulation around a stolen dustbin ('Lakshmi') reveals a deeply emotional revenge story."
   },
 
   // ANIME SECTION
