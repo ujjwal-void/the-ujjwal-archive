@@ -122,7 +122,7 @@ export const PHYSICS_MATH_NOTES = [
     title: "High-Dimensional Vector Geometry, Dot Product & Cosine Similarity",
     category: "Linear Algebra & Vectors",
     date: "Aug 2026",
-    videoUrl: "https://www.youtube.com/embed/fNk_zzaMo0w",
+    videoUrl: "https://www.youtube.com/embed/FGBgZAJL-mM",
     formula: "cos(θ) = (u · v) / (||u|| ||v||) = Σ(u_i * v_i) / (sqrt(Σ u_i^2) * sqrt(Σ v_i^2))",
     summary: "Understanding vectors as directional arrows in spatial geometry and as ordered numerical lists. How vector dot products quantify projection, magnitude, and spatial alignment in 1536-dimensional embedding spaces.",
     csConnection: "Direct mathematical foundation for Vector Databases (FAISS, Qdrant, ChromaDB) used in LLM Retrieval-Augmented Generation (RAG) and Semantic Search.",
