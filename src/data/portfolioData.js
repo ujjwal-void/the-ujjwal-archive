@@ -161,8 +161,8 @@ export const PROJECTS_DATA = [
     tagline: "End-to-end Portfolio Analysis, Goal Proposal, & AI Financial Engines.",
     description: "Served as a core engineer driving ZIVA V2. Architected the Portfolio Analysis module across backend, frontend, and AI sub-systems, built Goal & Fund Recommendation engines, and integrated prompt injection guardrails.",
     tags: ["Python", "FastAPI", "TypeScript", "Node.js", "AWS", "Prompt Guardrails"],
-    githubUrl: "https://github.com/ujjwal-void",
-    demoUrl: "https://github.com/ujjwal-void",
+    githubUrl: null,
+    demoUrl: null,
     metrics: { impact: "Production AI Platform", scope: "ZFunds Core" },
     keyFeatures: [
       "End-to-end Portfolio Analysis engine",
@@ -179,14 +179,32 @@ export const PROJECTS_DATA = [
     tagline: "Event-driven architecture with RabbitMQ, Redis clustering, and FAISS/Llama RAG.",
     description: "Architected microservices handling high traffic surges. Slashing P99 response latency from 700ms to <150ms using RabbitMQ and Redis caching, and built a hybrid RAG pipeline combining deterministic keyword triggers with LLM search (+40% accuracy).",
     tags: ["Python", "TypeScript", "FastAPI", "Nest.js", "RabbitMQ", "Redis", "FAISS", "LangChain"],
-    githubUrl: "https://github.com/ujjwal-void",
-    demoUrl: "https://github.com/ujjwal-void",
+    githubUrl: null,
+    demoUrl: "https://advor.ai/",
     metrics: { latency: "<150ms P99", accuracy: "+40% Retrieval" },
     keyFeatures: [
       "Event-driven microservices architecture with RabbitMQ",
       "Deterministic keyword-trigger + LLM semantic RAG search",
       "Async technical screening & bio-generator queue with LangChain",
       "AWS EC2/S3 zero-downtime deployment with Prometheus & Grafana"
+    ]
+  },
+  {
+    id: "adaptive-rag-search",
+    title: "Adaptive RAG Search — Agentic AI Search Engine",
+    category: "Agentic AI & RAG",
+    companyTag: "Open Source Project",
+    tagline: "Agentic AI RAG search with dynamic query routing, ReAct retrieval & hallucination grading.",
+    description: "Architected an end-to-end agentic AI search engine featuring dynamic query classification, ReAct vector/keyword retrieval, automated hallucination verification, and a real-time analytics dashboard.",
+    tags: ["Python", "LangGraph", "LangChain", "FastAPI", "Qdrant", "Streamlit", "RAG"],
+    githubUrl: "https://github.com/ujjwal-void/adaptive-rag-search",
+    demoUrl: null,
+    metrics: { architecture: "Agentic ReAct RAG", verification: "Hallucination Graded" },
+    keyFeatures: [
+      "Dynamic intent classification & query routing engine",
+      "Hybrid Qdrant vector retrieval + keyword web search fallback",
+      "Automated self-correction hallucination grading loop",
+      "Interactive Streamlit monitoring dashboard"
     ]
   },
   {
@@ -198,7 +216,7 @@ export const PROJECTS_DATA = [
     description: "A robust project management backend engine featuring hierarchical task management, subtasks, file attachments, and JWT verification with email password resets.",
     tags: ["Node.js", "Express.js", "MongoDB", "JWT", "REST API"],
     githubUrl: "https://github.com/ujjwal-void/Nexus-PM",
-    demoUrl: "https://github.com/ujjwal-void",
+    demoUrl: null,
     metrics: { endpoints: "30+ REST APIs", auth: "JWT & Email Verif" },
     keyFeatures: [
       "Three-tier RBAC system (Admin, Project Admin, Member)",
@@ -215,7 +233,7 @@ export const PROJECTS_DATA = [
     description: "Full-stack article publishing platform featuring JWT authentication, optimized MongoDB query performance, responsive design, and instant search.",
     tags: ["React.js", "Express.js", "Tailwind CSS", "MongoDB", "JWT"],
     githubUrl: "https://github.com/ujjwal-void/Write-Medium",
-    demoUrl: "https://github.com/ujjwal-void",
+    demoUrl: null,
     metrics: { architecture: "RESTful API", query: "Optimized Mongo" },
     keyFeatures: [
       "JWT authentication & user publication dashboard",
@@ -231,8 +249,8 @@ export const PROJECTS_DATA = [
     tagline: "AI ad generation platform. 1st Runner-Up out of 131 teams (Prize: INR 30k).",
     description: "Built an AI-powered advertisement generation platform emphasizing user-centric design and AI collaboration. Secured 1st Runner-Up at the Osmos Hackathon by OnlineSales.ai.",
     tags: ["Python", "AI/LLM", "React.js", "FastAPI"],
-    githubUrl: "https://github.com/ujjwal-void",
-    demoUrl: "#",
+    githubUrl: null,
+    demoUrl: "https://drive.google.com/file/d/1K3kRSGO3IraRCINaCPoCrAEGKnChIzjd/view",
     metrics: { award: "1st Runner-Up / 131 Teams", prize: "INR 30,000" },
     keyFeatures: [
       "AI creative generation pipeline",
@@ -242,14 +260,14 @@ export const PROJECTS_DATA = [
   },
   {
     id: "drdo-lan-monitor",
-    title: "DRDO Real-Time LAN & Packet Inspection Tool",
+    title: "Network Monitoring — Real-Time LAN & Packet Inspection Tool",
     category: "DevOps & Cybersecurity",
     companyTag: "DRDO Internship",
     tagline: "Real-time network bandwidth tracking, device discovery, & packet sniffing.",
     description: "Flask network observability application built during DRDO internship featuring packet sniffing, device discovery, bandwidth monitoring, Docker containerization, and Kubernetes IP-restricted dashboards.",
     tags: ["Python", "Flask", "Docker", "Kubernetes", "Packet Sniffing", "Cyber Security"],
-    githubUrl: "https://github.com/ujjwal-void",
-    demoUrl: "https://github.com/ujjwal-void",
+    githubUrl: "https://github.com/ujjwal-void/Network-Monitoring",
+    demoUrl: null,
     metrics: { deployment: "Kubernetes / K8s", security: "IP-Restricted" },
     keyFeatures: [
       "Real-time bandwidth tracking & device discovery",
