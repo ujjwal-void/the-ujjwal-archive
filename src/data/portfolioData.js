@@ -119,33 +119,36 @@ export const TECHNICAL_SKILLS = {
 export const PHYSICS_MATH_NOTES = [
   {
     id: "vector-spaces-geometry",
-    title: "High-Dimensional Vector Geometry & Cosine Distance",
-    category: "Linear Algebra & AI Math",
+    title: "High-Dimensional Vector Geometry, Dot Product & Cosine Similarity",
+    category: "Linear Algebra & Vectors",
     date: "Aug 2026",
-    formula: "cos(θ) = (A · B) / (||A|| ||B||) = Σ(A_i * B_i) / (sqrt(Σ A_i^2) * sqrt(Σ B_i^2))",
-    summary: "Why angle-based cosine similarity outperforms Euclidean distance in high-dimensional embedding spaces, and how HNSW graph indexing turns exponential search into O(log N) lookup.",
-    csConnection: "Direct mathematical foundation for vector search databases (FAISS, Qdrant, ChromaDB) used in LLM Retrieval-Augmented Generation.",
-    keyTakeaway: "In 1536-dimensional OpenAI vector space, magnitude matters less than directional alignment—making dot products on normalized vectors equivalent to cosine similarity."
+    videoUrl: "https://www.youtube.com/embed/fNk_zzaMo0w",
+    formula: "cos(θ) = (u · v) / (||u|| ||v||) = Σ(u_i * v_i) / (sqrt(Σ u_i^2) * sqrt(Σ v_i^2))",
+    summary: "Understanding vectors as directional arrows in spatial geometry and as ordered numerical lists. How vector dot products quantify projection, magnitude, and spatial alignment in 1536-dimensional embedding spaces.",
+    csConnection: "Direct mathematical foundation for Vector Databases (FAISS, Qdrant, ChromaDB) used in LLM Retrieval-Augmented Generation (RAG) and Semantic Search.",
+    keyTakeaway: "On unit-normalized embedding vectors, Euclidean distance and Cosine similarity yield identical top-k rankings, making vector dot products optimal for O(log N) matrix search."
   },
   {
-    id: "general-relativity-dilation",
-    title: "Schwarzschild Metric & Gravitational Time Dilation",
-    category: "Astrophysics & Relativity",
+    id: "activation-functions-gelu-relu",
+    title: "Neural Network Activation Functions (ReLU, GELU & Non-Linearities)",
+    category: "Activation Math & Neural Nets",
     date: "Jul 2026",
-    formula: "dτ^2 = (1 - 2GM / r c^2) dt^2 - (1 - 2GM / r c^2)^(-1) dr^2 - r^2 dΩ^2",
-    summary: "Deriving time dilation near massive celestial bodies (like Miller's Planet near Gargantua in Interstellar). As radial distance r approaches the event horizon (r_s = 2GM/c^2), proper time dτ slows dramatically relative to distant observer coordinate time dt.",
-    csConnection: "A physical reminder of non-linear state progression and distributed clock synchronization challenges in global computer networks.",
-    keyTakeaway: "1 hour on Miller's planet = 7 years Earth time. In system design, latency bottlenecks compound exponentially when processing queues stall near saturation."
+    videoUrl: null,
+    formula: "ReLU(x) = max(0, x)  |  GELU(x) = x * Φ(x) ≈ 0.5x * (1 + tanh(sqrt(2/π) * (x + 0.044715 x^3)))",
+    summary: "Why non-linear activation functions are mathematically mandatory to break linear superposition in multi-layer perceptrons. Deriving GELU (Gaussian Error Linear Unit) used in Transformer architectures like GPT and BERT.",
+    csConnection: "Activation functions introduce non-linearity, enabling deep neural networks to approximate arbitrary continuous functions (Universal Approximation Theorem).",
+    keyTakeaway: "GELU weights inputs by their probability value under a Gaussian distribution, preventing the 'dying ReLU' gradient vanishing problem during Transformer backpropagation."
   },
   {
-    id: "shannon-entropy-information",
-    title: "Shannon Information Entropy & Cross-Entropy Loss",
-    category: "Information Theory & ML",
+    id: "activation-softmax-cross-entropy",
+    title: "Softmax Activation Function & Cross-Entropy Gradient Loss",
+    category: "Activation Math & Optimization",
     date: "Jun 2026",
-    formula: "H(X) = - Σ P(x_i) log2 P(x_i)  |  L_CE = - Σ y_i log(p_i)",
-    summary: "Measuring uncertainty and information content in probability distributions. How cross-entropy quantifies the difference between predicted token probability distributions p and true target labels y.",
-    csConnection: "Core loss metric used in backpropagation to train Next-Token Prediction in Transformer Large Language Models (LLMs).",
-    keyTakeaway: "Minimizing cross-entropy loss is mathematically equivalent to maximizing the likelihood of predicted text."
+    videoUrl: null,
+    formula: "Softmax(z_i) = e^(z_i) / Σ e^(z_j)  |  L_CE = - Σ y_i log(Softmax(z_i))",
+    summary: "Converting raw neural network output logits into a normalized probability distribution that sums to 1. Deriving the loss gradient ∂L/∂z_i = Softmax(z_i) - y_i for backpropagation.",
+    csConnection: "Standard final-layer activation in Transformer LLMs for next-token prediction and multi-class classification logits.",
+    keyTakeaway: "Subtracting max(z) before exponentiating (Softmax Numerical Stability Trick) prevents floating-point overflow (Infinity) in C++ / PyTorch CUDA kernels."
   }
 ];
 

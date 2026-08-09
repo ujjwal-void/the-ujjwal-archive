@@ -56,6 +56,26 @@ export default function PhysicsMathSection() {
               </div>
             </div>
 
+            {/* YouTube Embedded Video Player for Vectors */}
+            {item.videoUrl && (
+              <div style={{ marginBottom: '1.4rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', marginBottom: '0.5rem' }}>
+                  <span style={{ fontSize: '0.8rem', fontWeight: 700, color: 'var(--accent-indigo)', fontFamily: 'var(--font-mono)', textTransform: 'uppercase' }}>
+                    🎥 RECOMMENDED VISUAL LECTURE (3BLUE1BROWN VECTORS)
+                  </span>
+                </div>
+                <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0, overflow: 'hidden', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-muted)', boxShadow: 'var(--shadow-subtle)' }}>
+                  <iframe
+                    src={item.videoUrl}
+                    title="Vectors | Essence of linear algebra"
+                    style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', border: 'none' }}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                </div>
+              </div>
+            )}
+
             {/* Key Takeaway */}
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.88rem', color: 'var(--text-muted)' }}>
               <CheckCircle size={16} style={{ color: 'var(--accent-emerald)', flexShrink: 0 }} />
