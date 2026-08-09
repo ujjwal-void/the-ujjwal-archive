@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ExternalLink, Code2, Cpu, CheckCircle } from 'lucide-react';
+import { ExternalLink, Code2, Cpu, CheckCircle, Video } from 'lucide-react';
 import { PROJECTS_DATA } from '../data/portfolioData';
 
 export default function ProjectsSection() {
@@ -79,8 +79,8 @@ export default function ProjectsSection() {
                 </a>
               )}
               {project.demoUrl && project.demoUrl !== '#' && (
-                <a href={project.demoUrl} target="_blank" rel="noreferrer" className="btn-primary" style={{ fontSize: '0.82rem', padding: '0.45rem 0.9rem' }}>
-                  <ExternalLink size={14} /> Live Link
+                <a href={project.demoUrl} target="_blank" rel="noreferrer" className="btn-primary" style={{ fontSize: '0.82rem', padding: '0.45rem 0.9rem', flex: project.githubUrl ? undefined : 1, justifyContent: 'center' }}>
+                  {project.demoLabel?.includes('Video') ? <Video size={14} /> : <ExternalLink size={14} />} {project.demoLabel || 'Live Link'}
                 </a>
               )}
             </div>

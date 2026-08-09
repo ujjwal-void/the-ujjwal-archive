@@ -251,6 +251,7 @@ export const PROJECTS_DATA = [
     tags: ["Python", "AI/LLM", "React.js", "FastAPI"],
     githubUrl: null,
     demoUrl: "https://drive.google.com/file/d/1K3kRSGO3IraRCINaCPoCrAEGKnChIzjd/view",
+    demoLabel: "Demo Video",
     metrics: { award: "1st Runner-Up / 131 Teams", prize: "INR 30,000" },
     keyFeatures: [
       "AI creative generation pipeline",
