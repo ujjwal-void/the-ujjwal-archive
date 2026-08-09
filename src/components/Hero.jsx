@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Zap, Briefcase, Cpu, FileText, Code2, ExternalLink } from 'lucide-react';
+import { Zap, Briefcase, Cpu, FileText, Code2, ExternalLink, Download } from 'lucide-react';
 import { PROFILE_DATA } from '../data/portfolioData';
 import { checkIsRecruiterMode } from '../utils/privacyHelper';
 import TerminalConsole from './TerminalConsole';
@@ -60,9 +60,19 @@ export default function Hero({ onNavigate }) {
               <ExternalLink size={16} /> GitHub
             </a>
 
-            {/* Recruiter-Only Social Links */}
+            {/* Recruiter-Only Buttons & Social Links */}
             {isRecruiter && (
               <>
+                <a
+                  href="./Ujjwal_Ujjwal_Resume.pdf"
+                  download="Ujjwal_Ujjwal_Resume.pdf"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="btn-primary"
+                  style={{ gap: '0.4rem' }}
+                >
+                  <Download size={16} /> 📄 Download Resume (PDF)
+                </a>
                 <a href="https://leetcode.com/u/ujjwal92/" target="_blank" rel="noreferrer" className="btn-glass" title="LeetCode @ujjwal92">
                   <Code2 size={16} /> LeetCode
                 </a>
