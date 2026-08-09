@@ -18,7 +18,7 @@ export default function Navbar({ activeRoute, onNavigate }) {
             alt="Ujjwal"
             style={{ width: '28px', height: '28px', borderRadius: '6px', objectFit: 'cover', border: '1px solid var(--border-muted)' }}
           />
-          <span>Ujjwal<span style={{ color: 'var(--text-muted)' }}> </span></span>
+          <span>Ujjwal</span>
         </a>
 
         <ul className="nav-links">

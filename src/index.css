@@ -156,6 +156,7 @@ h1, h2, h3, h4 {
   font-weight: 800;
   font-size: 1.15rem;
   color: var(--text-main);
+  margin-right: 1.5rem;
 }
 
 .nav-links {
