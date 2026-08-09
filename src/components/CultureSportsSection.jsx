@@ -1,15 +1,9 @@
 import React, { useState } from 'react';
-import { Eye, EyeOff, Unlock, Bot, Quote, Flame, Activity, ShieldAlert, ShieldCheck } from 'lucide-react';
+import { Bot, Quote, Flame, Activity, Sparkles } from 'lucide-react';
 import { MEDIA_DATA, SPORTS_TAKES } from '../data/portfolioData';
 
 export default function CultureSportsSection() {
   const [activeFilter, setActiveFilter] = useState('all');
-  const [spoilerModeOff, setSpoilerModeOff] = useState(false); // Default: Spoiler Shield ON (Safe View)
-  const [unlockedSpoilers, setUnlockedSpoilers] = useState({});
-
-  const toggleSingleSpoiler = (id) => {
-    setUnlockedSpoilers(prev => ({ ...prev, [id]: true }));
-  };
 
   const handleAiVerdict = (title, opinion) => {
     alert(`🤖 Narrative Analysis for "${title}":\n\n${opinion}\n\nConclusion: Key structural payoff in narrative execution.`);
@@ -34,7 +28,7 @@ export default function CultureSportsSection() {
               </span>
             </div>
             <h2 style={{ fontSize: '2.2rem', marginBottom: '0.4rem' }}>🍿 Anime, Movies, Books & Sports</h2>
-            <p style={{ color: 'var(--text-muted)' }}>Personal reflections on stories and sports tactics—with a global Spoiler Mode toggle.</p>
+            <p style={{ color: 'var(--text-muted)' }}>Personal reflections on stories, media analysis, and sports tactics.</p>
           </div>
 
           <div style={{ display: 'flex', gap: '0.4rem', background: 'var(--bg-card)', padding: '0.3rem', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border-muted)', flexWrap: 'wrap' }}>
@@ -44,53 +38,6 @@ export default function CultureSportsSection() {
             <button className={`filter-btn ${activeFilter === 'book' ? 'active' : ''}`} onClick={() => setActiveFilter('book')}>Books 📖</button>
             <button className={`filter-btn ${activeFilter === 'sports' ? 'active' : ''}`} onClick={() => setActiveFilter('sports')}>Sports ⚽</button>
           </div>
-        </div>
-
-        {/* Global Spoiler Mode Toggle Banner */}
-        <div style={{
-          display: 'flex',
-          alignItems: 'center',
-          justify: 'space-between',
-          background: spoilerModeOff ? '#ffe4e6' : '#e0f2fe',
-          border: `1.5px solid ${spoilerModeOff ? '#e11d48' : '#0284c7'}`,
-          borderRadius: 'var(--radius-md)',
-          padding: '0.8rem 1.2rem',
-          flexWrap: 'wrap',
-          gap: '0.8rem',
-          transition: 'all 0.2s ease'
-        }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
-            {spoilerModeOff ? (
-              <ShieldAlert size={20} style={{ color: '#be123c' }} />
-            ) : (
-              <ShieldCheck size={20} style={{ color: '#0369a1' }} />
-            )}
-            <div>
-              <div style={{ fontSize: '0.9rem', fontWeight: 700, color: spoilerModeOff ? '#be123c' : '#0369a1', fontFamily: 'var(--font-mono)' }}>
-                {spoilerModeOff ? 'SPOILER MODE: OFF (UNCENSORED VIEW)' : 'SPOILER SHIELD: ON (SAFE VIEW)'}
-              </div>
-              <div style={{ fontSize: '0.8rem', color: spoilerModeOff ? '#9f1239' : '#075985' }}>
-                {spoilerModeOff
-                  ? 'All plot twists, climaxes, endings, and deep narrative breakdowns are fully visible.'
-                  : 'Plot climaxes and story twists are hidden behind protection blurs.'}
-              </div>
-            </div>
-          </div>
-
-          <button
-            onClick={() => setSpoilerModeOff(!spoilerModeOff)}
-            className="btn-primary"
-            style={{
-              background: spoilerModeOff ? '#e11d48' : '#0284c7',
-              borderColor: spoilerModeOff ? '#be123c' : '#0369a1',
-              color: '#ffffff',
-              fontSize: '0.82rem',
-              padding: '0.45rem 0.95rem'
-            }}
-          >
-            {spoilerModeOff ? <EyeOff size={15} /> : <Eye size={15} />}
-            {spoilerModeOff ? 'Turn Spoiler Shield ON' : 'Turn Spoiler Mode OFF (Show Climax)'}
-          </button>
         </div>
       </div>
 
@@ -105,86 +52,72 @@ export default function CultureSportsSection() {
               </h3>
             )}
             <div className="grid-2">
-              {filteredMedia.map(item => {
-                // If global Spoiler Mode is OFF, OR item has no spoilers, OR card was individually unlocked
-                const isUnlocked = spoilerModeOff || unlockedSpoilers[item.id] || !item.spoilerContent.hasSpoilers;
-
-                return (
-                  <div key={item.id} className="media-card">
-                    <div className="media-header">
-                      <img src={item.image} alt={item.title} className="media-cover" />
-                      <span className="media-tag">{item.type} • {item.year}</span>
-                    </div>
-
-                    <div className="media-body">
-                      <div>
-                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.3rem' }}>
-                          <h3 style={{ fontSize: '1.4rem' }}>{item.title}</h3>
-                          <span className="meta-tag meta-purple">{item.impactRating}</span>
-                        </div>
-                        <p style={{ fontSize: '0.85rem', color: 'var(--text-dim)' }}>By {item.creator}</p>
-                      </div>
-
-                      <div className="relatability-meter">
-                        <span style={{ fontSize: '0.82rem', fontWeight: 600, color: 'var(--text-muted)' }}>Relatability</span>
-                        <div className="meter-bar">
-                          <div className="meter-fill" style={{ width: `${item.relatabilityScore}%` }}></div>
-                        </div>
-                        <span style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--accent-indigo)', fontFamily: 'var(--font-mono)' }}>{item.relatabilityScore}%</span>
-                      </div>
-
-                      <div>
-                        <h4 style={{ fontSize: '0.82rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.4rem', fontFamily: 'var(--font-mono)' }}>SUMMARY</h4>
-                        <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>{item.summary}</p>
-                      </div>
-
-                      {/* Personal Impact */}
-                      <div style={{ background: '#fef3c7', borderLeft: '3px solid var(--accent-amber)', padding: '0.9rem 1.1rem', borderRadius: '0 var(--radius-sm) var(--radius-sm) 0' }}>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', marginBottom: '0.3rem' }}>
-                          <Quote size={14} style={{ color: '#b45309' }} />
-                          <span style={{ fontSize: '0.75rem', fontWeight: 600, color: '#b45309', textTransform: 'uppercase', fontFamily: 'var(--font-mono)' }}>HOW IT AFFECTED ME</span>
-                        </div>
-                        <p style={{ fontSize: '0.88rem', color: '#78350f', fontStyle: 'italic', lineHeight: '1.5' }}>"{item.personalImpact}"</p>
-                      </div>
-
-                      {/* Spoiler Guard Box */}
-                      {item.spoilerContent.hasSpoilers && (
-                        <div className="spoiler-box" style={{ borderColor: isUnlocked ? '#a7f3d0' : '#fecdd3', background: isUnlocked ? '#ecfdf5' : '#fff1f2' }}>
-                          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
-                            <span style={{ fontSize: '0.78rem', fontWeight: 600, color: isUnlocked ? '#047857' : 'var(--accent-rose)', display: 'flex', alignItems: 'center', gap: '0.4rem', fontFamily: 'var(--font-mono)' }}>
-                              {isUnlocked ? '[UNCENSORED CLIMAX & PLOT ANALYSIS]' : '[PLOT SPOILERS HIDDEN]'}
-                            </span>
-                            {isUnlocked && <span style={{ fontSize: '0.75rem', color: 'var(--accent-emerald)', display: 'flex', alignItems: 'center', gap: '0.2rem', fontFamily: 'var(--font-mono)' }}><Unlock size={12} /> Unlocked</span>}
-                          </div>
-
-                          <div className={`spoiler-content ${isUnlocked ? '' : 'blurred'}`}>
-                            <p style={{ fontSize: '0.88rem', color: isUnlocked ? '#064e3b' : 'var(--text-muted)', marginBottom: '0.5rem', lineHeight: '1.5' }}>
-                              <strong>Climax Analysis:</strong> {item.spoilerContent.twistSummary}
-                            </p>
-                            <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap' }}>
-                              {item.spoilerContent.keyThemes.map((theme, idx) => (
-                                <span key={idx} style={{ fontSize: '0.72rem', background: isUnlocked ? '#d1fae5' : 'var(--bg-secondary)', padding: '0.2rem 0.5rem', borderRadius: '4px', color: isUnlocked ? '#047857' : 'var(--text-muted)', border: '1px solid var(--border-muted)', fontFamily: 'var(--font-mono)' }}>#{theme}</span>
-                              ))}
-                            </div>
-                          </div>
-
-                          {!isUnlocked && (
-                            <div className="spoiler-overlay-toggle" onClick={() => toggleSingleSpoiler(item.id)}>
-                              <Eye size={20} style={{ color: 'var(--accent-rose)' }} />
-                              <span style={{ fontSize: '0.85rem', fontWeight: 600 }}>Click to reveal plot breakdown</span>
-                              <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>Or toggle Spoiler Mode OFF above</span>
-                            </div>
-                          )}
-                        </div>
-                      )}
-
-                      <button className="btn-glass" onClick={() => handleAiVerdict(item.title, item.spoilerContent.aiOpinion)} style={{ marginTop: '0.5rem', width: '100%', justifyContent: 'center', fontSize: '0.85rem' }}>
-                        <Bot size={16} /> Why this resonated with me
-                      </button>
-                    </div>
+              {filteredMedia.map(item => (
+                <div key={item.id} className="media-card">
+                  <div className="media-header">
+                    <img src={item.image} alt={item.title} className="media-cover" />
+                    <span className="media-tag">{item.type} • {item.year}</span>
                   </div>
-                );
-              })}
+
+                  <div className="media-body">
+                    <div>
+                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.3rem' }}>
+                        <h3 style={{ fontSize: '1.4rem' }}>{item.title}</h3>
+                        <span className="meta-tag meta-purple">{item.impactRating}</span>
+                      </div>
+                      <p style={{ fontSize: '0.85rem', color: 'var(--text-dim)' }}>By {item.creator}</p>
+                    </div>
+
+                    <div className="relatability-meter">
+                      <span style={{ fontSize: '0.82rem', fontWeight: 600, color: 'var(--text-muted)' }}>Relatability</span>
+                      <div className="meter-bar">
+                        <div className="meter-fill" style={{ width: `${item.relatabilityScore}%` }}></div>
+                      </div>
+                      <span style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--accent-indigo)', fontFamily: 'var(--font-mono)' }}>{item.relatabilityScore}%</span>
+                    </div>
+
+                    <div>
+                      <h4 style={{ fontSize: '0.82rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.4rem', fontFamily: 'var(--font-mono)' }}>SUMMARY</h4>
+                      <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>{item.summary}</p>
+                    </div>
+
+                    {/* Personal Impact */}
+                    <div style={{ background: '#fef3c7', borderLeft: '3px solid var(--accent-amber)', padding: '0.9rem 1.1rem', borderRadius: '0 var(--radius-sm) var(--radius-sm) 0' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', marginBottom: '0.3rem' }}>
+                        <Quote size={14} style={{ color: '#b45309' }} />
+                        <span style={{ fontSize: '0.75rem', fontWeight: 600, color: '#b45309', textTransform: 'uppercase', fontFamily: 'var(--font-mono)' }}>HOW IT AFFECTED ME</span>
+                      </div>
+                      <p style={{ fontSize: '0.88rem', color: '#78350f', fontStyle: 'italic', lineHeight: '1.5' }}>"{item.personalImpact}"</p>
+                    </div>
+
+                    {/* Clean Deep Narrative & Climax Breakdown Box (No Spoilers Shield / Blur) */}
+                    {item.spoilerContent && (
+                      <div style={{ background: 'var(--bg-secondary)', border: '1px solid var(--border-muted)', borderRadius: 'var(--radius-sm)', padding: '1rem' }}>
+                        <div style={{ marginBottom: '0.5rem' }}>
+                          <span style={{ fontSize: '0.78rem', fontWeight: 700, color: 'var(--accent-indigo)', fontFamily: 'var(--font-mono)' }}>
+                            [NARRATIVE & CLIMAX ANALYSIS]
+                          </span>
+                        </div>
+
+                        <div>
+                          <p style={{ fontSize: '0.88rem', color: 'var(--text-main)', marginBottom: '0.5rem', lineHeight: '1.5' }}>
+                            <strong>Climax Analysis:</strong> {item.spoilerContent.twistSummary}
+                          </p>
+                          <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap' }}>
+                            {item.spoilerContent.keyThemes.map((theme, idx) => (
+                              <span key={idx} style={{ fontSize: '0.72rem', background: 'var(--bg-card)', padding: '0.2rem 0.5rem', borderRadius: '4px', color: 'var(--text-muted)', border: '1px solid var(--border-muted)', fontFamily: 'var(--font-mono)' }}>#{theme}</span>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+
+                    <button className="btn-glass" onClick={() => handleAiVerdict(item.title, item.spoilerContent.aiOpinion)} style={{ marginTop: '0.5rem', width: '100%', justifyContent: 'center', fontSize: '0.85rem' }}>
+                      <Bot size={16} /> Why this resonated with me
+                    </button>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         )}
