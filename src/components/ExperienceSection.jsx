@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Briefcase, GraduationCap, Award, Mail, Phone, ExternalLink, Code2, Cpu, CheckCircle, CreditCard } from 'lucide-react';
+import { Briefcase, GraduationCap, Award, Mail, Phone, ExternalLink, Code2, Cpu, CheckCircle, CreditCard, Download, FileText } from 'lucide-react';
 import { PROFILE_DATA, WORK_EXPERIENCE, ACHIEVEMENTS, TECHNICAL_SKILLS } from '../data/portfolioData';
 import { checkIsRecruiterMode } from '../utils/privacyHelper';
 
@@ -14,12 +14,30 @@ export default function ExperienceSection() {
     <div>
       {/* Header Banner */}
       <div style={{ marginBottom: '2.5rem' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '0.4rem' }}>
-          <span className="meta-tag meta-emerald">CAREER ARCHIVE</span>
-          <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: 'var(--text-dim)' }}>[Gurugram, India]</span>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1rem', marginBottom: '0.8rem' }}>
+          <div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '0.4rem' }}>
+              <span className="meta-tag meta-emerald">CAREER ARCHIVE</span>
+              <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: 'var(--text-dim)' }}>[Gurugram, India]</span>
+            </div>
+            <h2 style={{ fontSize: '2.2rem', marginBottom: '0.4rem' }}>💼 Work Experience & Skills</h2>
+            <p style={{ color: 'var(--text-muted)' }}>Software Engineer specializing in AI/LLM architectures, high-concurrency backends, and microservices.</p>
+          </div>
+
+          {/* Download Official Resume PDF Button */}
+          {isRecruiter && (
+            <a
+              href="./Ujjwal_Ujjwal_Resume.pdf"
+              download="Ujjwal_Ujjwal_Resume.pdf"
+              target="_blank"
+              rel="noreferrer"
+              className="btn-primary"
+              style={{ fontSize: '0.85rem', padding: '0.55rem 1.1rem', gap: '0.5rem', boxShadow: 'var(--shadow-subtle)' }}
+            >
+              <Download size={16} /> 📄 Download Official Resume (PDF)
+            </a>
+          )}
         </div>
-        <h2 style={{ fontSize: '2.2rem', marginBottom: '0.4rem' }}>💼 Work Experience & Skills</h2>
-        <p style={{ color: 'var(--text-muted)' }}>Software Engineer specializing in AI/LLM architectures, high-concurrency backends, and microservices.</p>
       </div>
 
       {/* Quick Contact & Credentials Box */}
@@ -38,8 +56,18 @@ export default function ExperienceSection() {
             {/* Render confidential data ONLY if recruiter */}
             {isRecruiter && (
               <>
-                <a href="#card" onClick={() => window.location.hash = 'card'} className="btn-primary" style={{ fontSize: '0.82rem', padding: '0.45rem 0.9rem' }}>
-                  <CreditCard size={14} /> 🎴 Download 1-Page Pass
+                <a
+                  href="./Ujjwal_Ujjwal_Resume.pdf"
+                  download="Ujjwal_Ujjwal_Resume.pdf"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="btn-primary"
+                  style={{ fontSize: '0.82rem', padding: '0.45rem 0.9rem' }}
+                >
+                  <Download size={14} /> Download Resume (PDF)
+                </a>
+                <a href="#card" onClick={() => window.location.hash = 'card'} className="btn-glass" style={{ fontSize: '0.82rem', padding: '0.45rem 0.9rem' }}>
+                  <CreditCard size={14} /> 🎴 1-Page Pass
                 </a>
                 <a href={`mailto:${PROFILE_DATA.email}`} className="btn-glass" style={{ fontSize: '0.82rem', padding: '0.45rem 0.9rem' }}>
                   <Mail size={14} /> {PROFILE_DATA.email}

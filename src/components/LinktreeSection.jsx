@@ -36,6 +36,11 @@ export default function LinktreeSection({ onNavigate }) {
       return;
     }
 
+    if (link.id === 'resume-pdf') {
+      window.open('./Ujjwal_Ujjwal_Resume.pdf', '_blank');
+      return;
+    }
+
     if (link.url.startsWith('http')) {
       window.open(link.url, '_blank', 'noopener,noreferrer');
     } else {
