@@ -1,9 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Download, Share2, Mail, Phone, MapPin, Briefcase, GraduationCap, Code2, ExternalLink, Check, Award } from 'lucide-react';
 import { PROFILE_DATA } from '../data/portfolioData';
+import { checkIsRecruiterMode } from '../utils/privacyHelper';
 
 export default function ProfileCardSection() {
   const [copied, setCopied] = useState(false);
+  const [isRecruiter, setIsRecruiter] = useState(false);
+
+  useEffect(() => {
+    setIsRecruiter(checkIsRecruiterMode());
+  }, []);
 
   const handleDownloadVCard = () => {
     const vCardData = `BEGIN:VCARD
@@ -36,7 +42,7 @@ END:VCARD`;
   };
 
   const handleCopyShare = () => {
-    navigator.clipboard.writeText(window.location.origin + window.location.pathname + '#card');
+    navigator.clipboard.writeText(window.location.origin + window.location.pathname + (isRecruiter ? '#recruit/card' : '#card'));
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -53,12 +59,16 @@ END:VCARD`;
         
         {/* Action Toolbar */}
         <div style={{ display: 'flex', gap: '0.6rem', marginTop: '1.2rem', flexWrap: 'wrap' }}>
-          <button className="btn-primary" onClick={handlePrintCard} style={{ fontSize: '0.85rem', padding: '0.45rem 1rem', gap: '0.4rem' }}>
-            <Download size={15} /> Save / Print 1-Page PDF Card
-          </button>
-          <button className="btn-glass" onClick={handleDownloadVCard} style={{ fontSize: '0.85rem', padding: '0.45rem 1rem', gap: '0.4rem' }}>
-            <Download size={15} /> Download vCard (.vcf)
-          </button>
+          {isRecruiter && (
+            <>
+              <button className="btn-primary" onClick={handlePrintCard} style={{ fontSize: '0.85rem', padding: '0.45rem 1rem', gap: '0.4rem' }}>
+                <Download size={15} /> Save / Print 1-Page PDF Card
+              </button>
+              <button className="btn-glass" onClick={handleDownloadVCard} style={{ fontSize: '0.85rem', padding: '0.45rem 1rem', gap: '0.4rem' }}>
+                <Download size={15} /> Download vCard (.vcf)
+              </button>
+            </>
+          )}
           <button className="btn-glass" onClick={handleCopyShare} style={{ fontSize: '0.85rem', padding: '0.45rem 1rem', gap: '0.4rem' }}>
             {copied ? <Check size={15} style={{ color: 'var(--accent-emerald)' }} /> : <Share2 size={15} />}
             {copied ? 'Card Link Copied!' : 'Share Card'}
@@ -138,14 +148,22 @@ END:VCARD`;
           {/* Contact Bar */}
           <div style={{ borderTop: '1.5px solid #e2e8f0', paddingTop: '0.8rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.5rem', fontSize: '0.78rem' }}>
             <div style={{ display: 'flex', gap: '0.8rem', flexWrap: 'wrap', color: '#334155' }}>
-              <a href={`mailto:${PROFILE_DATA.email}`} style={{ color: '#4338ca', textDecoration: 'none', fontWeight: 600 }}>✉️ {PROFILE_DATA.email}</a>
-              <a href={`tel:${PROFILE_DATA.phone}`} style={{ color: '#0f172a', textDecoration: 'none', fontWeight: 600 }}>📞 {PROFILE_DATA.phone}</a>
+              {isRecruiter && (
+                <>
+                  <a href={`mailto:${PROFILE_DATA.email}`} style={{ color: '#4338ca', textDecoration: 'none', fontWeight: 600 }}>✉️ {PROFILE_DATA.email}</a>
+                  <a href={`tel:${PROFILE_DATA.phone}`} style={{ color: '#0f172a', textDecoration: 'none', fontWeight: 600 }}>📞 {PROFILE_DATA.phone}</a>
+                </>
+              )}
               <span>📍 Gurugram, India</span>
             </div>
             <div style={{ display: 'flex', gap: '0.6rem', fontWeight: 600 }}>
               <a href="https://github.com/ujjwal-void" target="_blank" rel="noreferrer" style={{ color: '#4338ca', textDecoration: 'none' }}>GitHub</a>
-              <a href="https://www.linkedin.com/in/ujjwal-ujjwal-dev/" target="_blank" rel="noreferrer" style={{ color: '#4338ca', textDecoration: 'none' }}>LinkedIn</a>
-              <a href="https://leetcode.com/u/ujjwal92/" target="_blank" rel="noreferrer" style={{ color: '#4338ca', textDecoration: 'none' }}>LeetCode</a>
+              {isRecruiter && (
+                <>
+                  <a href="https://www.linkedin.com/in/ujjwal-ujjwal-dev/" target="_blank" rel="noreferrer" style={{ color: '#4338ca', textDecoration: 'none' }}>LinkedIn</a>
+                  <a href="https://leetcode.com/u/ujjwal92/" target="_blank" rel="noreferrer" style={{ color: '#4338ca', textDecoration: 'none' }}>LeetCode</a>
+                </>
+              )}
             </div>
           </div>
         </div>
