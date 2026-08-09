@@ -312,53 +312,164 @@ export const LINKTREE_LINKS = [
 ];
 
 export const MEDIA_DATA = [
+  // BOOKS SECTION
   {
-    id: "steins-gate",
-    type: "anime",
-    title: "Steins;Gate",
-    creator: "White Fox / Chiyomaru Shikura",
-    year: "2011",
-    rating: "9.8 / 10",
-    relatabilityScore: 98,
-    recommendation: "Must Watch (Anime Masterpiece)",
-    image: "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600&auto=format&fit=crop&q=80",
-    review: "Steins;Gate shaped how I think about cause-and-effect in software architecture. Okabe's persistent iterations across world lines to find a viable path resonate with how complex engineering problems get solved. Deceiving past observations to change the future without altering established history is brilliant narrative design."
-  },
-  {
-    id: "interstellar",
-    type: "movie",
-    title: "Interstellar",
-    creator: "Christopher Nolan",
-    year: "2014",
-    rating: "10 / 10",
-    relatabilityScore: 95,
-    recommendation: "Must Watch (Cinema Masterpiece)",
-    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&auto=format&fit=crop&q=80",
-    review: "The depiction of gravitational time dilation on Miller's Planet is a striking reminder of time's non-linear value. Cooper entering the 5-dimensional Tesseract to transmit quantum data through gravity makes this a timeless sci-fi masterpiece."
-  },
-  {
-    id: "atomic-habits",
+    id: "i-hear-you",
     type: "book",
-    title: "Atomic Habits",
-    creator: "James Clear",
-    year: "2018",
+    title: "I Hear You",
+    creator: "Michael S. Sorensen",
+    year: "2017",
     rating: "9.5 / 10",
-    relatabilityScore: 99,
-    recommendation: "Must Read (Essential Growth)",
+    recommendation: "Must Read (Essential Communication)",
     image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80",
-    review: "Shifted my approach from trying to master an entire stack in a weekend to small, consistent 1% daily engineering habits that compound over time. Focus on system architecture rather than arbitrary end targets."
+    review: "A masterclass in active validation. It breaks down how validating human emotions—rather than immediately jumping to fix or debug symptoms—radically improves interpersonal dynamics and engineering leadership."
   },
   {
-    id: "attack-on-titan",
+    id: "metamorphosis",
+    type: "book",
+    title: "Metamorphosis",
+    creator: "Franz Kafka",
+    year: "1915",
+    rating: "9.8 / 10",
+    recommendation: "Must Read (Existential Masterpiece)",
+    image: "https://images.unsplash.com/photo-1512820790803-83ca734da794?w=600&auto=format&fit=crop&q=80",
+    review: "Kafka’s stark exploration of alienating routine and utility-driven human relationships. Gregor Samsa's transformation exposes how rapidly societal value fades when an individual can no longer contribute to economic output."
+  },
+  {
+    id: "dorian-gray",
+    type: "book",
+    title: "The Picture of Dorian Gray",
+    creator: "Oscar Wilde",
+    year: "1890",
+    rating: "9.7 / 10",
+    recommendation: "Must Read (Classic Literature)",
+    image: "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=600&auto=format&fit=crop&q=80",
+    review: "Wilde's brilliant philosophical examination of hedonism, aesthetics, and moral decay. The hidden portrait acting as a mirror for consequence is a timeless allegory for unseen system debt accumulated beneath a flawless surface."
+  },
+  {
+    id: "rosie-project",
+    type: "book",
+    title: "The Rosie Project",
+    creator: "Graeme Simsion",
+    year: "2013",
+    rating: "9.2 / 10",
+    recommendation: "Highly Recommended (Witty & Heartfelt)",
+    image: "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?w=600&auto=format&fit=crop&q=80",
+    review: "A hilarious and clever perspective on applying rigid algorithmic heuristics and deterministic questionnaires to human relationships. Shows how life's best breakthroughs often emerge outside deterministic logic."
+  },
+  {
+    id: "why-i-killed-gandhi",
+    type: "book",
+    title: "Why I Killed Gandhi",
+    creator: "Nathuram Godse",
+    year: "1949",
+    rating: "8.8 / 10",
+    recommendation: "Recommended (Historical Perspective)",
+    image: "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=600&auto=format&fit=crop&q=80",
+    review: "A profound court statement study on political ideology, ideological polarization, and conflicting national visions during a tumultuous era of partition."
+  },
+
+  // MOVIES SECTION
+  {
+    id: "kishkindha-kaandam",
+    type: "movie",
+    title: "Kishkindha Kaandam",
+    creator: "Dinjith Ayyathan / Asif Ali",
+    year: "2024",
+    rating: "9.6 / 10",
+    recommendation: "Must Watch (Mind-Bending Mystery)",
+    image: "https://images.unsplash.com/photo-1448375240586-882707db888b?w=600&auto=format&fit=crop&q=80",
+    review: "An extraordinary Malayalam mystery thriller that uses memory degradation and monkey-infested forests as an intricate puzzle box. The gradual unspooling of clues without cheap jump scares is storytelling at its finest."
+  },
+  {
+    id: "smoking-kills",
+    type: "movie",
+    title: "Thank You for Smoking / Smoking Kills",
+    creator: "Jason Reitman",
+    year: "2005",
+    rating: "9.1 / 10",
+    recommendation: "Highly Recommended (Satire & Rhetoric)",
+    image: "https://images.unsplash.com/photo-1485846234645-a62644f84728?w=600&auto=format&fit=crop&q=80",
+    review: "A sharp, cynical satire on corporate PR, spin doctors, and rhetoric. Demonstrates how framing and argument structure can reorient perception regardless of baseline truth."
+  },
+  {
+    id: "frankenstein",
+    type: "movie",
+    title: "Frankenstein",
+    creator: "Mary Shelley / Cinema Adaptations",
+    year: "1931 / Classic Cinema",
+    rating: "9.5 / 10",
+    recommendation: "Must Watch (Sci-Fi Archetype)",
+    image: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=600&auto=format&fit=crop&q=80",
+    review: "The foundational warning of technological hubris. Creating autonomous intelligence without taking long-term architectural responsibility for its alignment remains the ultimate engineering lesson."
+  },
+  {
+    id: "the-platform",
+    type: "movie",
+    title: "The Platform (El Hoyo)",
+    creator: "Galder Gaztelu-Urrutia",
+    year: "2019",
+    rating: "9.4 / 10",
+    recommendation: "Must Watch (Social Thriller)",
+    image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600&auto=format&fit=crop&q=80",
+    review: "A brutal vertical prison allegory examining resource allocation, trickle-down greed, and systemic inefficiency. A stark reminder that unconstrained consumption at top levels leaves lower tiers starving."
+  },
+  {
+    id: "sambhavam",
+    type: "movie",
+    title: "Sambhavam / Aavesham",
+    creator: "Jithu Madhavan / Fahadh Faasil",
+    year: "2024",
+    rating: "9.5 / 10",
+    recommendation: "Must Watch (Pure Entertainment)",
+    image: "https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=600&auto=format&fit=crop&q=80",
+    review: "High-voltage cinema driven by Fahadh Faasil's unmatched screen presence. Energetic pacing, hilarious character beats, and brilliant situational comedy make it an absolute blast."
+  },
+  {
+    id: "maharaj",
+    type: "movie",
+    title: "Maharaj",
+    creator: "Siddharth P. Malhotra",
+    year: "2024",
+    rating: "9.0 / 10",
+    recommendation: "Highly Recommended (Courageous Drama)",
+    image: "https://images.unsplash.com/photo-1461360370896-922624d12aa1?w=600&auto=format&fit=crop&q=80",
+    review: "A compelling historical courtroom drama highlighting Karsandas Mulji's crusade against blind dogma and institutional power in 1860s Bombay. Celebrates fearless journalism and critical reasoning."
+  },
+
+  // ANIME SECTION
+  {
+    id: "tokyo-revengers",
     type: "anime",
-    title: "Attack on Titan",
-    creator: "Hajime Isayama",
-    year: "2013-2023",
-    rating: "9.9 / 10",
-    relatabilityScore: 96,
-    recommendation: "Must Watch (Peak Storytelling)",
+    title: "Tokyo Revengers",
+    creator: "Ken Wakui / LidenFilms",
+    year: "2021-2023",
+    rating: "9.3 / 10",
+    recommendation: "Must Watch (Time-Leap Drama)",
+    image: "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600&auto=format&fit=crop&q=80",
+    review: "Takemichi’s relentless grit across time leaps shows that emotional resilience matters more than physical strength. Intricate gang dynamics and butterfly effect consequences make every jump high stakes."
+  },
+  {
+    id: "erased",
+    type: "anime",
+    title: "Erased (Boku dake ga Inai Machi)",
+    creator: "Kei Sanbe / A-1 Pictures",
+    year: "2016",
+    rating: "9.8 / 10",
+    recommendation: "Must Watch (Psychological Thriller)",
     image: "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600&auto=format&fit=crop&q=80",
-    review: "Isayama's narrative demonstrates how perspective shifts when context is revealed. The realization of the world beyond the walls is an incredible study in long-term structural planning and narrative foreshadowing."
+    review: "A masterclass in suspense and time rewind ('Revival'). Satoru’s desperate effort to alter past tragedies by paying meticulous attention to small details makes this one of the tightest mystery anime ever created."
+  },
+  {
+    id: "another",
+    type: "anime",
+    title: "Another",
+    creator: "Yukito Ayatsuji / P.A. Works",
+    year: "2012",
+    rating: "9.2 / 10",
+    recommendation: "Highly Recommended (Atmospheric Horror)",
+    image: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=600&auto=format&fit=crop&q=80",
+    review: "Chilling, atmospheric horror surrounding Class 3-3's curse. The eerie tension, systemic paranoia, and methodical search for the 'extra dead person' keep you guessing until the final episode."
   }
 ];
 
