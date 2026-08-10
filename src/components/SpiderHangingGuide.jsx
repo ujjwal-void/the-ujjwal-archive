@@ -1,39 +1,39 @@
 import React, { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
-import { Briefcase, Cpu, FileText, Atom, Sparkles, X, Compass, ChevronRight } from 'lucide-react';
+import { Briefcase, Cpu, FileText, Atom, Sparkles, X, ChevronRight, Zap } from 'lucide-react';
 
 export default function SpiderHangingGuide({ activeRoute, onNavigate }) {
   const mountRef = useRef(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const [minimized, setMinimized] = useState(false);
-  const [speechText, setSpeechText] = useState("Hi! I'm Spidey 🕷️ Click me to explore!");
+  const [speechText, setSpeechText] = useState("Hey human! 🕷️ Click me to swing around!");
 
-  // Contextual reactive reaction whenever activeRoute changes
+  // Contextual reactive reaction with HIGH-ENERGY EXCITING TONE
   useEffect(() => {
     switch (activeRoute) {
       case 'home':
-        setSpeechText("Welcome to Ujjwal's Archive! 🕸️");
+        setSpeechText("Hey human! ⚡ Welcome to Ujjwal's Cyber Vault! Let's swing!");
         break;
       case 'experience':
-        setSpeechText("Inspecting SDE Roles at ZFunds & Advor! 💼");
+        setSpeechText("Boom! 💼 SDE superpowers at ZFunds & Advor unlocked!");
         break;
       case 'projects':
-        setSpeechText("Checking RAG Engines & Microservices! 🚀");
+        setSpeechText("Woah! 🚀 High-scale Microservices & Hybrid RAG Engines inside!");
         break;
       case 'essays':
       case 'teaching':
-        setSpeechText("Reading Hybrid RAG & Vector Embeddings! ✍️");
+        setSpeechText("Brain mode ON! 🧠 Vector Embeddings & RAG Architecture!");
         break;
       case 'physics':
       case 'math':
-        setSpeechText("Analyzing Vectors & Activation Functions! ⚛️");
+        setSpeechText("Quantum vibes! ⚛️ Vector Spaces & Activation Math!");
         break;
       case 'culture':
       case 'media':
-        setSpeechText("Reviewing Literature & Cinema Notes! 🍿");
+        setSpeechText("Popcorn time! 🍿 Mind-bending thrillers, books & anime!");
         break;
       default:
-        setSpeechText("Exploring Ujjwal's Portfolio! 🕷️");
+        setSpeechText("Ready to explore? Let's swing through the archive! 🕸️");
     }
   }, [activeRoute]);
 
@@ -53,51 +53,75 @@ export default function SpiderHangingGuide({ activeRoute, onNavigate }) {
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     container.appendChild(renderer.domElement);
 
-    // 2. Lighting Setup Matching Dark Palette
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.9);
+    // 2. Bright & Vivid Lighting Setup for High Visibility
+    const ambientLight = new THREE.AmbientLight(0xffffff, 1.4);
     scene.add(ambientLight);
 
-    const dirLight = new THREE.DirectionalLight(0x6366f1, 1.4); // Indigo Accent
-    dirLight.position.set(4, 6, 4);
-    scene.add(dirLight);
+    const redSpotLight = new THREE.DirectionalLight(0xef4444, 2.0); // Vibrant Red Light
+    redSpotLight.position.set(5, 8, 5);
+    scene.add(redSpotLight);
 
-    const cyanLight = new THREE.PointLight(0x06b6d4, 1.8, 12); // Cyan Accent
-    cyanLight.position.set(-3, -2, 3);
-    scene.add(cyanLight);
+    const blueFillLight = new THREE.PointLight(0x38bdf8, 2.2, 15); // Electric Blue Light
+    blueFillLight.position.set(-4, -3, 4);
+    scene.add(blueFillLight);
 
     // 3. Spider Root Group
     const spiderGroup = new THREE.Group();
     scene.add(spiderGroup);
 
-    // Spider Abdomen / Rear Body
-    const abdomenGeo = new THREE.SphereGeometry(1.2, 24, 24);
-    abdomenGeo.scale(0.95, 1.1, 1.2);
-    const bodyMat = new THREE.MeshStandardMaterial({
-      color: 0x0f172a, // Matches Dark Slate bg-card
-      roughness: 0.3,
+    // VIBRANT SPIDER RED BODY MATERIAL
+    const redBodyMat = new THREE.MeshStandardMaterial({
+      color: 0xef4444, // Bright Spider Red
+      roughness: 0.2,
+      metalness: 0.3,
+      emissive: 0x991b1b,
+      emissiveIntensity: 0.5,
+    });
+
+    // ELECTRIC CYBER BLUE LEG MATERIAL
+    const blueLegMat = new THREE.MeshStandardMaterial({
+      color: 0x2563eb, // Vibrant Electric Blue
+      roughness: 0.2,
       metalness: 0.4,
-      emissive: 0x1e1b4b,
+      emissive: 0x1d4ed8,
       emissiveIntensity: 0.4,
     });
-    const abdomenMesh = new THREE.Mesh(abdomenGeo, bodyMat);
+
+    // GOLDEN SPIDER EMBLEM MATERIAL
+    const goldMat = new THREE.MeshStandardMaterial({
+      color: 0xf59e0b,
+      metalness: 0.8,
+      roughness: 0.2,
+    });
+
+    // Spider Abdomen / Rear Body (Bright Red)
+    const abdomenGeo = new THREE.SphereGeometry(1.25, 24, 24);
+    abdomenGeo.scale(0.95, 1.1, 1.25);
+    const abdomenMesh = new THREE.Mesh(abdomenGeo, redBodyMat);
     abdomenMesh.position.set(0, 0.4, -0.2);
     spiderGroup.add(abdomenMesh);
 
-    // Spider Cephalothorax / Head Body
-    const headGeo = new THREE.SphereGeometry(0.85, 24, 24);
-    const headMesh = new THREE.Mesh(headGeo, bodyMat);
+    // Spider Golden Emblem Badge on Abdomen
+    const emblemGeo = new THREE.TorusGeometry(0.35, 0.08, 16, 32);
+    const emblemMesh = new THREE.Mesh(emblemGeo, goldMat);
+    emblemMesh.position.set(0, 0.5, 1.0);
+    spiderGroup.add(emblemMesh);
+
+    // Spider Cephalothorax / Head (Bright Red)
+    const headGeo = new THREE.SphereGeometry(0.88, 24, 24);
+    const headMesh = new THREE.Mesh(headGeo, redBodyMat);
     headMesh.position.set(0, -0.5, 0.3);
     spiderGroup.add(headMesh);
 
-    // Spider Glowing Visor Eyes (Cyan Glow)
-    const eyeGeo = new THREE.SphereGeometry(0.18, 16, 16);
-    const eyeMat = new THREE.MeshBasicMaterial({ color: 0x38bdf8 });
+    // Spider Bright White Glowing Lenses (Eyes)
+    const eyeGeo = new THREE.SphereGeometry(0.2, 16, 16);
+    const eyeMat = new THREE.MeshBasicMaterial({ color: 0xffffff });
 
     const eyeOffsets = [
-      [-0.32, -0.45, 1.05],
-      [0.32, -0.45, 1.05],
-      [-0.14, -0.32, 1.12],
-      [0.14, -0.32, 1.12],
+      [-0.32, -0.45, 1.08],
+      [0.32, -0.45, 1.08],
+      [-0.14, -0.32, 1.14],
+      [0.14, -0.32, 1.14],
     ];
 
     eyeOffsets.forEach(([x, y, z]) => {
@@ -106,13 +130,7 @@ export default function SpiderHangingGuide({ activeRoute, onNavigate }) {
       spiderGroup.add(eye);
     });
 
-    // Spider 8 Limbs (4 Left, 4 Right)
-    const legMat = new THREE.MeshStandardMaterial({
-      color: 0x4338ca,
-      roughness: 0.4,
-      metalness: 0.3,
-    });
-
+    // Spider 8 Limbs (Electric Blue Legs with Red Joints)
     const legs = [];
 
     for (let side = -1; side <= 1; side += 2) {
@@ -120,16 +138,16 @@ export default function SpiderHangingGuide({ activeRoute, onNavigate }) {
         const legGroup = new THREE.Group();
         legGroup.position.set(side * 0.7, -0.3 + i * 0.25, 0.1);
 
-        // Upper Leg Joint
-        const upperGeo = new THREE.CylinderGeometry(0.06, 0.05, 1.1);
-        const upperLeg = new THREE.Mesh(upperGeo, legMat);
+        // Upper Leg Joint (Electric Blue)
+        const upperGeo = new THREE.CylinderGeometry(0.07, 0.05, 1.15);
+        const upperLeg = new THREE.Mesh(upperGeo, blueLegMat);
         upperLeg.position.set(side * 0.5, 0.3, 0);
         upperLeg.rotation.z = side * (Math.PI / 4 + i * 0.08);
         legGroup.add(upperLeg);
 
-        // Lower Leg Joint
-        const lowerGeo = new THREE.CylinderGeometry(0.04, 0.02, 1.2);
-        const lowerLeg = new THREE.Mesh(lowerGeo, legMat);
+        // Lower Leg Tip (Bright Red)
+        const lowerGeo = new THREE.CylinderGeometry(0.05, 0.02, 1.25);
+        const lowerLeg = new THREE.Mesh(lowerGeo, redBodyMat);
         lowerLeg.position.set(side * 0.9, -0.3, 0.1);
         lowerLeg.rotation.z = side * -(Math.PI / 6 + i * 0.05);
         legGroup.add(lowerLeg);
@@ -139,12 +157,12 @@ export default function SpiderHangingGuide({ activeRoute, onNavigate }) {
       }
     }
 
-    // 4. Glowing Web Thread suspended from top boundary
-    const threadGeo = new THREE.CylinderGeometry(0.025, 0.025, 6);
+    // Glowing Neon Red Web Thread
+    const threadGeo = new THREE.CylinderGeometry(0.03, 0.03, 6);
     const threadMat = new THREE.MeshBasicMaterial({
-      color: 0x818cf8,
+      color: 0xef4444,
       transparent: true,
-      opacity: 0.45,
+      opacity: 0.85,
     });
     const threadMesh = new THREE.Mesh(threadGeo, threadMat);
     threadMesh.position.set(0, 3.8, 0);
@@ -174,17 +192,17 @@ export default function SpiderHangingGuide({ activeRoute, onNavigate }) {
       targetX += (mouseX - targetX) * 0.08;
       targetY += (mouseY - targetY) * 0.08;
 
-      // Upside-down hanging pendulum oscillation
-      spiderGroup.position.y = Math.sin(elapsed * 2.0) * 0.18;
-      spiderGroup.position.x = Math.cos(elapsed * 1.4) * 0.08;
+      // Upside-down hanging pendulum bobbing
+      spiderGroup.position.y = Math.sin(elapsed * 2.2) * 0.2;
+      spiderGroup.position.x = Math.cos(elapsed * 1.5) * 0.1;
 
-      spiderGroup.rotation.z = Math.sin(elapsed * 1.5) * 0.08 + targetX * 1.2;
-      spiderGroup.rotation.x = Math.cos(elapsed * 1.8) * 0.06 + targetY * 1.2;
+      spiderGroup.rotation.z = Math.sin(elapsed * 1.8) * 0.1 + targetX * 1.4;
+      spiderGroup.rotation.x = Math.cos(elapsed * 2.0) * 0.08 + targetY * 1.4;
 
-      // Animate 8 Spider Legs in walking/twitching motion
+      // Fast energetic limb twitching
       legs.forEach(({ group, side, index }) => {
-        group.rotation.x = Math.sin(elapsed * 4.0 + index) * 0.15;
-        group.rotation.z = side * (Math.sin(elapsed * 3.0 + index) * 0.1);
+        group.rotation.x = Math.sin(elapsed * 5.0 + index) * 0.18;
+        group.rotation.z = side * (Math.sin(elapsed * 4.0 + index) * 0.12);
       });
 
       renderer.render(scene, camera);
@@ -201,10 +219,11 @@ export default function SpiderHangingGuide({ activeRoute, onNavigate }) {
       renderer.dispose();
       abdomenGeo.dispose();
       headGeo.dispose();
-      bodyMat.dispose();
+      redBodyMat.dispose();
+      blueLegMat.dispose();
+      goldMat.dispose();
       eyeGeo.dispose();
       eyeMat.dispose();
-      legMat.dispose();
       threadGeo.dispose();
       threadMat.dispose();
     };
@@ -224,25 +243,25 @@ export default function SpiderHangingGuide({ activeRoute, onNavigate }) {
           top: '5rem',
           right: '1.5rem',
           zIndex: 999,
-          background: 'rgba(15, 23, 42, 0.9)',
+          background: 'rgba(239, 68, 68, 0.9)',
           backdropFilter: 'blur(12px)',
-          border: '1px solid rgba(99, 102, 241, 0.4)',
-          color: '#a5b4fc',
+          border: '1.5px solid #ef4444',
+          color: '#ffffff',
           borderRadius: '30px',
-          padding: '0.45rem 0.85rem',
+          padding: '0.45rem 0.9rem',
           fontSize: '0.78rem',
           fontFamily: 'var(--font-mono)',
-          fontWeight: 600,
+          fontWeight: 700,
           display: 'flex',
           alignItems: 'center',
           gap: '0.4rem',
           cursor: 'pointer',
-          boxShadow: '0 6px 20px rgba(0, 0, 0, 0.3)',
+          boxShadow: '0 6px 20px rgba(239, 68, 68, 0.4)',
         }}
-        title="Show 3D Spider Guide"
+        title="Show 3D Spidey Guide"
       >
         <span style={{ fontSize: '1rem' }}>🕷️</span>
-        <span>Spidey Guide</span>
+        <span>Spidey Tour</span>
       </button>
     );
   }
@@ -251,7 +270,7 @@ export default function SpiderHangingGuide({ activeRoute, onNavigate }) {
     <div
       style={{
         position: 'fixed',
-        top: '5.2rem', // HANGING FROM TOP RIGHT HEADER BOUNDARY
+        top: '5.2rem',
         right: '2.2rem',
         zIndex: 999,
         display: 'flex',
@@ -262,43 +281,45 @@ export default function SpiderHangingGuide({ activeRoute, onNavigate }) {
     >
       {/* 1. Hanging Spider Container + Web Thread Visual */}
       <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
-        {/* Reactive Contextual Speech Bubble */}
+        {/* High-Energy Exciting Speech Bubble */}
         {!menuOpen && (
           <div
             onClick={() => setMenuOpen(true)}
             style={{
-              background: 'var(--bg-card, rgba(15, 23, 42, 0.92))',
-              backdropFilter: 'blur(14px)',
-              border: '1px solid var(--border-muted, rgba(99, 102, 241, 0.35))',
-              padding: '0.5rem 0.9rem',
-              borderRadius: '12px',
-              fontSize: '0.8rem',
+              background: 'rgba(15, 23, 42, 0.94)',
+              backdropFilter: 'blur(16px)',
+              border: '1.5px solid rgba(239, 68, 68, 0.6)',
+              padding: '0.55rem 0.95rem',
+              borderRadius: '14px',
+              fontSize: '0.82rem',
+              fontWeight: 600,
               fontFamily: 'var(--font-mono)',
-              color: 'var(--text-main, #f8fafc)',
-              boxShadow: '0 8px 24px rgba(0, 0, 0, 0.35)',
+              color: '#f8fafc',
+              boxShadow: '0 8px 28px rgba(239, 68, 68, 0.35)',
               cursor: 'pointer',
               whiteSpace: 'nowrap',
               animation: 'spiderPendulum 3s ease-in-out infinite',
               display: 'flex',
               alignItems: 'center',
-              gap: '0.4rem',
+              gap: '0.5rem',
             }}
           >
+            <Zap size={14} style={{ color: '#ef4444' }} />
             <span>{speechText}</span>
           </div>
         )}
 
-        {/* 3D Hanging Spider WebGL Canvas Container */}
+        {/* High-Visibility Vibrant Red/Blue 3D Spider Canvas */}
         <div
           onClick={() => setMenuOpen((prev) => !prev)}
           style={{
             position: 'relative',
-            width: '72px',
-            height: '72px',
+            width: '74px',
+            height: '74px',
             borderRadius: '50%',
-            background: 'radial-gradient(circle at 30% 30%, #1e1b4b, #0f172a)',
-            border: '2px solid rgba(99, 102, 241, 0.5)',
-            boxShadow: '0 8px 26px rgba(99, 102, 241, 0.4)',
+            background: 'radial-gradient(circle at 30% 30%, #ef4444 0%, #1e1b4b 65%, #0f172a 100%)',
+            border: '2.5px solid #ef4444',
+            boxShadow: '0 8px 30px rgba(239, 68, 68, 0.55)',
             cursor: 'pointer',
             display: 'flex',
             alignItems: 'center',
@@ -306,25 +327,25 @@ export default function SpiderHangingGuide({ activeRoute, onNavigate }) {
             transition: 'all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)',
           }}
           className="spider-canvas-wrapper"
-          title="Click Hanging Spider to navigate!"
+          title="Click Spidey to swing through sections!"
         >
-          {/* Top Silk Web Thread */}
+          {/* Top Neon Red Web Thread */}
           <div
             style={{
               position: 'absolute',
               top: '-45px',
               left: '50%',
               transform: 'translateX(-50%)',
-              width: '2px',
+              width: '2.5px',
               height: '45px',
-              background: 'linear-gradient(to bottom, rgba(129, 140, 248, 0.8), rgba(99, 102, 241, 0.3))',
-              boxShadow: '0 0 8px rgba(99, 102, 241, 0.6)',
+              background: 'linear-gradient(to bottom, #ef4444, rgba(239, 68, 68, 0.4))',
+              boxShadow: '0 0 10px rgba(239, 68, 68, 0.8)',
             }}
           />
 
           <div ref={mountRef} style={{ width: '110px', height: '110px', pointerEvents: 'none' }} />
 
-          {/* Minimize Button Badge */}
+          {/* Minimize Badge */}
           <button
             onClick={(e) => {
               e.stopPropagation();
@@ -337,33 +358,33 @@ export default function SpiderHangingGuide({ activeRoute, onNavigate }) {
               width: '18px',
               height: '18px',
               borderRadius: '50%',
-              background: '#1e293b',
-              border: '1px solid #64748b',
-              color: '#94a3b8',
+              background: '#ef4444',
+              border: '1px solid #ffffff',
+              color: '#ffffff',
               display: 'flex',
               alignItems: 'center',
               justify: 'center',
               cursor: 'pointer',
               fontSize: '10px',
             }}
-            title="Hide Spider Guide"
+            title="Hide Spidey"
           >
             <X size={10} />
           </button>
         </div>
       </div>
 
-      {/* 2. Interactive Tour Navigation Drawer */}
+      {/* 2. Interactive Tour Drawer */}
       {menuOpen && (
         <div
           style={{
-            background: 'rgba(15, 23, 42, 0.94)',
+            background: 'rgba(15, 23, 42, 0.95)',
             backdropFilter: 'blur(18px)',
-            border: '1.5px solid rgba(99, 102, 241, 0.45)',
-            boxShadow: '0 12px 38px rgba(15, 23, 42, 0.7)',
+            border: '1.5px solid rgba(239, 68, 68, 0.55)',
+            boxShadow: '0 12px 40px rgba(239, 68, 68, 0.3)',
             borderRadius: '16px',
             padding: '1rem',
-            width: '270px',
+            width: '275px',
             color: '#f8fafc',
             animation: 'spiderSlideDown 0.25s cubic-bezier(0.34, 1.56, 0.64, 1)',
           }}
@@ -374,18 +395,18 @@ export default function SpiderHangingGuide({ activeRoute, onNavigate }) {
               alignItems: 'center',
               justify: 'space-between',
               marginBottom: '0.8rem',
-              borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
+              borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
               paddingBottom: '0.6rem',
             }}
           >
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <span style={{ fontSize: '1.2rem' }}>🕷️</span>
+              <span style={{ fontSize: '1.25rem' }}>🕷️</span>
               <div>
-                <h4 style={{ fontSize: '0.9rem', margin: 0, fontWeight: 700 }}>
-                  Spider Tour Guide
+                <h4 style={{ fontSize: '0.92rem', margin: 0, fontWeight: 700 }}>
+                  Spidey Web Explorer
                 </h4>
                 <p style={{ fontSize: '0.72rem', color: '#94a3b8', margin: 0 }}>
-                  Jump to any section
+                  Swing to any section instantly!
                 </p>
               </div>
             </div>
@@ -407,8 +428,8 @@ export default function SpiderHangingGuide({ activeRoute, onNavigate }) {
               onClick={() => handleNav('experience', 'Experience')}
               className="spider-nav-btn"
             >
-              <Briefcase size={15} style={{ color: '#6366f1' }} />
-              <span>Work Experience</span>
+              <Briefcase size={15} style={{ color: '#ef4444' }} />
+              <span>Swing to Experience</span>
               <ChevronRight size={14} style={{ marginLeft: 'auto', color: '#64748b' }} />
             </button>
 
@@ -416,8 +437,8 @@ export default function SpiderHangingGuide({ activeRoute, onNavigate }) {
               onClick={() => handleNav('projects', 'Projects')}
               className="spider-nav-btn"
             >
-              <Cpu size={15} style={{ color: '#06b6d4' }} />
-              <span>Verified Projects</span>
+              <Cpu size={15} style={{ color: '#38bdf8' }} />
+              <span>Swing to Projects</span>
               <ChevronRight size={14} style={{ marginLeft: 'auto', color: '#64748b' }} />
             </button>
 
@@ -453,16 +474,16 @@ export default function SpiderHangingGuide({ activeRoute, onNavigate }) {
 
       <style>{`
         .spider-canvas-wrapper:hover {
-          transform: scale(1.12) translateY(3px);
-          border-color: #6366f1;
-          box-shadow: 0 12px 32px rgba(99, 102, 241, 0.55);
+          transform: scale(1.14) translateY(4px);
+          border-color: #ef4444;
+          box-shadow: 0 12px 36px rgba(239, 68, 68, 0.7);
         }
 
         .spider-nav-btn {
           display: flex;
           align-items: center;
           gap: 0.6rem;
-          background: rgba(255, 255, 255, 0.03);
+          background: rgba(255, 255, 255, 0.04);
           border: 1px solid rgba(255, 255, 255, 0.08);
           border-radius: 10px;
           padding: 0.55rem 0.8rem;
@@ -476,8 +497,8 @@ export default function SpiderHangingGuide({ activeRoute, onNavigate }) {
         }
 
         .spider-nav-btn:hover {
-          background: rgba(99, 102, 241, 0.18);
-          border-color: rgba(99, 102, 241, 0.4);
+          background: rgba(239, 68, 68, 0.18);
+          border-color: rgba(239, 68, 68, 0.5);
           color: #ffffff;
           transform: translateX(4px);
         }
