@@ -10,6 +10,7 @@ import PhysicsMathSection from './components/PhysicsMathSection';
 import CultureSportsSection from './components/CultureSportsSection';
 import LinktreeSection from './components/LinktreeSection';
 import AIDigitalTwinModal from './components/AIDigitalTwinModal';
+import CyberBackgroundCanvas from './components/CyberBackgroundCanvas';
 import Footer from './components/Footer';
 import { Bot } from 'lucide-react';
 
@@ -70,10 +71,8 @@ export default function App() {
 
   return (
     <div className="app-container">
-      {/* Top Navbar (hidden on standalone linktree) */}
-      {activeRoute !== 'links' && (
-        <Navbar activeRoute={activeRoute} onNavigate={navigateTo} />
-      )}
+      {/* Vercel/Linear Style Cyber Grid & Interactive Spotlight Canvas */}
+      <CyberBackgroundCanvas />
 
       {/* Top Navbar (hidden on standalone linktree) */}
       {activeRoute !== 'links' && (
