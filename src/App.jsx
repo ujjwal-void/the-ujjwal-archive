@@ -10,7 +10,7 @@ import PhysicsMathSection from './components/PhysicsMathSection';
 import CultureSportsSection from './components/CultureSportsSection';
 import LinktreeSection from './components/LinktreeSection';
 import AIDigitalTwinModal from './components/AIDigitalTwinModal';
-import Doodle3DGuide from './components/Doodle3DGuide';
+import SpiderHangingGuide from './components/SpiderHangingGuide';
 import Footer from './components/Footer';
 import { Bot } from 'lucide-react';
 
@@ -71,9 +71,9 @@ export default function App() {
 
   return (
     <div className="app-container">
-      {/* 3D Doodle Helper Guide Avatar */}
+      {/* 3D Top-Hanging Reactive Spider Guide */}
       {activeRoute !== 'links' && (
-        <Doodle3DGuide onNavigate={navigateTo} />
+        <SpiderHangingGuide activeRoute={activeRoute} onNavigate={navigateTo} />
       )}
 
       {/* Top Navbar (hidden on standalone linktree) */}
