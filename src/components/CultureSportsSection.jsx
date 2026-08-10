@@ -22,13 +22,13 @@ export default function CultureSportsSection() {
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1rem', marginBottom: '1.2rem' }}>
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '0.4rem' }}>
-              <span className="meta-tag meta-amber">CULTURE REVIEWS</span>
+              <span className="meta-tag meta-amber">CHARACTER STUDIES & MEDIA</span>
               <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: 'var(--text-dim)' }}>
                 [{MEDIA_DATA.length} Total Logs]
               </span>
             </div>
-            <h2 style={{ fontSize: '2.2rem', marginBottom: '0.4rem' }}>🍿 Culture & Media Reviews</h2>
-            <p style={{ color: 'var(--text-muted)' }}>Personal ratings, reviews, and recommendations for anime, movies, and literature.</p>
+            <h2 style={{ fontSize: '2.2rem', marginBottom: '0.4rem' }}>🎬 Character Studies & Narrative Analysis</h2>
+            <p style={{ color: 'var(--text-muted)' }}>Deep-dive analyses into character development, psychological arcs, and narrative themes across anime, movies, and literature.</p>
           </div>
 
           <div style={{ display: 'flex', gap: '0.4rem', background: 'var(--bg-card)', padding: '0.3rem', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border-muted)', flexWrap: 'wrap' }}>
@@ -72,9 +72,9 @@ export default function CultureSportsSection() {
                       </span>
                     </div>
 
-                    {/* Personal Review Block */}
+                    {/* Character Development & Analysis Block */}
                     <div style={{ background: 'var(--bg-secondary)', border: '1px solid var(--border-muted)', borderRadius: 'var(--radius-sm)', padding: '1rem' }}>
-                      <h4 style={{ fontSize: '0.78rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.4rem', fontFamily: 'var(--font-mono)' }}>MY REVIEW</h4>
+                      <h4 style={{ fontSize: '0.78rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.4rem', fontFamily: 'var(--font-mono)' }}>CHARACTER DEVELOPMENT & ANALYSIS</h4>
                       <p style={{ fontSize: '0.92rem', color: 'var(--text-main)', lineHeight: '1.6', margin: 0 }}>"{item.review}"</p>
                     </div>
                   </div>

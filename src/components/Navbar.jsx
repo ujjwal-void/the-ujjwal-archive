@@ -49,7 +49,7 @@ export default function Navbar({ activeRoute, onNavigate }) {
           </li>
           <li>
             <button className={`nav-btn ${activeRoute === 'culture' || activeRoute === 'media' || activeRoute === 'sports' ? 'active' : ''}`} onClick={() => handleNav('culture')}>
-              <Film size={15} /> Culture
+              <Film size={15} /> Media & Characters
             </button>
           </li>
           <li>
@@ -87,7 +87,7 @@ export default function Navbar({ activeRoute, onNavigate }) {
             ⚛️ Physics & Mathematics Notes
           </button>
           <button className={`mobile-nav-btn ${activeRoute === 'culture' || activeRoute === 'media' || activeRoute === 'sports' ? 'active' : ''}`} onClick={() => handleNav('culture')}>
-            🍿 Culture & Sports Notes
+            🍿 Media & Character Studies
           </button>
           <button className="mobile-nav-btn linktree-highlight" onClick={() => handleNav('links')}>
             🔗 Standalone Linktree
