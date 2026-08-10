@@ -10,6 +10,7 @@ import PhysicsMathSection from './components/PhysicsMathSection';
 import CultureSportsSection from './components/CultureSportsSection';
 import LinktreeSection from './components/LinktreeSection';
 import AIDigitalTwinModal from './components/AIDigitalTwinModal';
+import ThreeBackgroundCanvas from './components/ThreeBackgroundCanvas';
 import Footer from './components/Footer';
 import { Bot } from 'lucide-react';
 
@@ -70,6 +71,9 @@ export default function App() {
 
   return (
     <div className="app-container">
+      {/* 3D Three.js Background Canvas */}
+      <ThreeBackgroundCanvas />
+
       {/* Top Navbar (hidden on standalone linktree) */}
       {activeRoute !== 'links' && (
         <Navbar activeRoute={activeRoute} onNavigate={navigateTo} />
