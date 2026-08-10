@@ -14,7 +14,6 @@ export default function Footer({ onNavigate }) {
           <button onClick={() => onNavigate('essays')} style={{ background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer', fontWeight: 600 }}>Tech Essays</button>
           <button onClick={() => onNavigate('physics')} style={{ background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer', fontWeight: 600 }}>Physics & Math</button>
           <button onClick={() => onNavigate('culture')} style={{ background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer', fontWeight: 600 }}>Screen & Spine</button>
-          <button onClick={() => onNavigate('db-schema')} style={{ background: 'none', border: 'none', color: 'var(--accent-indigo)', cursor: 'pointer', fontWeight: 700 }}>🗄️ DB Schema</button>
           <button onClick={() => onNavigate('links')} style={{ background: 'none', border: 'none', color: 'var(--text-main)', cursor: 'pointer', fontWeight: 600 }}>Linktree</button>
         </div>
       </div>
