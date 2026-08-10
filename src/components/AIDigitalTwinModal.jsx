@@ -74,8 +74,13 @@ export default function AIDigitalTwinModal({ isOpen, onClose }) {
         reply = `🏆 Awards & Achievements:
 • 1st Runner-Up at Osmos Hackathon by OnlineSales.ai (Out of 131 teams, INR 30,000 Prize).
 • Finalist at CryptoGuard Hackathon at VIT Chennai (Web3 identity verification tool).`;
+      } else if (lower.includes('screen') || lower.includes('spine') || lower.includes('movie') || lower.includes('anime') || lower.includes('book') || lower.includes('culture')) {
+        reply = `🎬 Screen & Spine (Cinema, Anime & Literary Studies):
+• Anime: "Another" (Atmospheric horror & Class 3-3 curse analysis).
+• Movies: "Kishkindha Kaandam" (Malayalam mystery thriller puzzle box).
+• Literature: "Metamorphosis" by Franz Kafka, "The Picture of Dorian Gray" by Oscar Wilde, "I Hear You" by Michael S. Sorensen, and "The Rosie Project" by Graeme Simsion.`;
       } else {
-        reply = `I am grounded in Ujjwal's background as a Software Engineer. Feel free to ask about his ZFunds & Advor.ai experience, Python/FastAPI/RAG stack, projects, or email him directly at ujjwal.02023@gmail.com!`;
+        reply = `I am grounded in Ujjwal's background as a Software Engineer. Feel free to ask about his ZFunds & Advor.ai experience, Python/FastAPI/RAG stack, projects, Screen & Spine notes, or email him directly at ujjwal.02023@gmail.com!`;
       }
 
       setIsTyping(false);

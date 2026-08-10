@@ -37,7 +37,7 @@ export default function TerminalConsole({ onNavigate }) {
           type: 'output',
           text: `AVAILABLE COMMANDS:
   ls           - List all archive directories
-  cd <dir>     - Navigate to section (projects, physics, essays, culture, links)
+  cd <dir>     - Navigate to section (projects, physics, essays, screen-spine, links)
   cat manifesto- Display Ujjwal's core engineering manifesto
   grep <term>  - Search the digital brain for a keyword
   clear        - Clear terminal screen`
@@ -49,7 +49,7 @@ export default function TerminalConsole({ onNavigate }) {
   /projects          [6 Verified Production Projects]
   /physics           [3 Physics & Math Derivations]
   /essays            [2 Tech Essays & Explanations]
-  /culture           [7 Culture & Sports Notes]
+  /screen-spine      [Screen & Spine: Cinema, Anime & Book Logs]
   /links             [Standalone Bio Linktree]`
         });
       } else if (lower === 'cat manifesto') {
@@ -60,11 +60,12 @@ export default function TerminalConsole({ onNavigate }) {
         });
       } else if (lower.startsWith('cd ')) {
         const dir = lower.replace('cd ', '').trim();
-        if (['projects', 'physics', 'math', 'media', 'essays', 'teaching', 'sports', 'culture', 'links', 'home'].includes(dir)) {
-          onNavigate(dir === 'math' ? 'physics' : dir);
+        if (['projects', 'physics', 'math', 'media', 'essays', 'teaching', 'sports', 'screen-spine', 'screen', 'spine', 'culture', 'links', 'home'].includes(dir)) {
+          const targetRoute = (dir === 'math' ? 'physics' : (['screen-spine', 'screen', 'spine', 'media', 'sports', 'culture'].includes(dir) ? 'culture' : dir));
+          onNavigate(targetRoute);
           newHistory.push({ type: 'output', text: `Navigated to /${dir}` });
         } else {
-          newHistory.push({ type: 'output', text: `Directory not found: ${dir}. Try: cd projects, cd physics, cd essays, cd culture` });
+          newHistory.push({ type: 'output', text: `Directory not found: ${dir}. Try: cd projects, cd physics, cd essays, cd screen-spine` });
         }
       } else if (lower.startsWith('grep ')) {
         const query = lower.replace('grep ', '').trim();
@@ -72,7 +73,7 @@ export default function TerminalConsole({ onNavigate }) {
         PROJECTS_DATA.forEach(p => (p.title || '').toLowerCase().includes(query) && results.push(`[PROJECT] ${p.title} -> ${p.tagline}`));
         PHYSICS_MATH_NOTES.forEach(pm => (pm.title || '').toLowerCase().includes(query) && results.push(`[PHYSICS/MATH] ${pm.title}`));
         TECH_ESSAYS.forEach(b => (b.title || '').toLowerCase().includes(query) && results.push(`[ESSAY] ${b.title}`));
-        MEDIA_DATA.forEach(m => (m.title || '').toLowerCase().includes(query) && results.push(`[MEDIA] ${m.title} (${m.type}) -> ${(m.review || '').substring(0, 40)}...`));
+        MEDIA_DATA.forEach(m => (m.title || '').toLowerCase().includes(query) && results.push(`[SCREEN&SPINE] ${m.title} (${m.type}) -> ${(m.review || '').substring(0, 40)}...`));
         SPORTS_TAKES.forEach(s => (s.title || '').toLowerCase().includes(query) && results.push(`[SPORTS] ${s.title}`));
 
         if (results.length > 0) {

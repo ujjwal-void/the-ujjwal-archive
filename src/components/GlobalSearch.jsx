@@ -129,7 +129,7 @@ export default function GlobalSearch({ onNavigate }) {
       }
     });
 
-    // 5. Search Media / Culture
+    // 5. Search Screen & Spine (Cinema, Anime & Books)
     MEDIA_DATA.forEach((m) => {
       if (
         matchesQuery(m.title) ||
@@ -138,7 +138,7 @@ export default function GlobalSearch({ onNavigate }) {
         matchesQuery(m.recommendation)
       ) {
         matches.push({
-          type: `Culture (${m.type || 'Review'})`,
+          type: `Screen & Spine (${m.type || 'Review'})`,
           title: m.title,
           snippet: m.review ? m.review.substring(0, 90) + '...' : '',
           route: 'culture',
@@ -189,7 +189,7 @@ export default function GlobalSearch({ onNavigate }) {
           ref={searchInputRef}
           type="text"
           className="search-input"
-          placeholder="Search projects, experience, RAG, physics, math, culture..."
+          placeholder="Search projects, experience, RAG, physics, math, screen & spine..."
           value={query}
           onChange={handleInputChange}
           onFocus={() => setIsOpen(query.trim().length > 0)}

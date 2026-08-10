@@ -282,7 +282,7 @@ export const LINKTREE_LINKS = [
   {
     id: "portfolio-main",
     title: "⚡ Ujjwal's Main Archive",
-    description: "Work Experience, Real Projects, Physics/Math & Culture Notes",
+    description: "Work Experience, Real Projects, Physics/Math & Screen & Spine Notes",
     url: "#home",
     icon: "Sparkles",
     badge: "Main",
