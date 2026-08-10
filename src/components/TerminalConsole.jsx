@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Terminal as TerminalIcon, CornerDownLeft } from 'lucide-react';
 import { PROJECTS_DATA, MEDIA_DATA, TECH_ESSAYS, PHYSICS_MATH_NOTES, SPORTS_TAKES } from '../data/portfolioData';
 
@@ -9,6 +9,14 @@ export default function TerminalConsole({ onNavigate }) {
   ]);
   const [input, setInput] = useState('');
   const inputRef = useRef(null);
+  const consoleBodyRef = useRef(null);
+
+  // Auto-scroll to bottom of terminal whenever history updates
+  useEffect(() => {
+    if (consoleBodyRef.current) {
+      consoleBodyRef.current.scrollTop = consoleBodyRef.current.scrollHeight;
+    }
+  }, [history]);
 
   const handleCommand = (e) => {
     if (e.key === 'Enter') {
@@ -61,11 +69,11 @@ export default function TerminalConsole({ onNavigate }) {
       } else if (lower.startsWith('grep ')) {
         const query = lower.replace('grep ', '').trim();
         const results = [];
-        PROJECTS_DATA.forEach(p => p.title.toLowerCase().includes(query) && results.push(`[PROJECT] ${p.title} -> ${p.tagline}`));
-        PHYSICS_MATH_NOTES.forEach(pm => pm.title.toLowerCase().includes(query) && results.push(`[PHYSICS/MATH] ${pm.title}`));
-        TECH_ESSAYS.forEach(b => b.title.toLowerCase().includes(query) && results.push(`[ESSAY] ${b.title}`));
-        MEDIA_DATA.forEach(m => m.title.toLowerCase().includes(query) && results.push(`[MEDIA] ${m.title} (${m.type}) -> ${m.summary.substring(0, 40)}...`));
-        SPORTS_TAKES.forEach(s => s.title.toLowerCase().includes(query) && results.push(`[SPORTS] ${s.title}`));
+        PROJECTS_DATA.forEach(p => (p.title || '').toLowerCase().includes(query) && results.push(`[PROJECT] ${p.title} -> ${p.tagline}`));
+        PHYSICS_MATH_NOTES.forEach(pm => (pm.title || '').toLowerCase().includes(query) && results.push(`[PHYSICS/MATH] ${pm.title}`));
+        TECH_ESSAYS.forEach(b => (b.title || '').toLowerCase().includes(query) && results.push(`[ESSAY] ${b.title}`));
+        MEDIA_DATA.forEach(m => (m.title || '').toLowerCase().includes(query) && results.push(`[MEDIA] ${m.title} (${m.type}) -> ${(m.review || '').substring(0, 40)}...`));
+        SPORTS_TAKES.forEach(s => (s.title || '').toLowerCase().includes(query) && results.push(`[SPORTS] ${s.title}`));
 
         if (results.length > 0) {
           newHistory.push({ type: 'output', text: `GREP RESULTS FOR "${query}":\n${results.join('\n')}` });
@@ -82,16 +90,20 @@ export default function TerminalConsole({ onNavigate }) {
   };
 
   return (
-    <div style={{
-      background: '#090d16',
-      border: '2px solid #1e293b',
-      borderRadius: 'var(--radius-md)',
-      padding: '1rem',
-      fontFamily: 'var(--font-mono)',
-      fontSize: '0.82rem',
-      marginBottom: '1rem',
-      boxShadow: '0 8px 24px rgba(15, 23, 42, 0.15)'
-    }}>
+    <div
+      onClick={() => inputRef.current?.focus()}
+      style={{
+        background: '#090d16',
+        border: '2px solid #1e293b',
+        borderRadius: 'var(--radius-md)',
+        padding: '1rem',
+        fontFamily: 'var(--font-mono)',
+        fontSize: '0.82rem',
+        marginBottom: '1rem',
+        boxShadow: '0 8px 24px rgba(15, 23, 42, 0.15)',
+        cursor: 'text',
+      }}
+    >
       {/* Terminal Top Window Bar */}
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderBottom: '1px solid #1e293b', paddingBottom: '0.6rem', marginBottom: '0.8rem' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
@@ -108,8 +120,19 @@ export default function TerminalConsole({ onNavigate }) {
         <span style={{ color: '#64748b', fontSize: '0.72rem' }}>Type "help" • bash</span>
       </div>
 
-      {/* Output Console Stream */}
-      <div style={{ maxHeight: '180px', overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '0.4rem', color: '#cbd5e1' }}>
+      {/* Output Console Stream with Ref for Auto-Scrolling */}
+      <div
+        ref={consoleBodyRef}
+        style={{
+          maxHeight: '180px',
+          overflowY: 'auto',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '0.4rem',
+          color: '#cbd5e1',
+          scrollBehavior: 'smooth',
+        }}
+      >
         {history.map((item, idx) => (
           <div
             key={idx}
