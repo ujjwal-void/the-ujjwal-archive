@@ -3,6 +3,7 @@ import { Zap, Briefcase, Cpu, FileText, Code2, ExternalLink, Download } from 'lu
 import { PROFILE_DATA } from '../data/portfolioData';
 import { checkIsRecruiterMode } from '../utils/privacyHelper';
 import TerminalConsole from './TerminalConsole';
+import RAGBenchmarkConsole from './RAGBenchmarkConsole';
 
 export default function Hero({ onNavigate }) {
   const [isRecruiter, setIsRecruiter] = useState(false);
@@ -129,6 +130,9 @@ export default function Hero({ onNavigate }) {
           </div>
         </div>
       </section>
+
+      {/* Live Interactive RAG & Vector Engine Simulator Console */}
+      <RAGBenchmarkConsole />
 
       {/* Feature Pillar Grid */}
       <div className="grid-3" style={{ marginTop: '1.5rem' }}>
