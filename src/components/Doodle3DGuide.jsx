@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
-import { Briefcase, Cpu, FileText, Atom, Sparkles, Bot, X, Compass, ChevronRight } from 'lucide-react';
+import { Briefcase, Cpu, FileText, Atom, Sparkles, X, Compass, ChevronRight } from 'lucide-react';
 
 export default function Doodle3DGuide({ onNavigate }) {
   const mountRef = useRef(null);
@@ -17,18 +17,18 @@ export default function Doodle3DGuide({ onNavigate }) {
     // 1. Three.js Scene Setup
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
-    camera.position.z = 7.5;
+    camera.position.z = 8.2;
 
     const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-    renderer.setSize(100, 100);
+    renderer.setSize(105, 105);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     container.appendChild(renderer.domElement);
 
-    // 2. Lighting Setup for Soft 3D Doodle Aesthetics
+    // 2. Lighting Setup
     const ambientLight = new THREE.AmbientLight(0xffffff, 0.85);
     scene.add(ambientLight);
 
-    const dirLight = new THREE.DirectionalLight(0x6366f1, 1.2);
+    const dirLight = new THREE.DirectionalLight(0x6366f1, 1.3);
     dirLight.position.set(5, 8, 5);
     scene.add(dirLight);
 
@@ -36,12 +36,12 @@ export default function Doodle3DGuide({ onNavigate }) {
     pointLight.position.set(-4, -2, 4);
     scene.add(pointLight);
 
-    // 3. Doodle Character Root Group
+    // 3. Doodle Character Group
     const doodleGroup = new THREE.Group();
     scene.add(doodleGroup);
 
     // Body/Head (Soft Curved Rounded Geometry)
-    const headGeo = new THREE.SphereGeometry(1.6, 32, 32);
+    const headGeo = new THREE.SphereGeometry(1.5, 32, 32);
     headGeo.scale(1, 1.15, 0.9);
     const headMat = new THREE.MeshStandardMaterial({
       color: 0x1e1b4b,
@@ -53,8 +53,8 @@ export default function Doodle3DGuide({ onNavigate }) {
     const headMesh = new THREE.Mesh(headGeo, headMat);
     doodleGroup.add(headMesh);
 
-    // Outer Neon Ring / Visor Halo
-    const ringGeo = new THREE.TorusGeometry(1.95, 0.08, 16, 64);
+    // Outer Neon Visor Ring
+    const ringGeo = new THREE.TorusGeometry(1.85, 0.07, 16, 64);
     const ringMat = new THREE.MeshBasicMaterial({
       color: 0x6366f1,
       wireframe: true,
@@ -65,32 +65,64 @@ export default function Doodle3DGuide({ onNavigate }) {
     ringMesh.rotation.x = Math.PI / 3;
     doodleGroup.add(ringMesh);
 
-    // Eyes (Expressive Glowing Spheres)
-    const eyeGeo = new THREE.SphereGeometry(0.28, 16, 16);
+    // Expressive Eyes
+    const eyeGeo = new THREE.SphereGeometry(0.26, 16, 16);
     const eyeMat = new THREE.MeshBasicMaterial({ color: 0x38bdf8 });
 
     const leftEye = new THREE.Mesh(eyeGeo, eyeMat);
-    leftEye.position.set(-0.55, 0.25, 1.35);
+    leftEye.position.set(-0.52, 0.25, 1.3);
     doodleGroup.add(leftEye);
 
     const rightEye = new THREE.Mesh(eyeGeo, eyeMat);
-    rightEye.position.set(0.55, 0.25, 1.35);
+    rightEye.position.set(0.52, 0.25, 1.3);
     doodleGroup.add(rightEye);
 
     // Antenna & Glowing Orb
-    const antennaStemGeo = new THREE.CylinderGeometry(0.04, 0.04, 0.7);
+    const antennaStemGeo = new THREE.CylinderGeometry(0.04, 0.04, 0.65);
     const antennaStemMat = new THREE.MeshStandardMaterial({ color: 0x818cf8 });
     const antennaStem = new THREE.Mesh(antennaStemGeo, antennaStemMat);
-    antennaStem.position.set(0, 1.9, 0);
+    antennaStem.position.set(0, 1.8, 0);
     doodleGroup.add(antennaStem);
 
-    const orbGeo = new THREE.SphereGeometry(0.22, 16, 16);
+    const orbGeo = new THREE.SphereGeometry(0.2, 16, 16);
     const orbMat = new THREE.MeshBasicMaterial({ color: 0x10b981 });
     const orbMesh = new THREE.Mesh(orbGeo, orbMat);
-    orbMesh.position.set(0, 2.3, 0);
+    orbMesh.position.set(0, 2.2, 0);
     doodleGroup.add(orbMesh);
 
-    // Mouse Tracking Interpolation
+    // 4. TWO HANDS (Left & Right Waving Spheres)
+    const handGeo = new THREE.SphereGeometry(0.32, 16, 16);
+    const handMat = new THREE.MeshStandardMaterial({
+      color: 0x6366f1,
+      roughness: 0.3,
+      metalness: 0.2,
+    });
+
+    const leftHand = new THREE.Mesh(handGeo, handMat);
+    leftHand.position.set(-1.85, -0.2, 0.2);
+    doodleGroup.add(leftHand);
+
+    const rightHand = new THREE.Mesh(handGeo, handMat);
+    rightHand.position.set(1.85, -0.2, 0.2);
+    doodleGroup.add(rightHand);
+
+    // 5. TWO FEET (Left & Right Kicking Feet)
+    const footGeo = new THREE.SphereGeometry(0.38, 16, 16);
+    footGeo.scale(1.2, 0.55, 1.4);
+    const footMat = new THREE.MeshStandardMaterial({
+      color: 0x4f46e5,
+      roughness: 0.4,
+    });
+
+    const leftFoot = new THREE.Mesh(footGeo, footMat);
+    leftFoot.position.set(-0.65, -1.75, 0.4);
+    doodleGroup.add(leftFoot);
+
+    const rightFoot = new THREE.Mesh(footGeo, footMat);
+    rightFoot.position.set(0.65, -1.75, 0.4);
+    doodleGroup.add(rightFoot);
+
+    // Mouse Tracking
     let mouseX = 0;
     let mouseY = 0;
     let targetX = 0;
@@ -103,7 +135,7 @@ export default function Doodle3DGuide({ onNavigate }) {
 
     window.addEventListener('mousemove', handleMouseMove);
 
-    // Render & Animation Loop
+    // Animation Loop
     let animationFrameId;
     let clock = new THREE.Clock();
 
@@ -111,7 +143,6 @@ export default function Doodle3DGuide({ onNavigate }) {
       animationFrameId = requestAnimationFrame(animate);
       const elapsed = clock.getElapsedTime();
 
-      // Smooth mouse tracking look-at
       targetX += (mouseX - targetX) * 0.08;
       targetY += (mouseY - targetY) * 0.08;
 
@@ -121,6 +152,14 @@ export default function Doodle3DGuide({ onNavigate }) {
       doodleGroup.rotation.x = Math.sin(elapsed * 1.5) * 0.08 + targetY * 1.5;
 
       ringMesh.rotation.z = elapsed * 0.8;
+
+      // Dynamic Waving Hands Animation
+      leftHand.position.y = -0.2 + Math.sin(elapsed * 3.5) * 0.22;
+      rightHand.position.y = -0.2 + Math.cos(elapsed * 3.5) * 0.22;
+
+      // Dynamic Kicking Feet Animation
+      leftFoot.rotation.x = Math.sin(elapsed * 2.5) * 0.18;
+      rightFoot.rotation.x = Math.cos(elapsed * 2.5) * 0.18;
 
       renderer.render(scene, camera);
     };
@@ -144,6 +183,10 @@ export default function Doodle3DGuide({ onNavigate }) {
       antennaStemMat.dispose();
       orbGeo.dispose();
       orbMat.dispose();
+      handGeo.dispose();
+      handMat.dispose();
+      footGeo.dispose();
+      footMat.dispose();
     };
   }, [minimized]);
 
@@ -160,7 +203,7 @@ export default function Doodle3DGuide({ onNavigate }) {
         style={{
           position: 'fixed',
           bottom: '1.5rem',
-          right: '1.5rem',
+          left: '1.5rem',
           zIndex: 999,
           background: 'rgba(15, 23, 42, 0.9)',
           backdropFilter: 'blur(12px)',
@@ -190,15 +233,15 @@ export default function Doodle3DGuide({ onNavigate }) {
       style={{
         position: 'fixed',
         bottom: '1.8rem',
-        right: '1.8rem',
+        left: '1.8rem', // ANCHORED LEFT SO IT NEVER OVERLAPS ASK MY AI ON THE RIGHT!
         zIndex: 999,
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'flex-end',
+        alignItems: 'flex-start',
         gap: '0.8rem',
       }}
     >
-      {/* 1. Interactive Explorer Navigation Drawer */}
+      {/* 1. Interactive Navigation Drawer */}
       {menuOpen && (
         <div
           style={{
@@ -298,29 +341,6 @@ export default function Doodle3DGuide({ onNavigate }) {
 
       {/* 2. Floating 3D Doodle Character + Speech Bubble Container */}
       <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
-        {/* Speech Bubble */}
-        {!menuOpen && (
-          <div
-            onClick={() => setMenuOpen(true)}
-            style={{
-              background: 'rgba(15, 23, 42, 0.88)',
-              backdropFilter: 'blur(12px)',
-              border: '1px solid rgba(99, 102, 241, 0.35)',
-              padding: '0.45rem 0.8rem',
-              borderRadius: '12px',
-              fontSize: '0.78rem',
-              fontFamily: 'var(--font-mono)',
-              color: '#e2e8f0',
-              boxShadow: '0 6px 18px rgba(0, 0, 0, 0.25)',
-              cursor: 'pointer',
-              whiteSpace: 'nowrap',
-              animation: 'doodleFloat 3s ease-in-out infinite',
-            }}
-          >
-            {tooltipText}
-          </div>
-        )}
-
         {/* 3D Doodle WebGL Canvas Container */}
         <div
           onClick={() => setMenuOpen((prev) => !prev)}
@@ -341,7 +361,7 @@ export default function Doodle3DGuide({ onNavigate }) {
           className="doodle-canvas-wrapper"
           title="Click 3D Doodle to navigate!"
         >
-          <div ref={mountRef} style={{ width: '100px', height: '100px', pointerEvents: 'none' }} />
+          <div ref={mountRef} style={{ width: '105px', height: '105px', pointerEvents: 'none' }} />
 
           {/* Minimize Button Badge */}
           <button
@@ -370,6 +390,29 @@ export default function Doodle3DGuide({ onNavigate }) {
             <X size={10} />
           </button>
         </div>
+
+        {/* Speech Bubble */}
+        {!menuOpen && (
+          <div
+            onClick={() => setMenuOpen(true)}
+            style={{
+              background: 'rgba(15, 23, 42, 0.88)',
+              backdropFilter: 'blur(12px)',
+              border: '1px solid rgba(99, 102, 241, 0.35)',
+              padding: '0.45rem 0.8rem',
+              borderRadius: '12px',
+              fontSize: '0.78rem',
+              fontFamily: 'var(--font-mono)',
+              color: '#e2e8f0',
+              boxShadow: '0 6px 18px rgba(0, 0, 0, 0.25)',
+              cursor: 'pointer',
+              whiteSpace: 'nowrap',
+              animation: 'doodleFloat 3s ease-in-out infinite',
+            }}
+          >
+            {tooltipText}
+          </div>
+        )}
       </div>
 
       <style>{`
