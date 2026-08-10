@@ -10,7 +10,6 @@ import PhysicsMathSection from './components/PhysicsMathSection';
 import CultureSportsSection from './components/CultureSportsSection';
 import LinktreeSection from './components/LinktreeSection';
 import AIDigitalTwinModal from './components/AIDigitalTwinModal';
-import SpideyExplorer from './components/SpideyExplorer';
 import Footer from './components/Footer';
 import { Bot } from 'lucide-react';
 
@@ -71,9 +70,6 @@ export default function App() {
 
   return (
     <div className="app-container">
-      {/* Minimalist 3D Spidey Interactive Guide */}
-      <SpideyExplorer onNavigate={navigateTo} />
-
       {/* Top Navbar (hidden on standalone linktree) */}
       {activeRoute !== 'links' && (
         <Navbar activeRoute={activeRoute} onNavigate={navigateTo} />
