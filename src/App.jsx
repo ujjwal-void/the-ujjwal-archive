@@ -13,6 +13,8 @@ import AIDigitalTwinModal from './components/AIDigitalTwinModal';
 import Footer from './components/Footer';
 import { Bot } from 'lucide-react';
 
+import DatabaseSchemaViewer from './components/DatabaseSchemaViewer';
+
 export default function App() {
   const [activeRoute, setActiveRoute] = useState('home');
   const [aiModalOpen, setAiModalOpen] = useState(false);
@@ -61,6 +63,10 @@ export default function App() {
       case 'media':
       case 'sports':
         return <CultureSportsSection />;
+      case 'schema':
+      case 'db':
+      case 'db-schema':
+        return <DatabaseSchemaViewer />;
       case 'links':
         return <LinktreeSection onNavigate={navigateTo} />;
       default:

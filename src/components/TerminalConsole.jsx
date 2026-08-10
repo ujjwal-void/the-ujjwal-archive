@@ -60,12 +60,12 @@ export default function TerminalConsole({ onNavigate }) {
         });
       } else if (lower.startsWith('cd ')) {
         const dir = lower.replace('cd ', '').trim();
-        if (['projects', 'physics', 'math', 'media', 'essays', 'teaching', 'sports', 'screen-spine', 'screen', 'spine', 'culture', 'links', 'home'].includes(dir)) {
-          const targetRoute = (dir === 'math' ? 'physics' : (['screen-spine', 'screen', 'spine', 'media', 'sports', 'culture'].includes(dir) ? 'culture' : dir));
+        if (['projects', 'physics', 'math', 'media', 'essays', 'teaching', 'sports', 'screen-spine', 'screen', 'spine', 'culture', 'schema', 'db', 'db-schema', 'links', 'home'].includes(dir)) {
+          const targetRoute = (['schema', 'db', 'db-schema'].includes(dir) ? 'db-schema' : (dir === 'math' ? 'physics' : (['screen-spine', 'screen', 'spine', 'media', 'sports', 'culture'].includes(dir) ? 'culture' : dir)));
           onNavigate(targetRoute);
           newHistory.push({ type: 'output', text: `Navigated to /${dir}` });
         } else {
-          newHistory.push({ type: 'output', text: `Directory not found: ${dir}. Try: cd projects, cd physics, cd essays, cd screen-spine` });
+          newHistory.push({ type: 'output', text: `Directory not found: ${dir}. Try: cd projects, cd physics, cd essays, cd db-schema` });
         }
       } else if (lower.startsWith('grep ')) {
         const query = lower.replace('grep ', '').trim();
