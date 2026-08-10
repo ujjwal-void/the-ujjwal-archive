@@ -10,7 +10,7 @@ import PhysicsMathSection from './components/PhysicsMathSection';
 import CultureSportsSection from './components/CultureSportsSection';
 import LinktreeSection from './components/LinktreeSection';
 import AIDigitalTwinModal from './components/AIDigitalTwinModal';
-import ThreeBackgroundCanvas from './components/ThreeBackgroundCanvas';
+import SpideyExplorer from './components/SpideyExplorer';
 import Footer from './components/Footer';
 import { Bot } from 'lucide-react';
 
@@ -71,8 +71,8 @@ export default function App() {
 
   return (
     <div className="app-container">
-      {/* 3D Three.js Background Canvas */}
-      <ThreeBackgroundCanvas />
+      {/* Minimalist 3D Spidey Interactive Guide */}
+      <SpideyExplorer onNavigate={navigateTo} />
 
       {/* Top Navbar (hidden on standalone linktree) */}
       {activeRoute !== 'links' && (
