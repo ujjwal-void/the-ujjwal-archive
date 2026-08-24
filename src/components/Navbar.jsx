@@ -75,6 +75,10 @@ export default function Navbar({ activeRoute, onNavigate, onOpenSearch }) {
       {/* Mobile Menu Dropdown */}
       {mobileOpen && (
         <div className="mobile-dropdown">
+          <button className="mobile-search-trigger" onClick={() => { setMobileOpen(false); onOpenSearch(); }}>
+            <Search size={16} style={{ color: 'var(--accent-indigo)' }} />
+            <span>Search Archive...</span>
+          </button>
           <button className={`mobile-nav-btn ${activeRoute === 'home' ? 'active' : ''}`} onClick={() => handleNav('home')}>
             Archive Home
           </button>

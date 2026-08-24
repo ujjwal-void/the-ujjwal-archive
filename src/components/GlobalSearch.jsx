@@ -188,16 +188,35 @@ export default function GlobalSearch({ isOpen, onClose, onNavigate }) {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           />
-          {query ? (
+          {query && (
             <button
               onClick={() => setQuery('')}
-              style={{ background: 'transparent', border: 'none', color: 'var(--text-muted)', cursor: 'pointer', display: 'flex', alignItems: 'center' }}
+              title="Clear input"
+              style={{ background: 'transparent', border: 'none', color: 'var(--text-muted)', cursor: 'pointer', display: 'flex', alignItems: 'center', padding: '0.2rem' }}
             >
               <X size={16} />
             </button>
-          ) : (
-            <span className="nav-search-kbd">ESC</span>
           )}
+          <button
+            onClick={onClose}
+            aria-label="Close search"
+            style={{
+              background: 'var(--bg-secondary)',
+              border: '1px solid var(--border-muted)',
+              borderRadius: '6px',
+              padding: '0.25rem 0.55rem',
+              color: 'var(--text-muted)',
+              cursor: 'pointer',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '0.25rem',
+              fontSize: '0.75rem',
+              fontWeight: 600
+            }}
+          >
+            <X size={15} />
+            <span className="nav-search-kbd">ESC</span>
+          </button>
         </div>
 
         {/* Results / Empty Body */}
