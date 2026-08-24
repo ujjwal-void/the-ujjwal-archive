@@ -94,31 +94,31 @@ export default function TerminalConsole({ onNavigate }) {
     <div
       onClick={() => inputRef.current?.focus()}
       style={{
-        background: '#090d16',
-        border: '2px solid #1e293b',
+        background: '#09090b',
+        border: '1px solid #27272a',
         borderRadius: 'var(--radius-md)',
         padding: '1rem',
         fontFamily: 'var(--font-mono)',
         fontSize: '0.82rem',
         marginBottom: '1rem',
-        boxShadow: '0 8px 24px rgba(15, 23, 42, 0.15)',
+        boxShadow: 'var(--shadow-subtle)',
         cursor: 'text',
       }}
     >
       {/* Terminal Top Window Bar */}
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderBottom: '1px solid #1e293b', paddingBottom: '0.6rem', marginBottom: '0.8rem' }}>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderBottom: '1px solid #27272a', paddingBottom: '0.6rem', marginBottom: '0.8rem' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
           <div style={{ display: 'flex', gap: '5px' }}>
-            <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#ef4444' }} />
-            <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#f59e0b' }} />
-            <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#10b981' }} />
+            <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#27272a' }} />
+            <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#27272a' }} />
+            <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#27272a' }} />
           </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: '#38bdf8', fontWeight: 700, fontSize: '0.78rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: '#f4f4f5', fontWeight: 600, fontSize: '0.78rem' }}>
             <TerminalIcon size={14} />
             <span>UJJWAL_CLI_SHELL</span>
           </div>
         </div>
-        <span style={{ color: '#64748b', fontSize: '0.72rem' }}>Type "help" • bash</span>
+        <span style={{ color: '#71717a', fontSize: '0.72rem' }}>Type "help" • bash</span>
       </div>
 
       {/* Output Console Stream with Ref for Auto-Scrolling */}
@@ -130,7 +130,7 @@ export default function TerminalConsole({ onNavigate }) {
           display: 'flex',
           flexDirection: 'column',
           gap: '0.4rem',
-          color: '#cbd5e1',
+          color: '#a1a1aa',
           scrollBehavior: 'smooth',
         }}
       >
@@ -138,7 +138,7 @@ export default function TerminalConsole({ onNavigate }) {
           <div
             key={idx}
             style={{
-              color: item.type === 'command' ? '#38bdf8' : '#e2e8f0',
+              color: item.type === 'command' ? '#f4f4f5' : '#a1a1aa',
               fontWeight: item.type === 'command' ? 600 : 400,
               whiteSpace: 'pre-wrap',
               lineHeight: '1.5'
@@ -150,8 +150,8 @@ export default function TerminalConsole({ onNavigate }) {
       </div>
 
       {/* CLI Input Line */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginTop: '0.8rem', borderTop: '1px solid #1e293b', paddingTop: '0.6rem' }}>
-        <span style={{ color: '#10b981', fontWeight: 700 }}>$</span>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginTop: '0.8rem', borderTop: '1px solid #27272a', paddingTop: '0.6rem' }}>
+        <span style={{ color: '#059669', fontWeight: 700 }}>$</span>
         <input
           ref={inputRef}
           type="text"
@@ -164,13 +164,14 @@ export default function TerminalConsole({ onNavigate }) {
             background: 'transparent',
             border: 'none',
             outline: 'none',
-            color: '#f8fafc',
+            color: '#f4f4f5',
             fontFamily: 'var(--font-mono)',
             fontSize: '0.82rem'
           }}
         />
-        <CornerDownLeft size={14} style={{ color: '#64748b' }} />
+        <CornerDownLeft size={14} style={{ color: '#71717a' }} />
       </div>
     </div>
   );
 }
+

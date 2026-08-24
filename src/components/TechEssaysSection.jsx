@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Copy, Check, FileText } from 'lucide-react';
-import { TECH_ESSAYS } from '../data/portfolioData';
+import { TECH_STORIES } from '../data/portfolioData';
 
 export default function TechEssaysSection() {
   const [copiedId, setCopiedId] = useState(null);
@@ -15,19 +15,19 @@ export default function TechEssaysSection() {
     <div>
       <div style={{ marginBottom: '2.5rem' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '0.4rem' }}>
-          <span className="meta-tag meta-emerald">TECHNICAL WRITING</span>
-          <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: 'var(--text-dim)' }}>[{TECH_ESSAYS.length} Articles Logged]</span>
+          <span className="meta-tag">TECHNICAL WRITING</span>
+          <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: 'var(--text-dim)' }}>[{TECH_STORIES.length} Stories Logged]</span>
         </div>
-        <h2 style={{ fontSize: '2.2rem', marginBottom: '0.4rem' }}>📝 Tech Essays & Explanations</h2>
-        <p style={{ color: 'var(--text-muted)' }}>Complex technical topics explained in my own words — personal observations, architectural notes, and intuitive breakdowns.</p>
+        <h2 style={{ fontSize: '2.2rem', marginBottom: '0.4rem' }}>Tech Stories & Explanations</h2>
+        <p style={{ color: 'var(--text-muted)' }}>Complex technical topics explained in my own words — personal observations, architectural stories, and intuitive breakdowns.</p>
       </div>
 
       {/* Articles List */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-        {TECH_ESSAYS.map(article => (
+        {TECH_STORIES.map(article => (
           <div key={article.id} className="card" style={{ padding: '2rem' }}>
-            <div style={{ display: 'flex', alignItems: 'center', justifyBetween: 'space-between', marginBottom: '0.8rem', flexWrap: 'wrap', gap: '0.5rem' }}>
-              <span className="meta-tag meta-cyan">{article.category}</span>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.8rem', flexWrap: 'wrap', gap: '0.5rem' }}>
+              <span className="meta-tag">{article.category}</span>
               <span style={{ fontSize: '0.82rem', color: 'var(--text-dim)', fontFamily: 'var(--font-mono)' }}>{article.date} • {article.readTime}</span>
             </div>
 
@@ -43,7 +43,7 @@ export default function TechEssaysSection() {
             <div>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.4rem' }}>
                 <h4 style={{ fontSize: '0.82rem', color: 'var(--text-muted)', textTransform: 'uppercase', fontFamily: 'var(--font-mono)' }}>Code Implementation Concept</h4>
-                <button className="btn-glass" onClick={() => handleCopyCode(article.id, article.codeSnippet)} style={{ fontSize: '0.78rem', padding: '0.3rem 0.8rem', gap: '0.3rem', fontFamily: 'var(--font-mono)' }}>
+                <button className="btn-secondary" onClick={() => handleCopyCode(article.id, article.codeSnippet)} style={{ fontSize: '0.78rem', padding: '0.3rem 0.8rem', gap: '0.3rem', fontFamily: 'var(--font-mono)' }}>
                   {copiedId === article.id ? <Check size={14} style={{ color: 'var(--accent-emerald)' }} /> : <Copy size={14} />}
                   {copiedId === article.id ? 'Copied' : 'Copy Code'}
                 </button>
@@ -73,3 +73,4 @@ export default function TechEssaysSection() {
     </div>
   );
 }
+

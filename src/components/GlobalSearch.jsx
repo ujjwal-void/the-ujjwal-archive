@@ -1,69 +1,64 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { Search, X, Briefcase, Cpu, FileText, Atom, Sparkles } from 'lucide-react';
-import { PROJECTS_DATA, WORK_EXPERIENCE, MEDIA_DATA, TECH_ESSAYS, PHYSICS_MATH_NOTES, SPORTS_TAKES } from '../data/portfolioData';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
+import { Search, X, Briefcase, Cpu, FileText, Atom, Sparkles, Command } from 'lucide-react';
+import { PROJECTS_DATA, WORK_EXPERIENCE, MEDIA_DATA, TECH_STORIES, PHYSICS_MATH_NOTES } from '../data/portfolioData';
 
-export default function GlobalSearch({ onNavigate }) {
+export default function GlobalSearch({ isOpen, onClose, onNavigate }) {
   const [query, setQuery] = useState('');
-  const [isOpen, setIsOpen] = useState(false);
   const searchInputRef = useRef(null);
   const containerRef = useRef(null);
 
-  // Keyboard shortcut listener (Ctrl+K or Cmd+K or ESC)
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+      setTimeout(() => searchInputRef.current?.focus(), 50);
+    } else {
+      document.body.style.overflow = 'unset';
+      setQuery('');
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isOpen]);
+
   useEffect(() => {
     const handleKeyDown = (e) => {
-      if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
-        e.preventDefault();
-        searchInputRef.current?.focus();
-      }
-      if (e.key === 'Escape') {
-        setIsOpen(false);
-        searchInputRef.current?.blur();
+      if (isOpen && e.key === 'Escape') {
+        onClose();
       }
     };
-
-    const handleClickOutside = (e) => {
-      if (containerRef.current && !containerRef.current.contains(e.target)) {
-        setIsOpen(false);
-      }
-    };
-
     window.addEventListener('keydown', handleKeyDown);
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, []);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen, onClose]);
 
-  const handleInputChange = (e) => {
-    const val = e.target.value;
-    setQuery(val);
-    setIsOpen(val.trim().length > 0);
-  };
+  const results = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    if (!q) return [];
 
-  const getResults = () => {
-    if (!query.trim()) return [];
-    const q = query.toLowerCase().trim();
     const matches = [];
 
-    // Helper for safe text checking
-    const matchesQuery = (text) => (text || '').toLowerCase().includes(q);
+    const matchesQuery = (str) => {
+      if (!str || typeof str !== 'string') return false;
+      return str.toLowerCase().includes(q);
+    };
 
     // 1. Search Work Experience
-    WORK_EXPERIENCE.forEach((w) => {
-      const skillsStr = (w.skills || []).join(' ');
-      const descStr = (w.highlights || []).join(' ');
-      if (
-        matchesQuery(w.role) ||
-        matchesQuery(w.company) ||
-        matchesQuery(w.summary) ||
-        matchesQuery(skillsStr) ||
-        matchesQuery(descStr)
-      ) {
+    (WORK_EXPERIENCE || []).forEach((w) => {
+      const company = w.company || '';
+      const role = w.role || '';
+      const highlights = w.highlights || [];
+      const techStack = w.techStack || [];
+
+      const isMatch =
+        matchesQuery(company) ||
+        matchesQuery(role) ||
+        highlights.some((h) => matchesQuery(h)) ||
+        techStack.some((t) => matchesQuery(t));
+
+      if (isMatch) {
         matches.push({
           type: 'Experience',
-          title: `${w.role} @ ${w.company}`,
-          snippet: w.summary || (w.highlights && w.highlights[0]) || '',
+          title: `${role} @ ${company}`,
+          snippet: highlights[0] || `${role} at ${company}`,
           route: 'experience',
           icon: Briefcase,
         });
@@ -71,176 +66,151 @@ export default function GlobalSearch({ onNavigate }) {
     });
 
     // 2. Search Projects
-    PROJECTS_DATA.forEach((p) => {
-      const tagsStr = (p.tags || []).join(' ');
-      const featStr = (p.keyFeatures || []).join(' ');
-      if (
-        matchesQuery(p.title) ||
-        matchesQuery(p.description) ||
-        matchesQuery(p.tagline) ||
-        matchesQuery(p.category) ||
-        matchesQuery(tagsStr) ||
-        matchesQuery(featStr)
-      ) {
+    (PROJECTS_DATA || []).forEach((p) => {
+      const title = p.title || '';
+      const tagline = p.tagline || '';
+      const description = p.description || '';
+      const tags = p.tags || [];
+      const keyFeatures = p.keyFeatures || [];
+
+      const isMatch =
+        matchesQuery(title) ||
+        matchesQuery(tagline) ||
+        matchesQuery(description) ||
+        tags.some((t) => matchesQuery(t)) ||
+        keyFeatures.some((f) => matchesQuery(f));
+
+      if (isMatch) {
         matches.push({
           type: 'Project',
-          title: p.title,
-          snippet: p.tagline || p.description || '',
+          title: title,
+          snippet: tagline || description,
           route: 'projects',
           icon: Cpu,
         });
       }
     });
 
-    // 3. Search Tech Essays
-    TECH_ESSAYS.forEach((b) => {
-      if (
-        matchesQuery(b.title) ||
-        matchesQuery(b.excerpt) ||
-        matchesQuery(b.category) ||
-        matchesQuery(b.codeSnippet)
-      ) {
+    // 3. Search Tech Stories
+    (TECH_STORIES || []).forEach((b) => {
+      const title = b.title || '';
+      const excerpt = b.excerpt || '';
+      const category = b.category || '';
+
+      const isMatch =
+        matchesQuery(title) ||
+        matchesQuery(excerpt) ||
+        matchesQuery(category);
+
+      if (isMatch) {
         matches.push({
-          type: 'Tech Essay',
-          title: b.title,
-          snippet: b.excerpt || '',
+          type: 'Tech Story',
+          title: title,
+          snippet: excerpt,
           route: 'essays',
           icon: FileText,
         });
       }
     });
 
-    // 4. Search Physics & Math Notes
-    PHYSICS_MATH_NOTES.forEach((pm) => {
-      if (
-        matchesQuery(pm.title) ||
-        matchesQuery(pm.summary) ||
-        matchesQuery(pm.csConnection) ||
-        matchesQuery(pm.category) ||
-        matchesQuery(pm.formula)
-      ) {
+    // 4. Search Physics & Math
+    (PHYSICS_MATH_NOTES || []).forEach((n) => {
+      const title = n.title || '';
+      const summary = n.summary || '';
+      const formula = n.formula || n.latexFormula || '';
+      const csConnection = n.csConnection || n.intuitiveExplanation || '';
+
+      const isMatch =
+        matchesQuery(title) ||
+        matchesQuery(summary) ||
+        matchesQuery(formula) ||
+        matchesQuery(csConnection);
+
+      if (isMatch) {
         matches.push({
-          type: 'Physics & Math',
-          title: pm.title,
-          snippet: pm.summary ? pm.summary.substring(0, 90) + '...' : '',
+          type: 'Physics / Math',
+          title: title,
+          snippet: summary,
           route: 'physics',
           icon: Atom,
         });
       }
     });
 
-    // 5. Search Screen & Spine (Cinema, Anime & Books)
-    MEDIA_DATA.forEach((m) => {
-      if (
-        matchesQuery(m.title) ||
-        matchesQuery(m.review) ||
-        matchesQuery(m.creator) ||
-        matchesQuery(m.recommendation)
-      ) {
+    // 5. Search Screen & Spine Logs
+    (MEDIA_DATA || []).forEach((m) => {
+      const title = m.title || '';
+      const creator = m.creator || '';
+      const review = m.review || '';
+      const characterArc = m.characterArc || '';
+      const detailedReview = m.detailedReview || '';
+
+      const isMatch =
+        matchesQuery(title) ||
+        matchesQuery(creator) ||
+        matchesQuery(review) ||
+        matchesQuery(characterArc) ||
+        matchesQuery(detailedReview);
+
+      if (isMatch) {
         matches.push({
-          type: `Screen & Spine (${m.type || 'Review'})`,
-          title: m.title,
-          snippet: m.review ? m.review.substring(0, 90) + '...' : '',
+          type: 'Screen & Spine',
+          title: title,
+          snippet: review || (detailedReview ? detailedReview.substring(0, 100) + '...' : ''),
           route: 'culture',
           icon: Sparkles,
         });
       }
     });
 
-    // 6. Search Sports Takes
-    SPORTS_TAKES.forEach((s) => {
-      if (
-        matchesQuery(s.title) ||
-        matchesQuery(s.opinion) ||
-        matchesQuery(s.sport) ||
-        matchesQuery(s.keyTakeaway)
-      ) {
-        matches.push({
-          type: `Sports (${s.sport})`,
-          title: s.title,
-          snippet: s.opinion ? s.opinion.substring(0, 90) + '...' : '',
-          route: 'culture',
-          icon: Sparkles,
-        });
-      }
-    });
-
-    return matches;
-  };
-
-  const results = getResults();
+    return matches.slice(0, 8);
+  }, [query]);
 
   const handleResultClick = (route) => {
     onNavigate(route);
     setQuery('');
-    setIsOpen(false);
+    onClose();
   };
 
-  const clearSearch = () => {
-    setQuery('');
-    setIsOpen(false);
-  };
+  if (!isOpen) return null;
 
   return (
-    <div className="search-container container" ref={containerRef}>
-      <div className="search-wrapper">
-        <Search size={16} className="search-icon" />
-        <input
-          ref={searchInputRef}
-          type="text"
-          className="search-input"
-          placeholder="Search projects, experience, RAG, physics, math, screen & spine..."
-          value={query}
-          onChange={handleInputChange}
-          onFocus={() => setIsOpen(query.trim().length > 0)}
-        />
-
-        {query.length > 0 ? (
-          <button
-            onClick={clearSearch}
-            style={{
-              background: 'transparent',
-              border: 'none',
-              color: 'var(--text-muted)',
-              cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              padding: '0 0.3rem',
-            }}
-            title="Clear search"
-          >
-            <X size={14} />
-          </button>
-        ) : (
-          <span
-            style={{
-              fontSize: '0.72rem',
-              background: 'var(--bg-secondary)',
-              padding: '0.2rem 0.5rem',
-              borderRadius: '4px',
-              color: 'var(--text-dim)',
-              fontFamily: 'var(--font-mono)',
-              border: '1px solid var(--border-muted)',
-            }}
-          >
-            Ctrl + K
-          </span>
-        )}
-      </div>
-
-      {isOpen && (
-        <div className="search-results-dropdown">
-          {results.length === 0 ? (
-            <div
-              style={{
-                padding: '1rem',
-                textAlign: 'center',
-                color: 'var(--text-dim)',
-                fontSize: '0.85rem',
-                fontFamily: 'var(--font-mono)',
-              }}
+    <div className="command-palette-overlay" onClick={onClose}>
+      <div className="command-palette-modal" ref={containerRef} onClick={(e) => e.stopPropagation()}>
+        {/* Header Input Area */}
+        <div className="command-palette-header">
+          <Search size={18} style={{ color: 'var(--accent-indigo)' }} />
+          <input
+            ref={searchInputRef}
+            type="text"
+            className="command-palette-input"
+            placeholder="Search projects, skills, experience, RAG, Screen & Spine..."
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+          />
+          {query ? (
+            <button
+              onClick={() => setQuery('')}
+              style={{ background: 'transparent', border: 'none', color: 'var(--text-muted)', cursor: 'pointer', display: 'flex', alignItems: 'center' }}
             >
-              No matches found for "{query}". Try searching for <strong style={{ color: 'var(--accent-indigo)' }}>"Go"</strong>, <strong style={{ color: 'var(--accent-indigo)' }}>"RAG"</strong>, or <strong style={{ color: 'var(--accent-indigo)' }}>"ZFunds"</strong>.
+              <X size={16} />
+            </button>
+          ) : (
+            <span className="nav-search-kbd">ESC</span>
+          )}
+        </div>
+
+        {/* Results / Empty Body */}
+        <div className="command-palette-body">
+          {query.trim() === '' ? (
+            <div className="command-palette-empty">
+              <Command size={24} style={{ color: 'var(--accent-indigo)', marginBottom: '0.5rem' }} />
+              <p style={{ fontSize: '0.88rem', fontWeight: 600, color: 'var(--text-main)', margin: '0 0 0.2rem' }}>Quick Search Archive</p>
+              <p style={{ fontSize: '0.78rem', color: 'var(--text-dim)', margin: 0 }}>Try searching for <span style={{ color: 'var(--accent-indigo)' }}>"Python"</span>, <span style={{ color: 'var(--accent-indigo)' }}>"RAG"</span>, <span style={{ color: 'var(--accent-indigo)' }}>"ZFunds"</span>, or <span style={{ color: 'var(--accent-indigo)' }}>"FastAPI"</span></p>
+            </div>
+          ) : results.length === 0 ? (
+            <div className="command-palette-empty">
+              <p style={{ fontSize: '0.88rem', color: 'var(--text-muted)', margin: 0 }}>No matches found for "{query}".</p>
             </div>
           ) : (
             results.map((item, idx) => {
@@ -252,36 +222,21 @@ export default function GlobalSearch({ onNavigate }) {
                   onClick={() => handleResultClick(item.route)}
                   style={{
                     padding: '0.75rem 1rem',
-                    borderBottom: '1px solid var(--border-muted)',
+                    borderRadius: 'var(--radius-sm)',
                     cursor: 'pointer',
                     transition: 'background 0.15s ease',
                   }}
                 >
-                  <div
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      justify: 'space-between',
-                      marginBottom: '0.2rem',
-                    }}
-                  >
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                      <IconComp size={14} style={{ color: 'var(--accent-indigo)', flexShrink: 0 }} />
-                      <span style={{ fontSize: '0.88rem', fontWeight: 600, color: 'var(--text-main)' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.2rem' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.55rem' }}>
+                      <IconComp size={15} style={{ color: 'var(--accent-indigo)', flexShrink: 0 }} />
+                      <span style={{ fontSize: '0.9rem', fontWeight: 600, color: 'var(--text-main)' }}>
                         {item.title}
                       </span>
                     </div>
                     <span className="meta-tag">{item.type}</span>
                   </div>
-                  <p
-                    style={{
-                      fontSize: '0.78rem',
-                      color: 'var(--text-muted)',
-                      margin: 0,
-                      paddingLeft: '1.4rem',
-                      lineHeight: 1.4,
-                    }}
-                  >
+                  <p style={{ fontSize: '0.78rem', color: 'var(--text-muted)', margin: 0, paddingLeft: '1.55rem', lineHeight: 1.4 }}>
                     {item.snippet}
                   </p>
                 </div>
@@ -289,7 +244,14 @@ export default function GlobalSearch({ onNavigate }) {
             })
           )}
         </div>
-      )}
+
+        {/* Footer */}
+        <div className="command-palette-footer">
+          <span>Search portfolio data, code & notes</span>
+          <span><span style={{ fontWeight: 600 }}>ESC</span> to exit</span>
+        </div>
+      </div>
     </div>
   );
 }
+

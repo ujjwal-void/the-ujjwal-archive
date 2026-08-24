@@ -16,6 +16,7 @@ import { Bot } from 'lucide-react';
 export default function App() {
   const [activeRoute, setActiveRoute] = useState('home');
   const [aiModalOpen, setAiModalOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
 
   useEffect(() => {
     const handleHashChange = () => {
@@ -29,6 +30,18 @@ export default function App() {
     handleHashChange();
     window.addEventListener('hashchange', handleHashChange);
     return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
+
+  // Global Cmd+K / Ctrl+K listener for Command Palette Search
+  useEffect(() => {
+    const handleGlobalKeyDown = (e) => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        setSearchOpen((prev) => !prev);
+      }
+    };
+    window.addEventListener('keydown', handleGlobalKeyDown);
+    return () => window.removeEventListener('keydown', handleGlobalKeyDown);
   }, []);
 
   const navigateTo = (route) => {
@@ -72,18 +85,16 @@ export default function App() {
     <div className="app-container">
       {/* Top Navbar (hidden on standalone linktree) */}
       {activeRoute !== 'links' && (
-        <Navbar activeRoute={activeRoute} onNavigate={navigateTo} />
-      )}
-
-      {/* OS Search Bar (hidden on standalone linktree) */}
-      {activeRoute !== 'links' && (
-        <GlobalSearch onNavigate={navigateTo} />
+        <Navbar activeRoute={activeRoute} onNavigate={navigateTo} onOpenSearch={() => setSearchOpen(true)} />
       )}
 
       {/* Main Dynamic View Content */}
       <main className="container">
         {renderSection()}
       </main>
+
+      {/* Spotlight Command Palette Search Modal */}
+      <GlobalSearch isOpen={searchOpen} onClose={() => setSearchOpen(false)} onNavigate={navigateTo} />
 
       {/* Floating AI Digital Companion Trigger */}
       <button className="ai-twin-trigger" onClick={() => setAiModalOpen(true)} title="Ask Ujjwal's AI Assistant">

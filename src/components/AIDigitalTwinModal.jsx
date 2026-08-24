@@ -3,12 +3,7 @@ import { Bot, Send, X, User, Sparkles, MessageSquare, Briefcase, Cpu, Award, Mai
 import { PROFILE_DATA } from '../data/portfolioData';
 
 export default function AIDigitalTwinModal({ isOpen, onClose }) {
-  const [messages, setMessages] = useState([
-    {
-      sender: 'bot',
-      text: `Hi! I'm Ujjwal's AI Assistant. Ask me about his work at ZFunds & Advor.ai, tech stack (Python, FastAPI, Redis, RabbitMQ, FAISS), hackathon awards, or education at VIT Chennai!`
-    }
-  ]);
+  const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const chatEndRef = useRef(null);
@@ -20,7 +15,13 @@ export default function AIDigitalTwinModal({ isOpen, onClose }) {
   useEffect(() => {
     if (isOpen) {
       scrollToBottom();
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
     }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
   }, [messages, isOpen, isTyping]);
 
   if (!isOpen) return null;
@@ -39,31 +40,38 @@ export default function AIDigitalTwinModal({ isOpen, onClose }) {
       let reply = "";
       const lower = textToSend.toLowerCase();
 
-      if (lower.includes('experience') || lower.includes('job') || lower.includes('zfunds') || lower.includes('advor') || lower.includes('work')) {
-        reply = `💼 Work History Highlights:
-• Software Engineer at ZFunds (April 2026 – Present): Architected core financial engines & Portfolio Analysis for ZIVA V2 WealthTech AI.
-• Founding Engineer at Advor.ai (Jan 2025 – April 2026): Scaled RabbitMQ event microservices to <150ms P99 latency and built FAISS hybrid RAG search engines (+40% accuracy).
-• DevOps Intern at DRDO: Built real-time LAN packet inspection tools with Docker & Kubernetes.`;
+      if (lower.includes('recruiter') || lower.includes('hire') || lower.includes('interview') || lower.includes('salary') || lower.includes('role')) {
+        reply = `Hey recruiter! Skip this chatbot gimmick—there is no actual AI or LLM API involved here; it's just smart deterministic keyword mapping and regex rules pretending to be a chatbot because running real LLM APIs is expensive! I honestly don't give a single shit if this bot breaks! Here's my actual engineering summary:
+• Work Experience: Software Development Engineer at ZFunds & Founding Engineer at Advor.ai.
+• Core Impact: I cut portfolio analysis latency by 97%+ (~40s to ~900ms) & scaled RabbitMQ queues to <150ms P99.
+• Direct Email: ujjwal.02023@gmail.com
+• Phone: +91 7380679251`;
+      } else if (lower.includes('experience') || lower.includes('job') || lower.includes('zfunds') || lower.includes('advor') || lower.includes('work')) {
+        reply = `My Work History Highlights:
+• Software Development Engineer at ZFunds (April 2026 – Present): Core engineer for ZIVA V2 (backend, frontend, AI pipelines). I cut Portfolio Analysis latency from 40s+ to ~900ms (97%+ reduction).
+• Founding Engineer at Advor.ai (Jan 2025 – April 2026): I scaled RabbitMQ event microservices to <150ms P99 latency & built FAISS hybrid RAG search engines.
+• DevOps Intern at DRDO: I built real-time LAN monitoring & packet sniffing tools with Flask, Docker & Kubernetes.`;
       } else if (lower.includes('skill') || lower.includes('stack') || lower.includes('tech') || lower.includes('python')) {
-        reply = `⚡ Tech Stack & Architecture Skills:
-• Backend & Systems: Python, TypeScript, JavaScript, Java, FastAPI, Node.js, Express, Nest.js, RESTful APIs, Microservices.
-• AI & LLMs: LangChain, LlamaIndex, ChromaDB, Vector Embeddings, Hybrid RAG, Prompt Engineering.
-• Databases & Infrastructure: Redis (Clustering/Caching), RabbitMQ, PostgreSQL, MongoDB, MySQL, AWS (EC2, S3), Docker, Kubernetes, Grafana.`;
+        reply = `My Core Tech Stack:
+• Languages & Frontend: Python, TypeScript, JavaScript, Java, React, React Native, Next.js, Redux Toolkit, Tailwind CSS.
+• Backend & Microservices: FastAPI, Flask, Node.js, Express.js, Spring Boot, REST APIs, Microservices.
+• AI/LLM & ML: LangChain, LlamaIndex, ChromaDB, Embeddings, RAG Pipelines, PyTorch, Scikit-Learn.
+• Databases & Cloud: Redis, MongoDB, MySQL, PostgreSQL, AWS (EC2, S3, RDS), RabbitMQ, Kafka, Docker, Kubernetes.`;
       } else if (lower.includes('project') || lower.includes('nexus') || lower.includes('adcraft') || lower.includes('rag')) {
-        reply = `🚀 Key Projects:
-1. ZIVA V2 WealthTech AI (ZFunds) — End-to-end Portfolio Analysis & Fund Recommendation.
-2. Advor.ai Hybrid RAG Engine — Multi-layer FAISS + Redis search engine (+40% retrieval precision).
-3. AdCraft AI Platform — Osmos Hackathon 1st Runner-Up out of 131 teams (INR 30,000 Prize).
-4. Nexus PM — Collaborative Project Management REST API with 30+ endpoints & 3-tier RBAC.
-5. DRDO Network Observability Tool — Real-time packet sniffing & device discovery.`;
+        reply = `Key Projects I've Built:
+1. ZIVA V2 WealthTech AI (ZFunds) — Portfolio Analysis, FastTrack KYC, e-Mandate, GIFT City platform.
+2. Advor.ai Hybrid RAG Engine — RabbitMQ event microservices (<150ms P99) & FAISS vector search.
+3. Adaptive RAG Search — Agentic RAG system built with LangGraph, LangChain, Qdrant & FastAPI.
+4. AdCraft — Osmos Hackathon 1st Runner-Up out of 131 teams (INR 30,000 Prize).
+5. Nexus PM — Project Management REST API with 30+ endpoints & 3-tier RBAC.`;
       } else if (lower.includes('education') || lower.includes('college') || lower.includes('vit')) {
-        reply = `🎓 Academic Credentials:
+        reply = `My Academic Background:
 • Degree: B.Tech in Computer Science Engineering (AI & ML Specialization)
-• Institution: Vellore Institute of Technology (VIT Chennai, 2021–2025)
+• Institution: Vellore Institute of Technology (VIT Vellore, 2021–2025)
 • CGPA: 7.23 / 10.0
 • Schooling: Lucknow Public College (Class XII: 83.25%)`;
       } else if (lower.includes('contact') || lower.includes('email') || lower.includes('phone') || lower.includes('reach')) {
-        reply = `📫 Contact Channels:
+        reply = `Reach Me Directly:
 • Email: ujjwal.02023@gmail.com
 • Phone: +91 7380679251
 • Location: Gurugram, India
@@ -71,16 +79,16 @@ export default function AIDigitalTwinModal({ isOpen, onClose }) {
 • LinkedIn: linkedin.com/in/ujjwal-ujjwal-dev
 • LeetCode: leetcode.com/u/ujjwal92`;
       } else if (lower.includes('hackathon') || lower.includes('award') || lower.includes('achievement')) {
-        reply = `🏆 Awards & Achievements:
+        reply = `My Hackathon Awards:
 • 1st Runner-Up at Osmos Hackathon by OnlineSales.ai (Out of 131 teams, INR 30,000 Prize).
-• Finalist at CryptoGuard Hackathon at VIT Chennai (Web3 identity verification tool).`;
+• Finalist at CryptoGuard Hackathon at VIT Vellore (Web3 identity verification tool).`;
       } else if (lower.includes('screen') || lower.includes('spine') || lower.includes('movie') || lower.includes('anime') || lower.includes('book') || lower.includes('culture')) {
-        reply = `🎬 Screen & Spine (Cinema, Anime & Literary Studies):
-• Anime: "Another" (Atmospheric horror & Class 3-3 curse analysis).
-• Movies: "Kishkindha Kaandam" (Malayalam mystery thriller puzzle box).
-• Literature: "Metamorphosis" by Franz Kafka, "The Picture of Dorian Gray" by Oscar Wilde, "I Hear You" by Michael S. Sorensen, and "The Rosie Project" by Graeme Simsion.`;
+        reply = `My Personal Screen & Spine Logs:
+• Obito Uchiha (Naruto Shippuden): Deep character study on his tragic idealist worldview.
+• Books: "Metamorphosis" by Franz Kafka, "The Picture of Dorian Gray" by Oscar Wilde, "I Hear You" by Michael S. Sorensen, and "The Rosie Project" by Graeme Simsion.
+• Anime/Movies: "Another" (Class 3-3 horror) and "Kishkindha Kaandam" (Malayalam thriller).`;
       } else {
-        reply = `I am grounded in Ujjwal's background as a Software Engineer. Feel free to ask about his ZFunds & Advor.ai experience, Python/FastAPI/RAG stack, projects, Screen & Spine notes, or email him directly at ujjwal.02023@gmail.com!`;
+        reply = `If you're a recruiter looking to hire me, skip this chatbot gimmick—there is no actual AI or LLM model running here; it's just smart keyword matching & regex rules. I don't give a single shit if this bot breaks. Check out my real Work Experience section or email me directly at ujjwal.02023@gmail.com!`;
       }
 
       setIsTyping(false);
@@ -99,10 +107,10 @@ export default function AIDigitalTwinModal({ isOpen, onClose }) {
             </div>
             <div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                <h3 style={{ fontSize: '1rem', fontWeight: 800, color: 'var(--text-main)', margin: 0 }}>Ujjwal's AI Assistant</h3>
+                <h3 style={{ fontSize: '1rem', fontWeight: 700, color: 'var(--text-main)', margin: 0 }}>Ujjwal (Digital Twin)</h3>
                 <span className="online-dot" title="Active AI Engine"></span>
               </div>
-              <p style={{ fontSize: '0.73rem', color: 'var(--text-muted)', margin: 0 }}>Grounded in Real Experience & Resume</p>
+              <p style={{ fontSize: '0.73rem', color: 'var(--text-muted)', margin: 0 }}>Grounded in My Background & Experience</p>
             </div>
           </div>
           <button className="close-btn" onClick={onClose} aria-label="Close Chat">
@@ -112,6 +120,13 @@ export default function AIDigitalTwinModal({ isOpen, onClose }) {
 
         {/* Messages Scroll Area */}
         <div className="ai-chat-body">
+          {messages.length === 0 && (
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100%', textTransform: 'none', color: 'var(--text-muted)', textAlign: 'center', padding: '2rem 1rem', gap: '0.6rem' }}>
+              <Sparkles size={28} style={{ color: 'var(--accent-indigo)' }} />
+              <p style={{ fontSize: '0.92rem', fontWeight: 600, color: 'var(--text-main)', margin: 0 }}>Ask me anything or click a shortcut below:</p>
+              <p style={{ fontSize: '0.8rem', color: 'var(--text-dim)', margin: 0 }}>Ask about my work experience, tech stack, projects, or contact info.</p>
+            </div>
+          )}
           {messages.map((msg, idx) => (
             <div key={idx} className={`chat-message-row ${msg.sender}`}>
               {msg.sender === 'bot' && (
@@ -147,17 +162,17 @@ export default function AIDigitalTwinModal({ isOpen, onClose }) {
 
         {/* Suggestion Chips */}
         <div className="ai-suggestion-chips">
+          <button onClick={() => handleSendQuery('How can I contact Ujjwal?')}>
+            <Mail size={12} /> Contact Me
+          </button>
           <button onClick={() => handleSendQuery('Tell me about your work experience')}>
-            <Briefcase size={12} /> Experience
+            <Briefcase size={12} /> My Experience
           </button>
           <button onClick={() => handleSendQuery('What is your tech stack?')}>
-            <Cpu size={12} /> Tech Stack
+            <Cpu size={12} /> My Tech Stack
           </button>
           <button onClick={() => handleSendQuery('Tell me about your hackathon awards')}>
-            <Award size={12} /> Awards
-          </button>
-          <button onClick={() => handleSendQuery('How can I contact Ujjwal?')}>
-            <Mail size={12} /> Contact
+            <Award size={12} /> My Awards
           </button>
         </div>
 
@@ -166,7 +181,7 @@ export default function AIDigitalTwinModal({ isOpen, onClose }) {
           <input
             type="text"
             className="ai-input"
-            placeholder="Ask AI anything about Ujjwal..."
+            placeholder="Ask me anything about my work, stack, or background..."
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={(e) => e.key === 'Enter' && handleSendQuery()}
@@ -179,3 +194,4 @@ export default function AIDigitalTwinModal({ isOpen, onClose }) {
     </div>
   );
 }
+

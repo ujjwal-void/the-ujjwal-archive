@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ExternalLink, Code2, Cpu, CheckCircle, Video } from 'lucide-react';
+import { ExternalLink, Code2, Cpu, Video } from 'lucide-react';
 import { PROJECTS_DATA } from '../data/portfolioData';
 
 export default function ProjectsSection() {
@@ -17,10 +17,10 @@ export default function ProjectsSection() {
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1rem', marginBottom: '1.5rem' }}>
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '0.4rem' }}>
-              <span className="meta-tag meta-cyan">VERIFIED PROJECTS</span>
+              <span className="meta-tag">VERIFIED PROJECTS</span>
               <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: 'var(--text-dim)' }}>[{PROJECTS_DATA.length} Production & Open Source Items]</span>
             </div>
-            <h2 style={{ fontSize: '2.2rem', marginBottom: '0.4rem' }}>🧠 Verified Software & AI Projects</h2>
+            <h2 style={{ fontSize: '2.2rem', marginBottom: '0.4rem' }}>Verified Software & AI Projects</h2>
             <p style={{ color: 'var(--text-muted)' }}>Production systems, backend microservices, RAG search engines, and award-winning hackathon applications.</p>
           </div>
         </div>
@@ -30,12 +30,12 @@ export default function ProjectsSection() {
         {filteredProjects.map(project => (
           <div key={project.id} className="card">
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.8rem', flexWrap: 'wrap', gap: '0.5rem' }}>
-              <span className="meta-tag meta-cyan">{project.category}</span>
-              <span className="meta-tag meta-amber">{project.companyTag}</span>
+              <span className="meta-tag">{project.category}</span>
+              <span className="meta-tag">{project.companyTag}</span>
             </div>
 
             <h3 style={{ fontSize: '1.45rem', marginBottom: '0.4rem' }}>{project.title}</h3>
-            <p style={{ fontSize: '0.92rem', color: 'var(--accent-indigo)', fontWeight: 600, marginBottom: '0.8rem' }}>{project.tagline}</p>
+            <p style={{ fontSize: '0.92rem', color: 'var(--text-main)', fontWeight: 600, marginBottom: '0.8rem' }}>{project.tagline}</p>
             <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', marginBottom: '1.2rem', lineHeight: '1.6' }}>{project.description}</p>
 
             {/* Metrics */}
@@ -44,7 +44,7 @@ export default function ProjectsSection() {
                 {Object.entries(project.metrics).map(([key, val], idx) => (
                   <div key={idx} style={{ fontSize: '0.78rem', fontFamily: 'var(--font-mono)' }}>
                     <span style={{ color: 'var(--text-dim)', textTransform: 'uppercase' }}>{key}: </span>
-                    <span style={{ fontWeight: 700, color: 'var(--accent-indigo)' }}>{val}</span>
+                    <span style={{ fontWeight: 700, color: 'var(--text-main)' }}>{val}</span>
                   </div>
                 ))}
               </div>
@@ -56,7 +56,7 @@ export default function ProjectsSection() {
               <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.35rem', fontSize: '0.85rem', color: 'var(--text-muted)' }}>
                 {project.keyFeatures.map((feat, idx) => (
                   <li key={idx} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                    <CheckCircle size={14} style={{ color: 'var(--accent-emerald)', flexShrink: 0 }} /> {feat}
+                    <span style={{ color: 'var(--text-dim)', flexShrink: 0 }}>•</span> {feat}
                   </li>
                 ))}
               </ul>
@@ -74,7 +74,7 @@ export default function ProjectsSection() {
             {/* Action Links */}
             <div style={{ display: 'flex', gap: '0.6rem' }}>
               {project.githubUrl && (
-                <a href={project.githubUrl} target="_blank" rel="noreferrer" className="btn-glass" style={{ fontSize: '0.82rem', padding: '0.45rem 0.9rem', flex: 1, justifyContent: 'center' }}>
+                <a href={project.githubUrl} target="_blank" rel="noreferrer" className="btn-secondary" style={{ fontSize: '0.82rem', padding: '0.45rem 0.9rem', flex: 1, justifyContent: 'center' }}>
                   <Code2 size={14} /> Repository
                 </a>
               )}
@@ -90,3 +90,4 @@ export default function ProjectsSection() {
     </div>
   );
 }
+

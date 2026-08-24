@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Menu, X, Zap, Briefcase, Cpu, Film, FileText, Atom, Link as LinkIcon } from 'lucide-react';
+import { Menu, X, Zap, Briefcase, Cpu, Film, FileText, Atom, Link as LinkIcon, Search } from 'lucide-react';
 
-export default function Navbar({ activeRoute, onNavigate }) {
+export default function Navbar({ activeRoute, onNavigate, onOpenSearch }) {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const handleNav = (route) => {
@@ -39,7 +39,7 @@ export default function Navbar({ activeRoute, onNavigate }) {
           </li>
           <li>
             <button className={`nav-btn ${activeRoute === 'essays' || activeRoute === 'teaching' ? 'active' : ''}`} onClick={() => handleNav('essays')}>
-              <FileText size={15} /> Tech Essays
+              <FileText size={15} /> Tech Stories
             </button>
           </li>
           <li>
@@ -59,6 +59,13 @@ export default function Navbar({ activeRoute, onNavigate }) {
           </li>
         </ul>
 
+        {/* Compact Search Trigger Button */}
+        <button className="nav-search-btn" onClick={onOpenSearch} title="Search Archive (Ctrl+K)">
+          <Search size={14} style={{ color: 'var(--accent-indigo)' }} />
+          <span className="nav-search-text">Search archive...</span>
+          <span className="nav-search-kbd">⌘K</span>
+        </button>
+
         {/* Mobile menu icon */}
         <button className="mobile-toggle" onClick={() => setMobileOpen(!mobileOpen)} aria-label="Toggle menu">
           {mobileOpen ? <X size={22} /> : <Menu size={22} />}
@@ -69,31 +76,32 @@ export default function Navbar({ activeRoute, onNavigate }) {
       {mobileOpen && (
         <div className="mobile-dropdown">
           <button className={`mobile-nav-btn ${activeRoute === 'home' ? 'active' : ''}`} onClick={() => handleNav('home')}>
-            ⚡ Archive Home
+            Archive Home
           </button>
           <button className={`mobile-nav-btn ${activeRoute === 'experience' ? 'active' : ''}`} onClick={() => handleNav('experience')}>
-            💼 Work Experience & Resume
+            Work Experience & Resume
           </button>
           <button className={`mobile-nav-btn ${activeRoute === 'projects' ? 'active' : ''}`} onClick={() => handleNav('projects')}>
-            🧠 Projects
+            Projects
           </button>
           <button className={`mobile-nav-btn ${activeRoute === 'card' ? 'active' : ''}`} onClick={() => handleNav('card')}>
-            🎴 1-Page Developer Card
+            1-Page Developer Card
           </button>
           <button className={`mobile-nav-btn ${activeRoute === 'essays' || activeRoute === 'teaching' ? 'active' : ''}`} onClick={() => handleNav('essays')}>
-            📝 Tech Essays & Explanations
+            Tech Stories & Explanations
           </button>
           <button className={`mobile-nav-btn ${activeRoute === 'physics' ? 'active' : ''}`} onClick={() => handleNav('physics')}>
-            ⚛️ Physics & Mathematics Notes
+            Physics & Mathematics Notes
           </button>
           <button className={`mobile-nav-btn ${activeRoute === 'culture' || activeRoute === 'media' || activeRoute === 'sports' ? 'active' : ''}`} onClick={() => handleNav('culture')}>
-            🎬 Screen & Spine (Cinema & Books)
+            Screen & Spine (Cinema & Books)
           </button>
           <button className="mobile-nav-btn linktree-highlight" onClick={() => handleNav('links')}>
-            🔗 Standalone Linktree
+            Standalone Linktree
           </button>
         </div>
       )}
     </header>
   );
 }
+

@@ -1,0 +1,7 @@
+{
+  "toolExecutionPolicy": "always-proceed",
+  "commandReviewPolicy": "always-proceed",
+  "nonWorkspaceFileAccess": "allow",
+  "artifactReviewMode": "always-proceed",
+  "autoExecutionPolicy": "always-proceed"
+}
