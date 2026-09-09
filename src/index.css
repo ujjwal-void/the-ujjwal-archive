@@ -860,11 +860,40 @@ h1, h2, h3, h4 {
   margin-bottom: 1.8rem;
 }
 
+.linktree-actions-bar {
+  display: flex;
+  gap: 0.8rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 .linktree-card-list {
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
+}
+
+.linktree-icon-badge {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: var(--transition-fast);
+}
+
+.linktree-icon-badge svg {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
 }
 
 .linktree-link-item {
@@ -887,6 +916,12 @@ h1, h2, h3, h4 {
   transform: translateY(-1px);
   box-shadow: var(--shadow-hover);
   border-color: var(--border-accent);
+}
+
+.linktree-link-item:hover .linktree-icon-badge {
+  background: rgba(67, 56, 202, 0.08);
+  border-color: var(--accent-indigo);
+  transform: scale(1.05);
 }
 
 .linktree-link-item.highlight {
@@ -1271,6 +1306,40 @@ h1, h2, h3, h4 {
 
   .grid-2, .grid-3 {
     grid-template-columns: 1fr;
+  }
+
+  /* Linktree Mobile Responsive Overrides */
+  .linktree-standalone {
+    padding: 1rem 0.75rem;
+    max-width: 100%;
+  }
+
+  .linktree-actions-bar {
+    width: 100%;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .linktree-actions-bar button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .linktree-icon-badge {
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    min-height: 48px;
+    border-radius: 12px;
+  }
+
+  .linktree-icon-badge svg {
+    width: 26px;
+    height: 26px;
+  }
+
+  .linktree-link-item {
+    padding: 0.85rem 1rem;
   }
 }
 
